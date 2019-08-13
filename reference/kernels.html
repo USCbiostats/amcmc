@@ -192,7 +192,7 @@ following objects:</p><ul>
 on the current state. The function must return a vector of length equal
 to the number of parameters in the model.</p></li>
 <li><p><code>logration</code>: This function is called after a new state has been proposed,
-and is used to compute the log of the hastings ratio.</p>
+and is used to compute the log of the Hastings ratio.</p>
 <p>In the case that the <code>logratio</code> function is not specified, then it is assumed
 that the transition kernel is symmetric, this is, logratio is then implemented
 as <code>function(env) {env$f1 - env$f0}</code></p></li>
@@ -246,7 +246,7 @@ of code is how this is actually implemented in the package:</p><pre>for (i in 1L
   ans[i,] &lt;- theta0
     }
 </pre>
-    <p>For more defails see the vignnete <code><a href='../articles/user-defined-kernels.html'>vignette("user-defined-kernels", "fmcmc")</a></code>.</p>
+    <p>For more details see the vignette <code><a href='../articles/user-defined-kernels.html'>vignette("user-defined-kernels", "fmcmc")</a></code>.</p>
     
     <h2 class="hasAnchor" id="proposal-scheme"><a class="anchor" href="#proposal-scheme"></a>Proposal scheme</h2>
 
@@ -277,12 +277,12 @@ are the backbone of the <a href='MCMC.html'>MCMC</a> function.</p>
 kernel function by default adds the current status values between [-1,1].</p>
     <p>The <code>kernel_unif_reflective</code> is similar to <code>kernel_unif</code> with the
 main difference that proposals are bounded to be within <code>[lb, ub]</code>.</p>
-    <p>The <code>kernel_normal</code> function provides the cannonical normal kernel
+    <p>The <code>kernel_normal</code> function provides the canonical normal kernel
 with symmetric transition probabilities.</p>
     <p>The <code>kernel_normal_reflective</code> implements the normal kernel with reflective
 boundaries. Lower and upper bounds are treated using reflecting boundaries, this is,
 if the proposed \(\theta'\) is greater than the <code>ub</code>, then \(\theta' - ub\)
-is substracted from \(ub\). At the same time, if it is less than <code>lb</code>, then
+is subtracted from \(ub\). At the same time, if it is less than <code>lb</code>, then
 \(lb - \theta'\) is added to <code>lb</code> iterating until \(\theta\) is within
 <code>[lb, ub]</code>.</p>
 <p>In this case, the transition probability is symmetric (just like the normal

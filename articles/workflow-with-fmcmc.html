@@ -143,8 +143,8 @@
 <a class="sourceLine" id="cb7-8" data-line-number="8">  <span class="dt">conv_checker =</span> <span class="kw"><a href="../reference/convergence-checker.html">convergence_geweke</a></span>(<span class="dv">200</span>)</a>
 <a class="sourceLine" id="cb7-9" data-line-number="9">)</a></code></pre></div>
 <pre><code>## Convergence has been reached with 200 steps (200 final count of samples).</code></pre>
-<p>A bit better. As announced by <code>MCMC</code>, the chain has reach a stationary state. With this in hand, we can now rerun the algorithm such that we start from the last couple of step of the chain, this time, without convergence monitoring as it is no longer necesary.</p>
-<p>We will increase the number of steps (sample size), use 2 chains using parallel computing, and add some thining to reduce autocorrelation:</p>
+<p>A bit better. As announced by <code>MCMC</code>, the chain has reach a stationary state. With this in hand, we can now rerun the algorithm such that we start from the last couple of step of the chain, this time, without convergence monitoring as it is no longer necessary.</p>
+<p>We will increase the number of steps (sample size), use 2 chains using parallel computing, and add some thinning to reduce autocorrelation:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># Now we change the seed so we get a different stream of</span></a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co"># pseudo random numbers</span></a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">112</span>) </a>

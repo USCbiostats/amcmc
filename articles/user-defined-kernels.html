@@ -102,7 +102,7 @@
 <h2 class="hasAnchor">
 <a href="#size-parameter-in-a-binomial-distribution" class="anchor"></a>Size parameter in a binomial distribution</h2>
 <p>For this example, imagine that we are interested on learning what is the size of a population given that we already now the prevalence of a particular phenomena, for example, a disease. Furthermore, assume that 20% of the population acquire this disease, and we have a random sample from this population <span class="math inline">\(y \sim \mbox{Binom}(0.2, N)\)</span>. We don’t know <span class="math inline">\(N\)</span>.</p>
-<p>Such scenario, while perhaps a bit uncommon, needs a special treatment in a bayesian/MCMC framework. The parameter to estimate is not continuous so we would like to draw samples from a discrete distribution. Using the “normal” (pun intended) transition kernel may still be able to estimate something, but does not provide us with the correct posterior distribution. In this case, a transition kernel that makes discrete proposals would be desired.</p>
+<p>Such scenario, while perhaps a bit uncommon, needs a special treatment in a Bayesian/MCMC framework. The parameter to estimate is not continuous so we would like to draw samples from a discrete distribution. Using the “normal” (pun intended) transition kernel may still be able to estimate something, but does not provide us with the correct posterior distribution. In this case, a transition kernel that makes discrete proposals would be desired.</p>
 <p>Let’s simulate some data, say, 300 observations from this Binomial random variable with parameters <span class="math inline">\(p = .2\)</span> and <span class="math inline">\(N = 500\)</span>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(fmcmc)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">1</span>) <span class="co"># Always set the seed!!!!</span></a>
@@ -137,7 +137,7 @@
 <a class="sourceLine" id="cb5-6" data-line-number="6">  <span class="dt">thin    =</span> <span class="dv">10</span>,              <span class="co"># We will sample every 10</span></a>
 <a class="sourceLine" id="cb5-7" data-line-number="7">  <span class="dt">p.      =</span> p                <span class="co"># Passing extra parameters to be used by `ll`.</span></a>
 <a class="sourceLine" id="cb5-8" data-line-number="8">  )</a></code></pre></div>
-<p>Notice that for the inital guess we are using the max of <code>y</code>, which is a reasonable starting point (the <span class="math inline">\(N\)</span> parameter MUST be at least the max of <code>y</code>). Since the returning object is an object of class <code>mcmc</code> from the <code>coda</code> R package, we can use any method available for it. Let’s starty by plotting the chain:</p>
+<p>Notice that for the initial guess we are using the max of <code>y</code>, which is a reasonable starting point (the <span class="math inline">\(N\)</span> parameter MUST be at least the max of <code>y</code>). Since the returning object is an object of class <code>mcmc</code> from the <code>coda</code> R package, we can use any method available for it. Let’s start by plotting the chain:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(ans)</a></code></pre></div>
 <p><img src="user-defined-kernels_files/figure-html/plot1-1.png" width="80%"></p>
 <p>As you can see, the trace pf the parameter started to go up right away and then stayed around 500, the actual population parameter <span class="math inline">\(N\)</span>. As the first part of the chain is useless (we are essentially moving away from the starting point), it is wise (if not necessary) to start the MCMC chain from the last point of <code>ans</code>. We can easily do so by just passing <code>ans</code> as an starting point, since <code>MCMC</code> will automatically take the last value of the chain as starting point of this new one. This time, let’s increase the sample size as well:</p>
@@ -175,7 +175,7 @@
 <a class="sourceLine" id="cb9-21" data-line-number="21"><span class="co">#&gt;   1   2   4   8  13  41  71 105 127 147 148 135  91  58  31   9   2   5 </span></a>
 <a class="sourceLine" id="cb9-22" data-line-number="22"><span class="co">#&gt; 513 </span></a>
 <a class="sourceLine" id="cb9-23" data-line-number="23"><span class="co">#&gt;   2</span></a></code></pre></div>
-<p>A very nice mixing (at least visually) and a posterior distribution from which we can safetly sample parameters.</p>
+<p>A very nice mixing (at least visually) and a posterior distribution from which we can safely sample parameters.</p>
 </div>
 <div class="footnotes">
 <hr>
