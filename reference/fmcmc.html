@@ -32,7 +32,9 @@
 
 <meta property="og:title" content="A friendly MCMC framework — fmcmc" />
 
-<meta property="og:description" content="A friendly MCMC framework" />
+<meta property="og:description" content="The fmcmc package provides a flexible framework for implementing MCMC models
+using a lightweight in terms of dependencies. Among its main features, fmcmc
+allows:" />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -88,10 +90,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/fmcmc-a-flexible-mcmc-estimation-framework.html">Workflow with the MCMC function</a>
+      <a href="../articles/user-defined-kernels.html">User-defined kernels</a>
     </li>
     <li>
-      <a href="../articles/integer-kernel.html">Personalized kernel functions</a>
+      <a href="../articles/workflow-with-fmcmc.html">Workflow with fmcmc</a>
     </li>
   </ul>
 </li>
@@ -123,17 +125,40 @@
 
     <div class="ref-description">
     
-    <p>A friendly MCMC framework</p>
+    <p>The <code>fmcmc</code> package provides a flexible framework for implementing MCMC models
+using a lightweight in terms of dependencies. Among its main features, <code>fmcmc</code>
+allows:</p>
     
     </div>
 
         
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <ul>
+<li><p>Implementing arbitrary transition kernels.</p></li>
+<li><p>Incorporating convergence monitors for automatic stop.</p></li>
+<li><p>Out-of-the-box parallel computing implementation for running multiple chains
+simultaneously.</p></li>
+</ul>
+    <p>For more information see the packages vignettes:</p><pre>vignette("workflow-with-fmcmc", "fmcmc")
+    vignette("user-defined-kernels", "fmcmc")
+</pre>
+    
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Vega Yon et al., (2019). fmcmc: A friendly MCMC framework. Journal of Open
+Source Software, 4(39), 1427, doi: <a href='https://doi.org/10.21105/joss.01427'>10.21105/joss.01427</a></p>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-                </ul>
+      
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#references">References</a></li>
+          </ul>
 
   </div>
 </div>
