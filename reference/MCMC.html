@@ -132,22 +132,25 @@
 
     <pre class="usage"><span class='fu'>MCMC</span>(<span class='no'>initial</span>, <span class='no'>fun</span>, <span class='no'>nsteps</span>, <span class='no'>...</span>, <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal</a></span>(), <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+  <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/interactive'>interactive</a></span>())
 
 <span class='co'># S3 method for mcmc</span>
 <span class='fu'>MCMC</span>(<span class='no'>initial</span>, <span class='no'>fun</span>, <span class='no'>nsteps</span>, <span class='no'>...</span>, <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal</a></span>(),
-  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/interactive'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>)
 
 <span class='co'># S3 method for mcmc.list</span>
 <span class='fu'>MCMC</span>(<span class='no'>initial</span>, <span class='no'>fun</span>, <span class='no'>nsteps</span>, <span class='no'>...</span>, <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal</a></span>(),
-  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/interactive'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>)
 
 <span class='co'># S3 method for default</span>
 <span class='fu'>MCMC</span>(<span class='no'>initial</span>, <span class='no'>fun</span>, <span class='no'>nsteps</span>, <span class='no'>...</span>, <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal</a></span>(),
-  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/interactive'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -200,6 +203,10 @@ and returns a logical value with <code>TRUE</code> indicating convergence. See t
     <tr>
       <th>cl</th>
       <td><p>A <code>cluster</code> object passed to <a href='https://www.rdocumentation.org/packages/parallel/topics/clusterApply'>parallel::clusterApply</a>.</p></td>
+    </tr>
+    <tr>
+      <th>progress</th>
+      <td><p>Logical scalar (currently ignored).</p></td>
     </tr>
     </table>
     
