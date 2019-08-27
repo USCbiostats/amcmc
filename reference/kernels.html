@@ -293,35 +293,33 @@ kernel).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"># NOT RUN {
-# Example creating a multivariate normal kernel using the mvtnorm R package
-# for a bivariate normal distribution
-library(mvtnorm)
+    <pre class="examples"><div class='input'>
+<span class='co'># Example creating a multivariate normal kernel using the mvtnorm R package</span>
+<span class='co'># for a bivariate normal distribution</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>mvtnorm</span>)
 
-# Define your Sigma
-sigma <- matrix(c(1, .2, .2, 1), ncol = 2)
+<span class='co'># Define your Sigma</span>
+<span class='no'>sigma</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>.2</span>, <span class='fl'>.2</span>, <span class='fl'>1</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2</span>)
 
-# How does it looks like?
-sigma
-     [,1] [,2]
-[1,]  1.0  0.2
-[2,]  0.2  1.0
+<span class='co'># How does it looks like?</span>
+<span class='no'>sigma</span></div><div class='output co'>#&gt;      [,1] [,2]
+#&gt; [1,]  1.0  0.2
+#&gt; [2,]  0.2  1.0</div><div class='input'><span class='co'>#      [,1] [,2]</span>
+<span class='co'># [1,]  1.0  0.2</span>
+<span class='co'># [2,]  0.2  1.0</span>
 
-# Create the kernel
-kernel_mvn <- kernel_new(
-  proposal = function(env) {
-  env$theta0 + as.vector(mvtnorm::rmvnorm(1, mean = 0, sigma = sigma.))
+<span class='co'># Create the kernel</span>
+<span class='no'>kernel_mvn</span> <span class='kw'>&lt;-</span> <span class='fu'>kernel_new</span>(
+  <span class='kw'>proposal</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>env</span>) {
+  <span class='no'>env</span>$<span class='no'>theta0</span> + <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/vector'>as.vector</a></span>(<span class='kw pkg'>mvtnorm</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/mvtnorm/topics/Mvnorm'>rmvnorm</a></span>(<span class='fl'>1</span>, <span class='kw'>mean</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>sigma</span> <span class='kw'>=</span> <span class='no'>sigma.</span>))
   },
-  sigma. = sigma
+  <span class='kw'>sigma.</span> <span class='kw'>=</span> <span class='no'>sigma</span>
 )
 
-# As you can see, in the previous call we passed sigma as it will be used by
-# the proposal function
-# The logaratio function was not necesary to be passed since this kernel is
-# symmetric.
-
-# }
-</pre>
+<span class='co'># As you can see, in the previous call we passed sigma as it will be used by</span>
+<span class='co'># the proposal function</span>
+<span class='co'># The logaratio function was not necesary to be passed since this kernel is</span>
+<span class='co'># symmetric.</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
