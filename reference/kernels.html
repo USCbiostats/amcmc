@@ -159,8 +159,14 @@
   <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>, <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
   <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>)
 
-<span class='fu'>kernel_adapt</span>(<span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>bw</span> <span class='kw'>=</span> <span class='fl'>500L</span>, <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>100L</span>, <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>600L</span>,
-  <span class='kw'>Sigma</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>kernel_adapt</span>(<span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>bw</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>, <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>50L</span>, <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>500L</span>,
+  <span class='kw'>Sigma</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>Sd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-04</span>, <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='fu'>kernel_ram</span>(<span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>eta</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>i</span>, <span class='no'>k</span>) <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='no'>i</span>^(-<span class='fl'>2</span>/<span class='fl'>3</span>) * <span class='no'>k</span>)),
+  <span class='kw'>arate</span> <span class='kw'>=</span> <span class='fl'>0.234</span>, <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>50L</span>, <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>Sigma</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-04</span>, <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>, <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -220,6 +226,24 @@ to wait before starting to do the updates.</p></td>
       <th>Sigma</th>
       <td><p>The variance-covariance matrix. By default this will be an
 identity matrix during the warmup period.</p></td>
+    </tr>
+    <tr>
+      <th>Sd</th>
+      <td><p>Overall scale for the algorithm. By default, the variance-covariance
+is scaled to \(2.4^2/d\), with \(d\) the number of dimensions.</p></td>
+    </tr>
+    <tr>
+      <th>eps</th>
+      <td><p>Double scalar. Default size of the initial step (see details).</p></td>
+    </tr>
+    <tr>
+      <th>eta</th>
+      <td><p>A function that receives the MCMC environment. This is to calculate
+the scalig factor for the adaptation.</p></td>
+    </tr>
+    <tr>
+      <th>arate</th>
+      <td><p>Numeric scalar. Objective acceptance rate.</p></td>
     </tr>
     </table>
 
@@ -330,7 +354,17 @@ is subtracted from \(ub\). At the same time, if it is less than <code>lb</code>,
 kernel).</p>
 
 <p><code>kernel_adapt</code> Implements the adaptive Metropolis (AM) algoriuthm of Haario
-et al. (2001).</p>
+et al. (2001). If the value of bw is greater than zero, then the algorithm
+folds back AP, a  previous version which is known to have ergodicity problems.</p>
+<p>The parameter <code>eps</code> has two functions. The first one is to set the initial
+scale for the multivariate normal kernel, which is replaced after <code>warmup</code>
+steps with the actual variance-covariance computed by the main algorithm.
+The second usage is in the equation that ensures that the variance-covariance
+is greater than zero, this is, the \(\varepsilon\) parameter in the
+original paper.</p>
+
+
+<p>The <code>kernel_ram</code> Implements Vihola (2012)'s Robust Adaptive Metropolis.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Brooks, S., Gelman, A., Jones, G. L., &amp; Meng, X. L. (2011). Handbook of
