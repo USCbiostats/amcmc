@@ -147,11 +147,14 @@ in a context other than the MCMC function." />
 in a context other than the <code>MCMC</code> function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>convergence_gelman</span>(<span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>1000L</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>1.1</span>,
-  <span class='kw'>check_invariant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>convergence_gelman</span>(<span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>1000L</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>1.1</span>, <span class='kw'>check_invariant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
 
-<span class='fu'>convergence_geweke</span>(<span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>1000L</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>0.025</span>,
-  <span class='kw'>check_invariant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+<span class='fu'>convergence_geweke</span>(
+  <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>1000L</span>,
+  <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>0.025</span>,
+  <span class='kw'>check_invariant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>...</span>
+)
 
 <span class='fu'>convergence_heildel</span>(<span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>1000L</span>, <span class='no'>...</span>, <span class='kw'>check_invariant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 

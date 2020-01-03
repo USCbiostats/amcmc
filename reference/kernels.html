@@ -150,23 +150,51 @@
 
 <span class='fu'>kernel_unif</span>(<span class='kw'>min.</span> <span class='kw'>=</span> -<span class='fl'>1</span>, <span class='kw'>max.</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>)
 
-<span class='fu'>kernel_unif_reflective</span>(<span class='kw'>min.</span> <span class='kw'>=</span> -<span class='fl'>1</span>, <span class='kw'>max.</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>lb</span> <span class='kw'>=</span> <span class='no'>min.</span>, <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>max.</span>,
-  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>)
+<span class='fu'>kernel_unif_reflective</span>(
+  <span class='kw'>min.</span> <span class='kw'>=</span> -<span class='fl'>1</span>,
+  <span class='kw'>max.</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>lb</span> <span class='kw'>=</span> <span class='no'>min.</span>,
+  <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>max.</span>,
+  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>
+)
 
 <span class='fu'>kernel_normal</span>(<span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>)
 
-<span class='fu'>kernel_normal_reflective</span>(<span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>, <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
-  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>)
+<span class='fu'>kernel_normal_reflective</span>(
+  <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>
+)
 
-<span class='fu'>kernel_adapt</span>(<span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>bw</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
-  <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>, <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>50L</span>, <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>500L</span>,
-  <span class='kw'>Sigma</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>Sd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-04</span>, <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>kernel_adapt</span>(
+  <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>bw</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
+  <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>50L</span>,
+  <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>500L</span>,
+  <span class='kw'>Sigma</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>Sd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-04</span>,
+  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
 
-<span class='fu'>kernel_ram</span>(<span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>eta</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>i</span>, <span class='no'>k</span>) <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='no'>i</span>^(-<span class='fl'>2</span>/<span class='fl'>3</span>) * <span class='no'>k</span>)),
-  <span class='kw'>arate</span> <span class='kw'>=</span> <span class='fl'>0.234</span>, <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>50L</span>, <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>Sigma</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-04</span>, <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>, <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
-  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>kernel_ram</span>(
+  <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>eta</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>i</span>, <span class='no'>k</span>) <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='no'>i</span>^(-<span class='fl'>2</span>/<span class='fl'>3</span>) * <span class='no'>k</span>)),
+  <span class='kw'>arate</span> <span class='kw'>=</span> <span class='fl'>0.234</span>,
+  <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
+  <span class='kw'>Sigma</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-04</span>,
+  <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

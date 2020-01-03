@@ -143,27 +143,68 @@
     <p>A flexible implementation of the Metropolis-Hastings MCMC algorithm.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>MCMC</span>(<span class='no'>initial</span>, <span class='no'>fun</span>, <span class='no'>nsteps</span>, <span class='no'>...</span>, <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal</a></span>(), <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>())
+    <pre class="usage"><span class='fu'>MCMC</span>(
+  <span class='no'>initial</span>,
+  <span class='no'>fun</span>,
+  <span class='no'>nsteps</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
+  <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal</a></span>(),
+  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()
+)
 
 <span class='co'># S3 method for mcmc</span>
-<span class='fu'>MCMC</span>(<span class='no'>initial</span>, <span class='no'>fun</span>, <span class='no'>nsteps</span>, <span class='no'>...</span>, <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal</a></span>(),
-  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>)
+<span class='fu'>MCMC</span>(
+  <span class='no'>initial</span>,
+  <span class='no'>fun</span>,
+  <span class='no'>nsteps</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
+  <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal</a></span>(),
+  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>
+)
 
 <span class='co'># S3 method for mcmc.list</span>
-<span class='fu'>MCMC</span>(<span class='no'>initial</span>, <span class='no'>fun</span>, <span class='no'>nsteps</span>, <span class='no'>...</span>, <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal</a></span>(),
-  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>)
+<span class='fu'>MCMC</span>(
+  <span class='no'>initial</span>,
+  <span class='no'>fun</span>,
+  <span class='no'>nsteps</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
+  <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal</a></span>(),
+  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>
+)
 
 <span class='co'># S3 method for default</span>
-<span class='fu'>MCMC</span>(<span class='no'>initial</span>, <span class='no'>fun</span>, <span class='no'>nsteps</span>, <span class='no'>...</span>, <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal</a></span>(),
-  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>)</pre>
+<span class='fu'>MCMC</span>(
+  <span class='no'>initial</span>,
+  <span class='no'>fun</span>,
+  <span class='no'>nsteps</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
+  <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal</a></span>(),
+  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
