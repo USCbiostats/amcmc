@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fmcmc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -112,7 +112,7 @@
 <div id="size-parameter-in-a-binomial-distribution" class="section level2">
 <h2 class="hasAnchor">
 <a href="#size-parameter-in-a-binomial-distribution" class="anchor"></a>Size parameter in a binomial distribution</h2>
-<p>For this example, imagine that we are interested on learning what is the size of a population given that we already now the prevalence of a particular phenomena, for example, a disease. Furthermore, assume that 20% of the population acquire this disease, and we have a random sample from this population <span class="math inline">\(y \sim \mbox{Binom}(0.2, N)\)</span>. We don’t know <span class="math inline">\(N\)</span>.</p>
+<p>For this example, imagine that we are interested on learning what is the size of a population given that we already now the prevalence of a particular phenomena, for example, a disease. Furthermore, assume that 20% of the population acquire this disease, and we have a random sample from this population <span class="math inline">\(y \sim \mbox{Binomial}(0.2, N)\)</span>. We don’t know <span class="math inline">\(N\)</span>.</p>
 <p>Such scenario, while perhaps a bit uncommon, needs a special treatment in a Bayesian/MCMC framework. The parameter to estimate is not continuous so we would like to draw samples from a discrete distribution. Using the “normal” (pun intended) transition kernel may still be able to estimate something, but does not provide us with the correct posterior distribution. In this case, a transition kernel that makes discrete proposals would be desired.</p>
 <p>Let’s simulate some data, say, 300 observations from this Binomial random variable with parameters <span class="math inline">\(p = .2\)</span> and <span class="math inline">\(N = 500\)</span>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(fmcmc)</a>
