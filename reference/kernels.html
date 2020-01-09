@@ -100,9 +100,6 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/hierarchical-bayes.html">Hierarchical Bayes Model</a>
-    </li>
-    <li>
       <a href="../articles/user-defined-kernels.html">User-defined kernels</a>
     </li>
     <li>
@@ -135,7 +132,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Various kernel functions for MCMC</h1>
-    <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernels.R'><code>R/kernels.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernel.R'><code>R/kernel.R</code></a>, <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernel_adapt.R'><code>R/kernel_adapt.R</code></a>, <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernel_normal.R'><code>R/kernel_normal.R</code></a>, and 3 more</small>
     <div class="hidden name"><code>kernels.Rd</code></div>
     </div>
 
@@ -143,32 +140,10 @@
     <p>Various kernel functions for MCMC</p>
     </div>
 
-    <pre class="usage"><span class='fu'>kernel_new</span>(<span class='no'>proposal</span>, <span class='kw'>logratio</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>kernel_new</span>(<span class='no'>proposal</span>, <span class='no'>...</span>, <span class='kw'>logratio</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>kernel_env</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/environment.html'>new.env</a></span>(<span class='kw'>hash</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
 
 <span class='co'># S3 method for fmcmc_kernel</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
-<span class='fu'>kernel_unif</span>(<span class='kw'>min.</span> <span class='kw'>=</span> -<span class='fl'>1</span>, <span class='kw'>max.</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>)
-
-<span class='fu'>kernel_unif_reflective</span>(
-  <span class='kw'>min.</span> <span class='kw'>=</span> -<span class='fl'>1</span>,
-  <span class='kw'>max.</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>lb</span> <span class='kw'>=</span> <span class='no'>min.</span>,
-  <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>max.</span>,
-  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>
-)
-
-<span class='fu'>kernel_normal</span>(<span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>)
-
-<span class='fu'>kernel_normal_reflective</span>(
-  <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
-  <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
-  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>
-)
 
 <span class='fu'>kernel_adapt</span>(
   <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>,
@@ -183,6 +158,17 @@
   <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )
 
+<span class='fu'>kernel_normal</span>(<span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>)
+
+<span class='fu'>kernel_normal_reflective</span>(
+  <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>
+)
+
 <span class='fu'>kernel_ram</span>(
   <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>,
   <span class='kw'>eta</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>i</span>, <span class='no'>k</span>) <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='no'>i</span>^(-<span class='fl'>2</span>/<span class='fl'>3</span>) * <span class='no'>k</span>)),
@@ -194,6 +180,17 @@
   <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
   <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
   <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
+
+<span class='fu'>kernel_unif</span>(<span class='kw'>min.</span> <span class='kw'>=</span> -<span class='fl'>1</span>, <span class='kw'>max.</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>)
+
+<span class='fu'>kernel_unif_reflective</span>(
+  <span class='kw'>min.</span> <span class='kw'>=</span> -<span class='fl'>1</span>,
+  <span class='kw'>max.</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>lb</span> <span class='kw'>=</span> <span class='no'>min.</span>,
+  <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>max.</span>,
+  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -210,26 +207,13 @@ This functions are called later within <a href='MCMC.html'>MCMC</a> (see details
 the kernel.</p></td>
     </tr>
     <tr>
+      <th>kernel_env</th>
+      <td><p>Environment. This will be used as the main container of the
+kernel's components. It is returned as an object of class <code><a href='https://rdrr.io/r/base/c.html'>c("environment", "fmcmc_kernel")</a></code>.</p></td>
+    </tr>
+    <tr>
       <th>x</th>
       <td><p>An object of class <code>fmcmc_kernel</code>.</p></td>
-    </tr>
-    <tr>
-      <th>min., max.</th>
-      <td><p>Passed to <a href='https://rdrr.io/r/stats/Uniform.html'>stats::runif</a>.</p></td>
-    </tr>
-    <tr>
-      <th>fixed</th>
-      <td><p>Logical scalar or vector. When <code>TRUE</code> fixes the corresponding
-parameter, avoiding new proposals.</p></td>
-    </tr>
-    <tr>
-      <th>scheme</th>
-      <td><p>scheme in which proposals are made (see details).</p></td>
-    </tr>
-    <tr>
-      <th>lb, ub</th>
-      <td><p>Either a numeric vector or a scalar. Lower and upper bounds for
-bounded kernels.</p></td>
     </tr>
     <tr>
       <th>mu, scale</th>
@@ -239,6 +223,11 @@ bounded kernels.</p></td>
       <th>bw</th>
       <td><p>Integer scalar. The bandwidth, is the number of observations to
 include in the computation of the variance-covariance matrix.</p></td>
+    </tr>
+    <tr>
+      <th>lb, ub</th>
+      <td><p>Either a numeric vector or a scalar. Lower and upper bounds for
+bounded kernels.</p></td>
     </tr>
     <tr>
       <th>freq</th>
@@ -265,6 +254,15 @@ is scaled to \(2.4^2/d\), with \(d\) the number of dimensions.</p></td>
       <td><p>Double scalar. Default size of the initial step (see details).</p></td>
     </tr>
     <tr>
+      <th>fixed</th>
+      <td><p>Logical scalar or vector. When <code>TRUE</code> fixes the corresponding
+parameter, avoiding new proposals.</p></td>
+    </tr>
+    <tr>
+      <th>scheme</th>
+      <td><p>scheme in which proposals are made (see details).</p></td>
+    </tr>
+    <tr>
       <th>eta</th>
       <td><p>A function that receives the MCMC environment. This is to calculate
 the scalig factor for the adaptation.</p></td>
@@ -272,6 +270,10 @@ the scalig factor for the adaptation.</p></td>
     <tr>
       <th>arate</th>
       <td><p>Numeric scalar. Objective acceptance rate.</p></td>
+    </tr>
+    <tr>
+      <th>min., max.</th>
+      <td><p>Passed to <a href='https://rdrr.io/r/stats/Uniform.html'>stats::runif</a>.</p></td>
     </tr>
     </table>
 
@@ -363,11 +365,15 @@ are the backbone of the <a href='MCMC.html'>MCMC</a> function.</p>
 
     
 
-<p>The <code>kernel_unif</code> function provides a uniform transition kernel. This (symmetric)
-kernel function by default adds the current status values between [-1,1].</p>
-
-<p>The <code>kernel_unif_reflective</code> is similar to <code>kernel_unif</code> with the
-main difference that proposals are bounded to be within <code>[lb, ub]</code>.</p>
+<p><code>kernel_adapt</code> Implements the adaptive Metropolis (AM) algoriuthm of Haario
+et al. (2001). If the value of bw is greater than zero, then the algorithm
+folds back AP, a  previous version which is known to have ergodicity problems.</p>
+<p>The parameter <code>eps</code> has two functions. The first one is to set the initial
+scale for the multivariate normal kernel, which is replaced after <code>warmup</code>
+steps with the actual variance-covariance computed by the main algorithm.
+The second usage is in the equation that ensures that the variance-covariance
+is greater than zero, this is, the \(\varepsilon\) parameter in the
+original paper.</p>
 
 <p>The <code>kernel_normal</code> function provides the canonical normal kernel
 with symmetric transition probabilities.</p>
@@ -381,18 +387,14 @@ is subtracted from \(ub\). At the same time, if it is less than <code>lb</code>,
 <p>In this case, the transition probability is symmetric (just like the normal
 kernel).</p>
 
-<p><code>kernel_adapt</code> Implements the adaptive Metropolis (AM) algoriuthm of Haario
-et al. (2001). If the value of bw is greater than zero, then the algorithm
-folds back AP, a  previous version which is known to have ergodicity problems.</p>
-<p>The parameter <code>eps</code> has two functions. The first one is to set the initial
-scale for the multivariate normal kernel, which is replaced after <code>warmup</code>
-steps with the actual variance-covariance computed by the main algorithm.
-The second usage is in the equation that ensures that the variance-covariance
-is greater than zero, this is, the \(\varepsilon\) parameter in the
-original paper.</p>
-
 
 <p>The <code>kernel_ram</code> Implements Vihola (2012)'s Robust Adaptive Metropolis.</p>
+
+<p>The <code>kernel_unif</code> function provides a uniform transition kernel. This (symmetric)
+kernel function by default adds the current status values between [-1,1].</p>
+
+<p>The <code>kernel_unif_reflective</code> is similar to <code>kernel_unif</code> with the
+main difference that proposals are bounded to be within <code>[lb, ub]</code>.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Brooks, S., Gelman, A., Jones, G. L., &amp; Meng, X. L. (2011). Handbook of

@@ -2,7 +2,6 @@ pandoc: '2.2'
 pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
-  hierarchical-bayes: hierarchical-bayes.html
   user-defined-kernels: user-defined-kernels.html
   workflow-with-fmcmc: workflow-with-fmcmc.html
 
