@@ -110,6 +110,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/benchmarks.html">Benchmarks</a>
+    </li>
+    <li>
       <a href="../articles/user-defined-kernels.html">User-defined kernels</a>
     </li>
     <li>
@@ -400,7 +403,10 @@ is subtracted from \(ub\). At the same time, if it is less than <code>lb</code>,
 kernel).</p>
 
 
-<p>The <code>kernel_ram</code> Implements Vihola (2012)'s Robust Adaptive Metropolis.</p>
+<p>The <code>kernel_ram</code> Implements Vihola (2012)'s Robust Adaptive Metropolis. The
+idea is similar to that of the Adaptive Metropolis algorithm (AM implemented
+as <code>kernel_adapt</code> here) with the difference that it takes into account a
+target acceptance rate.</p>
 
 <p>The <code>kernel_unif</code> function provides a uniform transition kernel. This (symmetric)
 kernel function by default adds the current status values between [-1,1].</p>

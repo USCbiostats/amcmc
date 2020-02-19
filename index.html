@@ -23,8 +23,10 @@
          transition kernels, and out-of-the-box multiple MCMC chains using
          parallel computing. Most of the methods implemented in this package can
          be found in Brooks et al. (2011, ISBN 9781420079425). Among the methods
-         included, we have: Haario (2001) Adaptive Metropolis and Viohola (2012)
-         Robust Adaptive Metropolis transition kernels. ">
+         included, we have: Haario (2001) &lt;doi:10.1007/s11222-011-9269-5&gt;
+         Adaptive Metropolis  and Viohola (2012) 
+         &lt;https://doi.org/10.1007/s11222-011-9269-5&gt; Robust Adaptive Metropolis 
+         transition kernels.">
 <meta property="og:image" content="/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -74,6 +76,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/benchmarks.html">Benchmarks</a>
+    </li>
+    <li>
       <a href="articles/user-defined-kernels.html">User-defined kernels</a>
     </li>
     <li>
@@ -251,7 +256,7 @@ A BibTeX entry for LaTeX users is
 <p><img src="reference/figures/summary-and-plot-ram-1.png"><!-- --></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/coda/man/rejectionRate.html">rejectionRate</a></span>(ans_RAM)</a></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">##      par1      par2      par3 </a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">## 0.3510702 0.3510702 0.3510702</a></code></pre></div>
+<a class="sourceLine" id="cb12-2" data-line-number="2">## 0.3512703 0.3512703 0.3512703</a></code></pre></div>
 <p>We can also try using Haario et al (2001) Adaptive Metropolis</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">ans_AM &lt;-<span class="st"> </span><span class="kw"><a href="reference/MCMC.html">MCMC</a></span>(</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2">  ll,</a>
@@ -265,7 +270,7 @@ A BibTeX entry for LaTeX users is
 <p><img src="reference/figures/summary-and-plot-adapt-1.png"><!-- --></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/coda/man/rejectionRate.html">rejectionRate</a></span>(ans_AM)</a></code></pre></div>
 <div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">##      par1      par2      par3 </a>
-<a class="sourceLine" id="cb15-2" data-line-number="2">## 0.3832767 0.3832767 0.3832767</a></code></pre></div>
+<a class="sourceLine" id="cb15-2" data-line-number="2">## 0.5357071 0.5357071 0.5357071</a></code></pre></div>
 </div>
 <div id="automatic-stop" class="section level2">
 <h2 class="hasAnchor">
