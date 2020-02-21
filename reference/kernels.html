@@ -145,7 +145,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Various kernel functions for MCMC</h1>
-    <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernel.R'><code>R/kernel.R</code></a>, <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernel_adapt.R'><code>R/kernel_adapt.R</code></a>, <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernel_normal.R'><code>R/kernel_normal.R</code></a>, and 3 more</small>
+    <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernel.R'><code>R/kernel.R</code></a>, <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernel_adapt.R'><code>R/kernel_adapt.R</code></a>, <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernel_mirror.R'><code>R/kernel_mirror.R</code></a>, and 4 more</small>
     <div class="hidden name"><code>kernels.Rd</code></div>
     </div>
 
@@ -168,6 +168,24 @@
   <span class='kw'>Sigma</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>Sd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-04</span>,
+  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
+
+<span class='fu'>kernel_nmirror</span>(
+  <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>100</span>,
+  <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
+
+<span class='fu'>kernel_umirror</span>(
+  <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>100</span>,
+  <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
   <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )
 
@@ -390,6 +408,16 @@ original paper.</p>
 <p>The update of the covariance matrix is done using <code><a href='cov_recursive.html'>cov_recursive()</a></code> function,
 which makes the updates faster.</p>
 
+<p><code>kernel_nmirror</code> and <code>kernel_umirror</code> implemented in Thawornwattana et al.
+(2018). Provides simple symmetric transition kernels that pivot around
+an approximation of the asymptotic mean. The <code>warmup</code> parameter here sets
+the number of steps before replacing <code>mu</code> and <code>scale</code> (sd) with those obtained
+from the sample until the <code>warmup</code> number of iteration.</p>
+<p>In the multidimensional case, this implementation just draws a vector of
+independent draws from the proposal kernel, instead of using, for example,
+a multivariate distribution of some kind. This will be implemented in the
+next update of the package.</p>
+
 <p>The <code>kernel_normal</code> function provides the canonical normal kernel
 with symmetric transition probabilities.</p>
 
@@ -420,6 +448,9 @@ Markov Chain Monte Carlo. Handbook of Markov Chain Monte Carlo.</p>
 <p>Haario, H., Saksman, E., &amp; Tamminen, J. (2001). An adaptive Metropolis algorithm.
 Bernoulli, 7(2), 223–242.
 <a href='https://projecteuclid.org/euclid.bj/1080222083'>https://projecteuclid.org/euclid.bj/1080222083</a></p>
+<p>Thawornwattana, Y., Dalquen, D., &amp; Yang, Z. (2018). Designing Simple and
+Efficient Markov Chain Monte Carlo Proposal Kernels. Bayesian Analysis, 13(4),
+1037–1063. <a href='https://doi.org/10.1214/17-BA1084'>https://doi.org/10.1214/17-BA1084</a></p>
 <p>Vihola, M. (2012). Robust adaptive Metropolis algorithm with coerced acceptance
 rate. Statistics and Computing, 22(5), 997–1008.
 <a href='https://doi.org/10.1007/s11222-011-9269-5'>https://doi.org/10.1007/s11222-011-9269-5</a></p>
