@@ -165,7 +165,7 @@
   <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()
+  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>
 )
 
 <span class='co'># S3 method for mcmc</span>
@@ -270,7 +270,8 @@ and returns a logical value with <code>TRUE</code> indicating convergence. See t
     </tr>
     <tr>
       <th>progress</th>
-      <td><p>Logical scalar (currently ignored).</p></td>
+      <td><p>Logical scalar. When set to <code>TRUE</code> shows a progress bar. A new
+bar will be show everytime that the convergence checker is called.</p></td>
     </tr>
     </table>
 
