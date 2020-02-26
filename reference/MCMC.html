@@ -165,7 +165,8 @@
   <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>
+  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>,
+  <span class='kw'>chain_id</span> <span class='kw'>=</span> <span class='fl'>1L</span>
 )
 
 <span class='co'># S3 method for mcmc</span>
@@ -181,7 +182,8 @@
   <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>
+  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>,
+  <span class='kw'>chain_id</span> <span class='kw'>=</span> <span class='fl'>1L</span>
 )
 
 <span class='co'># S3 method for mcmc.list</span>
@@ -197,7 +199,8 @@
   <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>
+  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>,
+  <span class='kw'>chain_id</span> <span class='kw'>=</span> <span class='fl'>1L</span>
 )
 
 <span class='co'># S3 method for default</span>
@@ -213,7 +216,8 @@
   <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>
+  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>,
+  <span class='kw'>chain_id</span> <span class='kw'>=</span> <span class='fl'>1L</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -272,6 +276,13 @@ and returns a logical value with <code>TRUE</code> indicating convergence. See t
       <th>progress</th>
       <td><p>Logical scalar. When set to <code>TRUE</code> shows a progress bar. A new
 bar will be show everytime that the convergence checker is called.</p></td>
+    </tr>
+    <tr>
+      <th>chain_id</th>
+      <td><p>Integer scalar (internal use only). This is an argument
+passed to the kernel function and it allows it identify in which of the
+chains the process is taking place. This could be relevant for some kernels
+(see <code><a href='kernels.html'>kernel_new()</a></code>).</p></td>
     </tr>
     </table>
 

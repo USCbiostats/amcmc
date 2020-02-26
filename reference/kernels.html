@@ -229,7 +229,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>proposal, logratio</th>
-      <td><p>Functions. The function receives a single argument, an environment.
+      <td><p>Functions. Both receive a single argument, an environment.
 This functions are called later within <a href='MCMC.html'>MCMC</a> (see details).</p></td>
     </tr>
     <tr>
@@ -325,12 +325,14 @@ as <code>function(env) {env$f1 - env$f0}</code></p></li>
 
 <p>Both functions, <code>proposal</code> and <code>logratio</code>, receive a single argument, an
 environment, which is passed by the <a href='MCMC.html'>MCMC</a> function during each step using
-the function <a href='https://rdrr.io/r/base/environment.html'>environment</a>. The passed
-environment is actually the environment in which the <code>MCMC</code> function is running,
-in particular, this environment contains the following objects:</p>
+the function <code><a href='https://rdrr.io/r/base/environment.html'>environment()</a></code>.</p>
+<p>The passed environment is actually the environment in which the <code>MCMC</code>
+function is running, in particular, this environment contains the following
+objects:</p>
 <table class='table'>
 <tr><td><strong>Object</strong></td><td></td><td><strong>Description</strong></td></tr>
 <tr><td><code>i</code></td><td></td><td>Integer. The current iteration.</td></tr>
+<tr><td><code>chain_id</code></td><td></td><td>Integer. The current chain (relevent for some kernels).</td></tr>
 <tr><td><code>theta1</code></td><td></td><td>Numeric vector. The last proposed state.</td></tr>
 <tr><td><code>theta0</code></td><td></td><td>Numeric vector. The current state</td></tr>
 <tr><td><code>f</code></td><td></td><td>The log-unnormalized posterior function (a wrapper of <code>fun</code> passed

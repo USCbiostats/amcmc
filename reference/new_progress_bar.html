@@ -158,7 +158,9 @@ been called with a single processor.</p>
     <pre class="usage"><span class='fu'>new_progress_bar</span>(
   <span class='no'>n</span>,
   <span class='kw'>probs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0.25</span>, <span class='fl'>0.5</span>, <span class='fl'>0.75</span>, <span class='fl'>1</span>),
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"width"</span>, <span class='fl'>80</span>)
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"width"</span>, <span class='fl'>80</span>),
+  <span class='kw'>symbol</span> <span class='kw'>=</span> <span class='st'>"/"</span>,
+  <span class='no'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -175,6 +177,14 @@ been called with a single processor.</p>
     <tr>
       <th>width</th>
       <td><p>Integer. Width of the bar in characters.</p></td>
+    </tr>
+    <tr>
+      <th>symbol</th>
+      <td><p>Character. Single character symbol to print each bar.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Further arguments passed to <code><a href='https://rdrr.io/r/base/cat.html'>cat()</a></code> such as <code>file</code> and <code>append</code>.</p></td>
     </tr>
     </table>
 
@@ -193,7 +203,7 @@ which is the number of the current step.</p>
 }</div><div class='output co'>#&gt; 
 #&gt; |0%                 |25%                |50%                |75%           100%|
 #&gt; --------------------------------------------------------------------------------
-#&gt; ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</div><div class='input'>
+#&gt; ////////////////////////////////////////////////////////////////////////////////</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
