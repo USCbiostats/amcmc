@@ -161,7 +161,7 @@
   <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
   <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal</a></span>(),
+  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal</a></span>(),
   <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -178,7 +178,7 @@
   <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
   <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal</a></span>(),
+  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal</a></span>(),
   <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -195,7 +195,7 @@
   <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
   <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal</a></span>(),
+  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal</a></span>(),
   <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -212,7 +212,7 @@
   <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
   <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal</a></span>(),
+  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal</a></span>(),
   <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -256,7 +256,7 @@ initial values of the parameters for each chain (See details).</p></td>
     </tr>
     <tr>
       <th>kernel</th>
-      <td><p>An object of class <a href='kernels.html'>fmcmc_kernel</a>.</p></td>
+      <td><p>An object of class <a href='kernel_new.html'>fmcmc_kernel</a>.</p></td>
     </tr>
     <tr>
       <th>multicore</th>
@@ -282,20 +282,15 @@ bar will be show everytime that the convergence checker is called.</p></td>
       <td><p>Integer scalar (internal use only). This is an argument
 passed to the kernel function and it allows it identify in which of the
 chains the process is taking place. This could be relevant for some kernels
-(see <code><a href='kernels.html'>kernel_new()</a></code>).</p></td>
+(see <code><a href='kernel_new.html'>kernel_new()</a></code>).</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>An object of class <a href='https://rdrr.io/pkg/coda/man/mcmc.html'>coda::mcmc</a> from the <a href='https://CRAN.R-project.org/package=coda'><span class="pkg">coda</span></a>
-package. The <code>mcmc</code> object is a matrix with one column per parameter,
-and <code>nsteps</code> rows. If <code>nchains &gt; 1</code>, then it returns a <a href='https://rdrr.io/pkg/coda/man/mcmc.list.html'>coda::mcmc.list</a>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function implements MCMC using the Metropolis-Hastings ratio with
 flexible transition kernels. Users can specify either one of the available
-transition kernels or define one of their own (see <a href='kernels.html'>kernels</a>). Furthermore,
+transition kernels or define one of their own (see <a href='kernel_new.html'>kernels</a>). Furthermore,
 it allows easy parallel implementation running multiple chains in parallel. In
 addition, we incorporate a variety of convergence diagnostics, alternatively
 the user can specify their own (see <a href='convergence-checker.html'>convergence-checker</a>).</p>
@@ -354,6 +349,13 @@ warning message).</p>
 <a href='convergence-checker.html'>convergence-checker</a> is used, then the MCMC is done by bulks as specified
 by the convergence checker function, and thus the algorithm will stop if,
 the <code>conv_checker</code> returns <code>TRUE</code>. For more information see <a href='convergence-checker.html'>convergence-checker</a>.</p>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    
+
+<p>An object of class <a href='https://rdrr.io/pkg/coda/man/mcmc.html'>coda::mcmc</a> from the <a href='https://CRAN.R-project.org/package=coda'><span class="pkg">coda</span></a>
+package. The <code>mcmc</code> object is a matrix with one column per parameter,
+and <code>nsteps</code> rows. If <code>nchains &gt; 1</code>, then it returns a <a href='https://rdrr.io/pkg/coda/man/mcmc.list.html'>coda::mcmc.list</a>.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Brooks, S., Gelman, A., Jones, G. L., &amp; Meng, X. L. (2011). Handbook of
@@ -378,7 +380,7 @@ Markov Chain Monte Carlo. Handbook of Markov Chain Monte Carlo.</p>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>coda</span>)
 <span class='no'>ans</span> <span class='kw'>&lt;-</span> <span class='fu'>MCMC</span>(
   <span class='no'>fun</span>, <span class='kw'>initial</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>mu</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>sigma</span><span class='kw'>=</span><span class='fl'>1</span>), <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>2e3</span>,
-  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal_reflective</a></span>(<span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>.1</span>, <span class='kw'>ub</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>lb</span> <span class='kw'>=</span> <span class='fl'>0</span>)
+  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal_reflective</a></span>(<span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>.1</span>, <span class='kw'>ub</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>lb</span> <span class='kw'>=</span> <span class='fl'>0</span>)
   )
 
 <span class='co'># Ploting the output</span>
@@ -426,7 +428,7 @@ Markov Chain Monte Carlo. Handbook of Markov Chain Monte Carlo.</p>
 <span class='no'>ans</span> <span class='kw'>&lt;-</span> <span class='fu'>MCMC</span>(
   <span class='kw'>initial</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>mu0</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>mu1</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>s0</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>s01</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>s2</span><span class='kw'>=</span><span class='fl'>5</span>),
   <span class='no'>fun</span>,
-  <span class='kw'>kernel</span>  <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal_reflective</a></span>(
+  <span class='kw'>kernel</span>  <span class='kw'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal_reflective</a></span>(
     <span class='kw'>lb</span>    <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>10</span>, -<span class='fl'>10</span>, <span class='fl'>.01</span>, -<span class='fl'>5</span>, <span class='fl'>.01</span>),
     <span class='kw'>ub</span>    <span class='kw'>=</span> <span class='fl'>5</span>,
     <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.01</span>
@@ -483,7 +485,7 @@ Markov Chain Monte Carlo. Handbook of Markov Chain Monte Carlo.</p>
   <span class='kw'>initial</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>mu0</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>mu1</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>s0</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>s01</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>s2</span><span class='kw'>=</span><span class='fl'>5</span>),
   <span class='no'>fun</span>,
   <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='kw'>kernel</span>  <span class='kw'>=</span> <span class='fu'><a href='kernels.html'>kernel_normal_reflective</a></span>(
+  <span class='kw'>kernel</span>  <span class='kw'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal_reflective</a></span>(
     <span class='kw'>lb</span>    <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>10</span>, -<span class='fl'>10</span>, <span class='fl'>.01</span>, -<span class='fl'>5</span>, <span class='fl'>.01</span>),
     <span class='kw'>ub</span>    <span class='kw'>=</span> <span class='fl'>5</span>,
     <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.01</span>
@@ -525,11 +527,11 @@ Markov Chain Monte Carlo. Handbook of Markov Chain Monte Carlo.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
       <li><a href="#details">Details</a></li>
       <li><a href="#starting-point">Starting point</a></li>
       <li><a href="#multiple-chains">Multiple chains</a></li>
       <li><a href="#automatic-stop">Automatic stop</a></li>
+      <li><a href="#value">Value</a></li>
       <li><a href="#references">References</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>

@@ -146,12 +146,12 @@ recalculation at every step of the algorithm." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Recursive algorithms for computing variance and mean</h1>
-    <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernel_adapt.R'><code>R/kernel_adapt.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/recursive.R'><code>R/recursive.R</code></a></small>
     <div class="hidden name"><code>cov_recursive.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>These algorithms are used in <code><a href='kernels.html'>kernel_adapt()</a></code> to simplify variance-covariance
+    <p>These algorithms are used in <code><a href='kernel_adapt.html'>kernel_adapt()</a></code> to simplify variance-covariance
 recalculation at every step of the algorithm.</p>
     </div>
 
@@ -189,7 +189,7 @@ recalculation at every step of the algorithm.</p>
     </tr>
     <tr>
       <th>Sd, eps, Ik</th>
-      <td><p>See <code><a href='kernels.html'>kernel_adapt()</a></code>.</p></td>
+      <td><p>See <code><a href='kernel_adapt.html'>kernel_adapt()</a></code>.</p></td>
     </tr>
     </table>
 
@@ -249,7 +249,7 @@ Bernoulli, 7(2), 223–242.
 
 <span class='co'># Comparing accuracy and speed</span>
 <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='no'>ans1</span> - <span class='no'>ans2</span>)</div><div class='output co'>#&gt; [1] -2.220446e-16  2.220446e-16</div><div class='input'><span class='no'>t0</span>/<span class='no'>t1</span></div><div class='output co'>#&gt;    user  system elapsed 
-#&gt;       7     Inf       7 </div><div class='input'>
+#&gt;       7     NaN       7 </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

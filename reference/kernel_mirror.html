@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Reflective Boundaries — reflect_on_boundaries • fmcmc</title>
+<title>Mirror Transition Kernels — kernel_mirror • fmcmc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,10 +42,9 @@
 
 
 
-<meta property="og:title" content="Reflective Boundaries — reflect_on_boundaries" />
-<meta property="og:description" content="Adjust a proposal according to its support by reflecting it. This is the workhorse
-of kernel_normal_reflective and kernel_unif_reflective. It is intended
-for internal use only." />
+<meta property="og:title" content="Mirror Transition Kernels — kernel_mirror" />
+<meta property="og:description" content="NMirror and UMirror transition kernels described in Thawornwattana et al.
+(2018)." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -146,39 +145,110 @@ for internal use only." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Reflective Boundaries</h1>
-    <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernel.R'><code>R/kernel.R</code></a></small>
-    <div class="hidden name"><code>reflect_on_boundaries.Rd</code></div>
+    <h1>Mirror Transition Kernels</h1>
+    <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernel_mirror.R'><code>R/kernel_mirror.R</code></a></small>
+    <div class="hidden name"><code>kernel_mirror.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Adjust a proposal according to its support by reflecting it. This is the workhorse
-of <a href='kernel_normal.html'>kernel_normal_reflective</a> and <a href='kernel_unif.html'>kernel_unif_reflective</a>. It is intended
-for internal use only.</p>
+    <p>NMirror and UMirror transition kernels described in Thawornwattana et al.
+(2018).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>reflect_on_boundaries</span>(<span class='no'>x</span>, <span class='no'>lb</span>, <span class='no'>ub</span>, <span class='no'>which</span>)</pre>
+    <pre class="usage"><span class='fu'>kernel_nmirror</span>(
+  <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>500L</span>,
+  <span class='kw'>nadapt</span> <span class='kw'>=</span> <span class='fl'>4L</span>,
+  <span class='kw'>arate</span> <span class='kw'>=</span> <span class='fl'>0.4</span>,
+  <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>
+)
+
+<span class='fu'>kernel_umirror</span>(
+  <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>500L</span>,
+  <span class='kw'>nadapt</span> <span class='kw'>=</span> <span class='fl'>4L</span>,
+  <span class='kw'>arate</span> <span class='kw'>=</span> <span class='fl'>0.4</span>,
+  <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"joint"</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A numeric vector. The proposal</p></td>
+      <th>mu, scale</th>
+      <td><p>Either a numeric vector or a scalar. Proposal mean and scale.
+If scalar, values are recycled to match the number of parameters in the
+objective function.</p></td>
+    </tr>
+    <tr>
+      <th>warmup</th>
+      <td><p>Integer. Number of steps required before starting adapting the
+chains.</p></td>
+    </tr>
+    <tr>
+      <th>nadapt</th>
+      <td><p>Integer. Number of times the scale is adjusted for adaptation
+during the warmup (burnin) period.</p></td>
+    </tr>
+    <tr>
+      <th>arate</th>
+      <td><p>Double. Target acceptance rate used as a reference during the
+adaptation process.</p></td>
     </tr>
     <tr>
       <th>lb, ub</th>
-      <td><p>Numeric vectors of length <code><a href='https://rdrr.io/r/base/length.html'>length(x)</a></code>. Lower and upper bounds.</p></td>
+      <td><p>Either a numeric vector or a scalar. Lower and upper bounds for
+bounded kernels. When of length 1, the values are recycled to match the number
+of parameters in the objective function.</p></td>
     </tr>
     <tr>
-      <th>which</th>
-      <td><p>Integer vector. Index of variables to be updated.</p></td>
+      <th>fixed, scheme</th>
+      <td><p>For multivariate functions, sets the update plan.
+See <code><a href='plan_update_sequence.html'>plan_update_sequence()</a></code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An adjusted proposal vector.</p>
+    <p>An object of class <a href='kernel_new.html'>fmcmc_kernel</a>.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The <code>kernel_nmirror</code> and <code>kernel_umirror</code> functions implement simple symmetric
+transition kernels that pivot around an approximation of the asymptotic mean.</p>
+<p>In the multidimensional case, this implementation just draws a vector of
+independent draws from the proposal kernel, instead of using, for example,
+a multivariate distribution of some kind. This will be implemented in the
+next update of the package.</p>
+<p>During the warmup period (or burnin as described in the paper), the algorithm
+adapts both the scale and the reference mean of the proposal distribution.
+While the mean is adapted continuously, the scale is updated only a handful
+of times, in particular, <code>nadapt</code> times during the warmup time. The adaptation
+is done as proposed by Yang and Rodriguez (2013) in which the
+scale is adapted four times.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Thawornwattana, Y., Dalquen, D., &amp; Yang, Z. (2018). Designing Simple and
+Efficient Markov Chain Monte Carlo Proposal Kernels. Bayesian Analysis, 13(4),
+1037–1063. <a href='https://doi.org/10.1214/17-BA1084'>https://doi.org/10.1214/17-BA1084</a></p>
+<p>Yang, Z., &amp; Rodriguez, C. E. (2013). Searching for efficient Markov chain
+Monte Carlo proposal kernels. Proceedings of the National Academy of Sciences,
+110(48), 19307–19312. <a href='https://doi.org/10.1073/pnas.1311790110'>https://doi.org/10.1073/pnas.1311790110</a></p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other kernels: 
+<code><a href='kernel_adapt.html'>kernel_adapt</a>()</code>,
+<code><a href='kernel_new.html'>kernel_new</a>()</code>,
+<code><a href='kernel_normal.html'>kernel_normal</a>()</code>,
+<code><a href='kernel_ram.html'>kernel_ram</a>()</code>,
+<code><a href='kernel_unif.html'>kernel_unif</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -186,6 +256,9 @@ for internal use only.</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#references">References</a></li>
+      <li><a href="#see-also">See also</a></li>
     </ul>
 
   </div>

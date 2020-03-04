@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Reflective Boundaries — reflect_on_boundaries • fmcmc</title>
+<title>Adaptive Metropolis (AM) Transition Kernel — kernel_adapt • fmcmc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,10 +42,8 @@
 
 
 
-<meta property="og:title" content="Reflective Boundaries — reflect_on_boundaries" />
-<meta property="og:description" content="Adjust a proposal according to its support by reflecting it. This is the workhorse
-of kernel_normal_reflective and kernel_unif_reflective. It is intended
-for internal use only." />
+<meta property="og:title" content="Adaptive Metropolis (AM) Transition Kernel — kernel_adapt" />
+<meta property="og:description" content="Implementation of Haario et al. (2001)'s Adaptive Metropolis." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -146,39 +144,122 @@ for internal use only." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Reflective Boundaries</h1>
-    <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernel.R'><code>R/kernel.R</code></a></small>
-    <div class="hidden name"><code>reflect_on_boundaries.Rd</code></div>
+    <h1>Adaptive Metropolis (AM) Transition Kernel</h1>
+    <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernel_adapt.R'><code>R/kernel_adapt.R</code></a></small>
+    <div class="hidden name"><code>kernel_adapt.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Adjust a proposal according to its support by reflecting it. This is the workhorse
-of <a href='kernel_normal.html'>kernel_normal_reflective</a> and <a href='kernel_unif.html'>kernel_unif_reflective</a>. It is intended
-for internal use only.</p>
+    <p>Implementation of Haario et al. (2001)'s Adaptive Metropolis.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>reflect_on_boundaries</span>(<span class='no'>x</span>, <span class='no'>lb</span>, <span class='no'>ub</span>, <span class='no'>which</span>)</pre>
+    <pre class="usage"><span class='fu'>kernel_adapt</span>(
+  <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>bw</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
+  <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>50L</span>,
+  <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>500L</span>,
+  <span class='kw'>Sigma</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>Sd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-04</span>,
+  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
+
+<span class='fu'>kernel_am</span>(
+  <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>bw</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
+  <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
+  <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>50L</span>,
+  <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>500L</span>,
+  <span class='kw'>Sigma</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>Sd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-04</span>,
+  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A numeric vector. The proposal</p></td>
+      <th>mu</th>
+      <td><p>Either a numeric vector or a scalar. Proposal mean.
+If scalar, values are recycled to match the number of parameters in the
+objective function.</p></td>
+    </tr>
+    <tr>
+      <th>bw</th>
+      <td><p>Integer scalar. The bandwidth, is the number of observations to
+include in the computation of the variance-covariance matrix.</p></td>
     </tr>
     <tr>
       <th>lb, ub</th>
-      <td><p>Numeric vectors of length <code><a href='https://rdrr.io/r/base/length.html'>length(x)</a></code>. Lower and upper bounds.</p></td>
+      <td><p>Either a numeric vector or a scalar. Lower and upper bounds for
+bounded kernels. When of length 1, the values are recycled to match the number
+of parameters in the objective function.</p></td>
     </tr>
     <tr>
-      <th>which</th>
-      <td><p>Integer vector. Index of variables to be updated.</p></td>
+      <th>freq</th>
+      <td><p>Integer scalar. Frequency of updates. How often the
+variance-covariance matrix is updated.</p></td>
+    </tr>
+    <tr>
+      <th>warmup</th>
+      <td><p>Integer scalar. The number of iterations that the algorithm has
+to wait before starting to do the updates.</p></td>
+    </tr>
+    <tr>
+      <th>Sigma</th>
+      <td><p>The variance-covariance matrix. By default this will be an
+identity matrix during the warmup period.</p></td>
+    </tr>
+    <tr>
+      <th>Sd</th>
+      <td><p>Overall scale for the algorithm. By default, the variance-covariance
+is scaled to \(2.4^2/d\), with \(d\) the number of dimensions.</p></td>
+    </tr>
+    <tr>
+      <th>eps</th>
+      <td><p>Double scalar. Default size of the initial step (see details).</p></td>
+    </tr>
+    <tr>
+      <th>fixed</th>
+      <td><p>Logical scalar or vector of length <code>k</code>. Indicates which parameters
+will be treated as fixed or not. Single values are recycled.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An adjusted proposal vector.</p>
+    <p>An object of class <a href='kernel_new.html'>fmcmc_kernel</a>.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><code>kernel_adapt</code> Implements the adaptive Metropolis (AM) algorithm of Haario
+et al. (2001). If the value of bw is greater than zero, then the algorithm
+folds back AP, a  previous version which is known to have ergodicity problems.</p>
+<p>The parameter <code>eps</code> has two functions. The first one is to set the initial
+scale for the multivariate normal kernel, which is replaced after <code>warmup</code>
+steps with the actual variance-covariance computed by the main algorithm.
+The second usage is in the equation that ensures that the variance-covariance
+is greater than zero, this is, the \(\varepsilon\) parameter in the
+original paper.</p>
+<p>The update of the covariance matrix is done using <code><a href='cov_recursive.html'>cov_recursive()</a></code> function,
+which makes the updates faster.</p>
+<p><code>kernel_am</code> is just an alias for <code>kernel_adapt</code>.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Haario, H., Saksman, E., &amp; Tamminen, J. (2001). An adaptive Metropolis algorithm.
+Bernoulli, 7(2), 223–242.
+<a href='https://projecteuclid.org/euclid.bj/1080222083'>https://projecteuclid.org/euclid.bj/1080222083</a></p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other kernels: 
+<code><a href='kernel_mirror.html'>kernel_mirror</a></code>,
+<code><a href='kernel_new.html'>kernel_new</a>()</code>,
+<code><a href='kernel_normal.html'>kernel_normal</a>()</code>,
+<code><a href='kernel_ram.html'>kernel_ram</a>()</code>,
+<code><a href='kernel_unif.html'>kernel_unif</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -186,6 +267,9 @@ for internal use only.</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#references">References</a></li>
+      <li><a href="#see-also">See also</a></li>
     </ul>
 
   </div>

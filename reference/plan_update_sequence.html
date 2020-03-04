@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • fmcmc</title>
+<title>Paramaters' update sequence — plan_update_sequence • fmcmc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,7 +42,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Paramaters' update sequence — plan_update_sequence" />
+<meta property="og:description" content="Paramaters' update sequence" />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -73,7 +74,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -141,126 +142,67 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Paramaters' update sequence</h1>
+    <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernel.R'><code>R/kernel.R</code></a></small>
+    <div class="hidden name"><code>plan_update_sequence.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Paramaters' update sequence</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>plan_update_sequence</span>(<span class='no'>k</span>, <span class='no'>nsteps</span>, <span class='no'>fixed</span>, <span class='no'>scheme</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="MCMC.html">MCMC()</a></code> </p>
-        </td>
-        <td><p>Markov Chain Monte Carlo</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="append_chains.html">append_chains()</a></code> </p>
-        </td>
-        <td><p>Append MCMC chains (objects of class <a href='https://rdrr.io/pkg/coda/man/mcmc.html'>coda::mcmc</a>)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="check_initial.html">check_initial()</a></code> </p>
-        </td>
-        <td><p>Checks the initial values of the MCMC</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="convergence-checker.html">convergence_gelman()</a></code> <code><a href="convergence-checker.html">convergence_geweke()</a></code> <code><a href="convergence-checker.html">convergence_heildel()</a></code> <code><a href="convergence-checker.html">convergence_auto()</a></code> </p>
-        </td>
-        <td><p>Convergence Monitoring</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="cov_recursive.html">cov_recursive()</a></code> <code><a href="cov_recursive.html">mean_recursive()</a></code> </p>
-        </td>
-        <td><p>Recursive algorithms for computing variance and mean</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fmcmc.html">fmcmc</a></code> </p>
-        </td>
-        <td><p>A friendly MCMC framework</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="kernel_adapt.html">kernel_adapt()</a></code> <code><a href="kernel_adapt.html">kernel_am()</a></code> </p>
-        </td>
-        <td><p>Adaptive Metropolis (AM) Transition Kernel</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="kernel_mirror.html">kernel_nmirror()</a></code> <code><a href="kernel_mirror.html">kernel_umirror()</a></code> </p>
-        </td>
-        <td><p>Mirror Transition Kernels</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="kernel_new.html">kernel_new()</a></code> <code><a href="kernel_new.html">print(<i>&lt;fmcmc_kernel&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Create Personalized Transition Kernels for MCMC</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="kernel_normal.html">kernel_normal()</a></code> <code><a href="kernel_normal.html">kernel_normal_reflective()</a></code> </p>
-        </td>
-        <td><p>Gaussian Transition Kernel</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="kernel_ram.html">kernel_ram()</a></code> </p>
-        </td>
-        <td><p>Robust Adaptive Metropolis (RAM) Transition Kernel</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="kernel_unif.html">kernel_unif()</a></code> <code><a href="kernel_unif.html">kernel_unif_reflective()</a></code> </p>
-        </td>
-        <td><p>Uniform Transition Kernel</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="new_progress_bar.html">new_progress_bar()</a></code> </p>
-        </td>
-        <td><p>Progress bar</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plan_update_sequence.html">plan_update_sequence()</a></code> </p>
-        </td>
-        <td><p>Paramaters' update sequence</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="reflect_on_boundaries.html">reflect_on_boundaries()</a></code> </p>
-        </td>
-        <td><p>Reflective Boundaries</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>k</th>
+      <td><p>Integer. Number of parameters</p></td>
+    </tr>
+    <tr>
+      <th>nsteps</th>
+      <td><p>Integer. Number of steps.</p></td>
+    </tr>
+    <tr>
+      <th>fixed</th>
+      <td><p>Logical scalar or vector of length <code>k</code>. Indicates which parameters
+will be treated as fixed or not. Single values are recycled.</p></td>
+    </tr>
+    <tr>
+      <th>scheme</th>
+      <td><p>Scheme in which the proposals are made (see details).</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A logical vector of size <code>nsteps</code> x <code>k</code>.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The parameter <code>scheme</code> present on the currently available kernels sets the way
+in which proposals are made. By default, <code>scheme = "joint"</code>, proposals are done
+jointly, this is, at each step of the chain we are proposing new states for
+each parameter of the model. When <code>scheme = "ordered"</code>, a sequential update schema
+is followed, in which, at each step of the chain, proposals are made one
+variable at a time, If <code>scheme = "random"</code>, proposals are also made one
+variable at a time but in a random scheme.</p>
+<p>Finally, users can specify their own sequence of proposals for the variables
+by passing a numeric vector to <code>scheme</code>, for example, if the user wants to make
+sequential proposals following the scheme 2, 1, 3, then scheme must be set to
+be <code>scheme = c(2, 1, 3)</code>.</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
     </ul>
+
   </div>
 </div>
 

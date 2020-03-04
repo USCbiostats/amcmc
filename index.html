@@ -24,9 +24,9 @@
          parallel computing. Most of the methods implemented in this package can
          be found in Brooks et al. (2011, ISBN 9781420079425). Among the methods
          included, we have: Haario (2001) &lt;doi:10.1007/s11222-011-9269-5&gt;
-         Adaptive Metropolis  and Viohola (2012) 
-         &lt;https://doi.org/10.1007/s11222-011-9269-5&gt; Robust Adaptive Metropolis 
-         transition kernels.">
+         Adaptive Metropolis, Viohola (2012) &lt;doi:10.1007/s11222-011-9269-5&gt;
+         Robust Adaptive Metropolis, and Thawornwattana et
+         al. (2018) &lt;doi:10.1214/17-BA1084&gt; Mirror transition kernels.">
 <meta property="og:image" content="/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -239,7 +239,7 @@ A BibTeX entry for LaTeX users is
 <a class="sourceLine" id="cb9-4" data-line-number="4">  <span class="dt">nsteps  =</span> <span class="dv">5000</span>,</a>
 <a class="sourceLine" id="cb9-5" data-line-number="5">  <span class="dt">X.      =</span> X,</a>
 <a class="sourceLine" id="cb9-6" data-line-number="6">  <span class="dt">y.      =</span> y,</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7">  <span class="dt">kernel  =</span> <span class="kw"><a href="reference/kernels.html">kernel_normal</a></span>(<span class="dt">scale =</span> <span class="fl">.05</span>) <span class="co"># We can set the scale parameter like this</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7">  <span class="dt">kernel  =</span> <span class="kw"><a href="reference/kernel_normal.html">kernel_normal</a></span>(<span class="dt">scale =</span> <span class="fl">.05</span>) <span class="co"># We can set the scale parameter like this</span></a>
 <a class="sourceLine" id="cb9-8" data-line-number="8">  )</a>
 <a class="sourceLine" id="cb9-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(ans)</a></code></pre></div>
 <p><img src="reference/figures/summary-and-plot1-1.png"><!-- --></p>
@@ -250,7 +250,7 @@ A BibTeX entry for LaTeX users is
 <a class="sourceLine" id="cb10-4" data-line-number="4">  <span class="dt">nsteps  =</span> <span class="dv">5000</span>,</a>
 <a class="sourceLine" id="cb10-5" data-line-number="5">  <span class="dt">X.      =</span> X,</a>
 <a class="sourceLine" id="cb10-6" data-line-number="6">  <span class="dt">y.      =</span> y,</a>
-<a class="sourceLine" id="cb10-7" data-line-number="7">  <span class="dt">kernel  =</span> <span class="kw"><a href="reference/kernels.html">kernel_ram</a></span>() </a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">  <span class="dt">kernel  =</span> <span class="kw"><a href="reference/kernel_ram.html">kernel_ram</a></span>() </a>
 <a class="sourceLine" id="cb10-8" data-line-number="8">  )</a>
 <a class="sourceLine" id="cb10-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(ans_RAM)</a></code></pre></div>
 <p><img src="reference/figures/summary-and-plot-ram-1.png"><!-- --></p>
@@ -264,7 +264,7 @@ A BibTeX entry for LaTeX users is
 <a class="sourceLine" id="cb13-4" data-line-number="4">  <span class="dt">nsteps  =</span> <span class="dv">5000</span>,</a>
 <a class="sourceLine" id="cb13-5" data-line-number="5">  <span class="dt">X.      =</span> X,</a>
 <a class="sourceLine" id="cb13-6" data-line-number="6">  <span class="dt">y.      =</span> y,</a>
-<a class="sourceLine" id="cb13-7" data-line-number="7">  <span class="dt">kernel  =</span> <span class="kw"><a href="reference/kernels.html">kernel_adapt</a></span>() </a>
+<a class="sourceLine" id="cb13-7" data-line-number="7">  <span class="dt">kernel  =</span> <span class="kw"><a href="reference/kernel_adapt.html">kernel_adapt</a></span>() </a>
 <a class="sourceLine" id="cb13-8" data-line-number="8">  )</a>
 <a class="sourceLine" id="cb13-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(ans_AM)</a></code></pre></div>
 <p><img src="reference/figures/summary-and-plot-adapt-1.png"><!-- --></p>
@@ -283,7 +283,7 @@ A BibTeX entry for LaTeX users is
 <a class="sourceLine" id="cb16-5" data-line-number="5">  <span class="dt">nsteps  =</span> <span class="dv">5000</span>,</a>
 <a class="sourceLine" id="cb16-6" data-line-number="6">  <span class="dt">X.      =</span> X,</a>
 <a class="sourceLine" id="cb16-7" data-line-number="7">  <span class="dt">y.      =</span> y,</a>
-<a class="sourceLine" id="cb16-8" data-line-number="8">  <span class="dt">kernel  =</span> <span class="kw"><a href="reference/kernels.html">kernel_normal</a></span>(<span class="dt">scale =</span> <span class="fl">.05</span>),</a>
+<a class="sourceLine" id="cb16-8" data-line-number="8">  <span class="dt">kernel  =</span> <span class="kw"><a href="reference/kernel_normal.html">kernel_normal</a></span>(<span class="dt">scale =</span> <span class="fl">.05</span>),</a>
 <a class="sourceLine" id="cb16-9" data-line-number="9">  <span class="dt">nchains =</span> <span class="dv">2</span>,                           <span class="co"># Multiple chains</span></a>
 <a class="sourceLine" id="cb16-10" data-line-number="10">  <span class="dt">conv_checker =</span> <span class="kw"><a href="reference/convergence-checker.html">convergence_gelman</a></span>(<span class="dv">50</span>) <span class="co"># Checking for conv. every 200 steps</span></a>
 <a class="sourceLine" id="cb16-11" data-line-number="11">  )</a></code></pre></div>
@@ -308,7 +308,7 @@ A BibTeX entry for LaTeX users is
 <a class="sourceLine" id="cb19-5" data-line-number="5">  <span class="dt">nsteps  =</span> <span class="dv">5000</span>,</a>
 <a class="sourceLine" id="cb19-6" data-line-number="6">  <span class="dt">X.      =</span> X,</a>
 <a class="sourceLine" id="cb19-7" data-line-number="7">  <span class="dt">y.      =</span> y,</a>
-<a class="sourceLine" id="cb19-8" data-line-number="8">  <span class="dt">kernel  =</span> <span class="kw"><a href="reference/kernels.html">kernel_normal_reflective</a></span>(</a>
+<a class="sourceLine" id="cb19-8" data-line-number="8">  <span class="dt">kernel  =</span> <span class="kw"><a href="reference/kernel_normal.html">kernel_normal_reflective</a></span>(</a>
 <a class="sourceLine" id="cb19-9" data-line-number="9">    <span class="dt">ub    =</span> <span class="fl">5.0</span>,               <span class="co"># All parameters have the same upper bound</span></a>
 <a class="sourceLine" id="cb19-10" data-line-number="10">    <span class="dt">lb    =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="fl">5.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>), <span class="co"># But lower bound is specified per parameter</span></a>
 <a class="sourceLine" id="cb19-11" data-line-number="11">    <span class="dt">scale =</span> <span class="fl">0.05</span>               <span class="co"># This is the same scale as before</span></a>

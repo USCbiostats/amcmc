@@ -113,6 +113,9 @@
 
     
     
+<div id="motivating-example" class="section level1">
+<h1 class="hasAnchor">
+<a href="#motivating-example" class="anchor"></a>Motivating example</h1>
 <p>We start by loading the dataset that the <code>mcmc</code> package includes. We will use the <code>logit</code> data set to obtain a posterior distribution of the model parameters using the <code>MCMC</code> function.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(fmcmc)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(logit, <span class="dt">package =</span> <span class="st">"mcmc"</span>)</a>
@@ -147,7 +150,7 @@
 <a class="sourceLine" id="cb5-4" data-line-number="4">  <span class="dt">initial =</span> beta.init,</a>
 <a class="sourceLine" id="cb5-5" data-line-number="5">  <span class="dt">fun     =</span> lupost,</a>
 <a class="sourceLine" id="cb5-6" data-line-number="6">  <span class="dt">nsteps  =</span> <span class="fl">1e3</span>,</a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">  <span class="dt">kernel  =</span> <span class="kw"><a href="../reference/kernels.html">kernel_normal</a></span>(<span class="dt">scale =</span> <span class="fl">.2</span>) </a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">  <span class="dt">kernel  =</span> <span class="kw"><a href="../reference/kernel_normal.html">kernel_normal</a></span>(<span class="dt">scale =</span> <span class="fl">.2</span>) </a>
 <a class="sourceLine" id="cb5-8" data-line-number="8">)</a></code></pre></div>
 <p>The <code>kernel_normal</code>, which is the default kernel in the <code>MCMC</code> function, returns an object of class <code>fmcmc_kernel</code>. In principle it consists on a list of two functions that are used by the <code>MCMC</code> routine: <code>proposal</code>, the proposal kernel function, and <code>logratio</code>, the function that returns the log of the Metropolis-Hastings ratio. We will talk more about <code>fmcmc_kernel</code> objects later. Now, let’s look at the first three variables of our model:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(out[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])</a></code></pre></div>
@@ -159,7 +162,7 @@
 <a class="sourceLine" id="cb7-4" data-line-number="4">  <span class="dt">initial =</span> beta.init,</a>
 <a class="sourceLine" id="cb7-5" data-line-number="5">  <span class="dt">fun     =</span> lupost,</a>
 <a class="sourceLine" id="cb7-6" data-line-number="6">  <span class="dt">nsteps  =</span> <span class="fl">1e4</span>,</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">  <span class="dt">kernel  =</span> <span class="kw"><a href="../reference/kernels.html">kernel_normal</a></span>(<span class="dt">scale =</span> <span class="fl">.2</span>),</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">  <span class="dt">kernel  =</span> <span class="kw"><a href="../reference/kernel_normal.html">kernel_normal</a></span>(<span class="dt">scale =</span> <span class="fl">.2</span>),</a>
 <a class="sourceLine" id="cb7-8" data-line-number="8">  <span class="dt">conv_checker =</span> <span class="kw"><a href="../reference/convergence-checker.html">convergence_geweke</a></span>(<span class="dv">200</span>)</a>
 <a class="sourceLine" id="cb7-9" data-line-number="9">)</a></code></pre></div>
 <pre><code>## Convergence has been reached with 200 steps (200 final count of samples).</code></pre>
@@ -173,7 +176,7 @@
 <a class="sourceLine" id="cb9-6" data-line-number="6">  <span class="dt">initial   =</span> out,                       <span class="co"># Automagically takes the last 2 points</span></a>
 <a class="sourceLine" id="cb9-7" data-line-number="7">  <span class="dt">fun       =</span> lupost, </a>
 <a class="sourceLine" id="cb9-8" data-line-number="8">  <span class="dt">nsteps    =</span> <span class="fl">5e4</span>,                       <span class="co"># Increasing the sample size</span></a>
-<a class="sourceLine" id="cb9-9" data-line-number="9">  <span class="dt">kernel    =</span> <span class="kw"><a href="../reference/kernels.html">kernel_normal</a></span>(<span class="dt">scale =</span> <span class="fl">.2</span>),</a>
+<a class="sourceLine" id="cb9-9" data-line-number="9">  <span class="dt">kernel    =</span> <span class="kw"><a href="../reference/kernel_normal.html">kernel_normal</a></span>(<span class="dt">scale =</span> <span class="fl">.2</span>),</a>
 <a class="sourceLine" id="cb9-10" data-line-number="10">  <span class="dt">thin      =</span> <span class="dv">10</span>,</a>
 <a class="sourceLine" id="cb9-11" data-line-number="11">  <span class="dt">nchains   =</span> 2L,                        <span class="co"># Running parallel chains</span></a>
 <a class="sourceLine" id="cb9-12" data-line-number="12">  <span class="dt">multicore =</span> <span class="ot">TRUE</span>                       <span class="co"># in parallel.</span></a>
@@ -202,10 +205,24 @@
 ## par1 0.08219 0.4435 0.6465 0.8529 1.273
 ## par2 0.10899 0.5489 0.7965 1.0521 1.570
 ## par3 0.48109 0.9167 1.1474 1.4030 1.925</code></pre>
+</div>
+<div id="reusing-fmcmc_kernel-objects" class="section level1">
+<h1 class="hasAnchor">
+<a href="#reusing-fmcmc_kernel-objects" class="anchor"></a>Reusing fmcmc_kernel objects</h1>
+<p><code>fmcmc_kernel</code> objects are enviroments that are passed to the <code>MCMC</code> function. In the case of adaptive algorithms, users may want to reuse the adaptation.</p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
 
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#motivating-example">Motivating example</a></li>
+      <li><a href="#reusing-fmcmc_kernel-objects">Reusing fmcmc_kernel objects</a></li>
+      </ul>
+</div>
       </div>
 
 </div>

@@ -104,7 +104,7 @@
       <h1>Benchmarks</h1>
                         <h4 class="author">George G Vega Yon</h4>
             
-            <h4 class="date">2020-02-26</h4>
+            <h4 class="date">2020-03-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/USCbiostats/fmcmc/blob/master/vignettes/benchmarks.Rmd"><code>vignettes/benchmarks.Rmd</code></a></small>
       <div class="hidden name"><code>benchmarks.Rmd</code></div>
@@ -133,14 +133,14 @@
 <a class="sourceLine" id="cb3-5" data-line-number="5">  <span class="dt">initial =</span> <span class="kw"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="dv">0</span>, k),</a>
 <a class="sourceLine" id="cb3-6" data-line-number="6">  <span class="dt">fun     =</span> logpost,</a>
 <a class="sourceLine" id="cb3-7" data-line-number="7">  <span class="dt">nsteps  =</span> n_samples,</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">  <span class="dt">kernel  =</span> <span class="kw"><a href="../reference/kernels.html">kernel_adapt</a></span>(<span class="dt">Sigma =</span> <span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(k)<span class="op">*</span>.<span class="dv">1</span>, <span class="dt">freq =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">  <span class="dt">kernel  =</span> <span class="kw"><a href="../reference/kernel_adapt.html">kernel_adapt</a></span>(<span class="dt">Sigma =</span> <span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(k)<span class="op">*</span>.<span class="dv">1</span>, <span class="dt">freq =</span> <span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb3-9" data-line-number="9">  )</a>
 <a class="sourceLine" id="cb3-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb3-11" data-line-number="11">ans_fmcmc_ram &lt;-<span class="st"> </span>fmcmc<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/fmcmc/man/MCMC.html">MCMC</a></span>(</a>
 <a class="sourceLine" id="cb3-12" data-line-number="12">  <span class="dt">initial =</span> <span class="kw"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="dv">0</span>, k),</a>
 <a class="sourceLine" id="cb3-13" data-line-number="13">  <span class="dt">fun     =</span> logpost,</a>
 <a class="sourceLine" id="cb3-14" data-line-number="14">  <span class="dt">nsteps  =</span> n_samples, </a>
-<a class="sourceLine" id="cb3-15" data-line-number="15">  <span class="dt">kernel  =</span> <span class="kw"><a href="../reference/kernels.html">kernel_ram</a></span>(<span class="dt">Sigma =</span> <span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(k)<span class="op">*</span>.<span class="dv">1</span>, <span class="dt">freq =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">  <span class="dt">kernel  =</span> <span class="kw"><a href="../reference/kernel_ram.html">kernel_ram</a></span>(<span class="dt">Sigma =</span> <span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(k)<span class="op">*</span>.<span class="dv">1</span>, <span class="dt">freq =</span> <span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb3-16" data-line-number="16">  )</a></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">ans_adaptMCMC &lt;-<span class="st"> </span>adaptMCMC<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/adaptMCMC/man/MCMC.html">MCMC</a></span>(</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">  <span class="dt">p        =</span> logpost,</a>
