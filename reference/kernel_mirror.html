@@ -196,7 +196,7 @@ chains.</p></td>
     <tr>
       <th>nadapt</th>
       <td><p>Integer. Number of times the scale is adjusted for adaptation
-during the warmup (burnin) period.</p></td>
+during the warmup (burn-in) period.</p></td>
     </tr>
     <tr>
       <th>arate</th>
@@ -218,7 +218,8 @@ See <code><a href='plan_update_sequence.html'>plan_update_sequence()</a></code>.
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <a href='kernel_new.html'>fmcmc_kernel</a>.</p>
+    <p>An object of class <a href='kernel_new.html'>fmcmc_kernel</a>. <code>fmcmc_kernel</code> objects are intended
+to be used with the <code><a href='MCMC.html'>MCMC()</a></code> function.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The <code>kernel_nmirror</code> and <code>kernel_umirror</code> functions implement simple symmetric
@@ -250,6 +251,13 @@ Monte Carlo proposal kernels. Proceedings of the National Academy of Sciences,
 <code><a href='kernel_ram.html'>kernel_ram</a>()</code>,
 <code><a href='kernel_unif.html'>kernel_unif</a>()</code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Normal mirror kernel with 5 adaptations and 1000 steps of warmup (burnin)</span>
+<span class='no'>kern</span> <span class='kw'>&lt;-</span> <span class='fu'>kernel_nmirror</span>(<span class='kw'>nadapt</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>1000</span>)
+
+<span class='co'># Same as before but using a uniform mirror and choosing a target acceptance</span>
+<span class='co'># rate of 24 %</span>
+<span class='no'>kern</span> <span class='kw'>&lt;-</span> <span class='fu'>kernel_umirror</span>(<span class='kw'>nadapt</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>arate</span> <span class='kw'>=</span> <span class='fl'>.24</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -259,6 +267,7 @@ Monte Carlo proposal kernels. Proceedings of the National Academy of Sciences,
       <li><a href="#details">Details</a></li>
       <li><a href="#references">References</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

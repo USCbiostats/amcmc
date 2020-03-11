@@ -186,7 +186,8 @@ of parameters in the objective function.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <a href='kernel_new.html'>fmcmc_kernel</a></p>
+    <p>An object of class <a href='kernel_new.html'>fmcmc_kernel</a>. <code>fmcmc_kernel</code> objects are intended
+to be used with the <code><a href='MCMC.html'>MCMC()</a></code> function.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The <code>kernel_unif</code> function provides a uniform transition kernel. This (symmetric)
@@ -202,6 +203,10 @@ main difference that proposals are bounded to be within <code>[lb, ub]</code>.</
 <code><a href='kernel_normal.html'>kernel_normal</a>()</code>,
 <code><a href='kernel_ram.html'>kernel_ram</a>()</code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Multivariate setting with 4 parameters in which we set the kernel to make</span>
+<span class='co'># proposals one parameter at-a-time in a random ordering.</span>
+<span class='no'>kern</span> <span class='kw'>&lt;-</span> <span class='fu'>kernel_unif</span>(<span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"random"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -210,6 +215,7 @@ main difference that proposals are bounded to be within <code>[lb, ub]</code>.</
       <li><a href="#value">Value</a></li>
       <li><a href="#details">Details</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

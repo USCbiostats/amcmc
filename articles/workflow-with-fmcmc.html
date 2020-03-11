@@ -209,7 +209,81 @@
 <div id="reusing-fmcmc_kernel-objects" class="section level1">
 <h1 class="hasAnchor">
 <a href="#reusing-fmcmc_kernel-objects" class="anchor"></a>Reusing fmcmc_kernel objects</h1>
-<p><code>fmcmc_kernel</code> objects are enviroments that are passed to the <code>MCMC</code> function. In the case of adaptive algorithms, users may want to reuse the adaptation.</p>
+<p><code>fmcmc_kernel</code> objects are environments that are passed to the <code>MCMC</code> function. While the <code>MCMC</code> function only returns the <code>mcmc</code> class object (as defined in the <code>coda</code> package), users can exploit the fact that the kernel objects are environments to reuse them or inspect them once the <code>MCMC</code> function returns.</p>
+<p>This could be particularly useful in the case of adaptive kernels as users can review the covariance structure (for example) or other components of the kernel.</p>
+<p>To illustrate this, let’s re-do the MCMC chain of the previous example but using an adaptive kernel instead, in particular, Haario’s 2010 adaptive metropolis.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">khaario &lt;-<span class="st"> </span><span class="kw"><a href="../reference/kernel_adapt.html">kernel_adapt</a></span>(<span class="dt">freq =</span> <span class="dv">1</span>, <span class="dt">warmup =</span> <span class="dv">500</span>)</a></code></pre></div>
+<p>This kernel object will be updated at every step (<code>freq = 1</code>) and adaptation will start from step 500 (<code>warmup = 500</code>). We can see that some of its components haven’t been initialized or have default starting values before the call of the <code>MCMC</code> function:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># Number of iterations (absolute count, starts in 0)</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">khaario<span class="op">$</span>abs_iter</a></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co"># Variance covariance matrix (is empty... for now)</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">khaario<span class="op">$</span>Sigma</a></code></pre></div>
+<pre><code>## NULL</code></pre>
+<p>Let’s see how it works:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">12</span>) </a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">out_harrio_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw"><a href="../reference/MCMC.html">MCMC</a></span>(</a>
+<a class="sourceLine" id="cb18-4" data-line-number="4">  <span class="dt">initial   =</span> out,                       </a>
+<a class="sourceLine" id="cb18-5" data-line-number="5">  <span class="dt">fun       =</span> lupost, </a>
+<a class="sourceLine" id="cb18-6" data-line-number="6">  <span class="dt">nsteps    =</span> <span class="dv">1000</span>,    <span class="co"># We will only run the chain for 100 steps                    </span></a>
+<a class="sourceLine" id="cb18-7" data-line-number="7">  <span class="dt">kernel    =</span> khaario, <span class="co"># We passed the predefined kernel</span></a>
+<a class="sourceLine" id="cb18-8" data-line-number="8">  <span class="dt">thin      =</span> <span class="dv">1</span>,       <span class="co"># No thining here</span></a>
+<a class="sourceLine" id="cb18-9" data-line-number="9">  <span class="dt">nchains   =</span> 1L,      <span class="co"># A single chain</span></a>
+<a class="sourceLine" id="cb18-10" data-line-number="10">  <span class="dt">multicore =</span> <span class="ot">FALSE</span>    <span class="co"># Running in serial</span></a>
+<a class="sourceLine" id="cb18-11" data-line-number="11">  )</a></code></pre></div>
+<p>Let’s inspect the output and mark when the adaptation starts:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/pkg/coda/man/traceplot.html">traceplot</a></span>(out_harrio_<span class="dv">1</span>[,<span class="dv">1</span>], <span class="dt">main =</span> <span class="st">"Traceplot of the first parameter"</span>)</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span>(<span class="dt">v =</span> <span class="dv">500</span>, <span class="dt">col =</span> <span class="st">"red"</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty=</span><span class="dv">2</span>)</a></code></pre></div>
+<p><img src="workflow-with-fmcmc_files/figure-html/haario-first-run-plots-1.png" width="600" height="600"></p>
+<p>If we look at the <code>khaario</code> kernel, the <code>fmcmc_kernel</code> object, we can see that things changed from the first time we ran it</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="co"># Number of iterations (absolute count, the counts equal the number of steps)</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">khaario<span class="op">$</span>abs_iter</a></code></pre></div>
+<pre><code>## [1] 1000</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="co"># Variance covariance matrix (now is not empty)</span></a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">(Sigma1 &lt;-<span class="st"> </span>khaario<span class="op">$</span>Sigma)</a></code></pre></div>
+<pre><code>##              [,1]         [,2]         [,3]        [,4]         [,5]
+## [1,]  0.030769025 -0.007959858  0.000105674 0.001215879  0.025767281
+## [2,] -0.007959858  0.081535551 -0.032983224 0.005868047 -0.010501081
+## [3,]  0.000105674 -0.032983224  0.073560617 0.013602060 -0.011829260
+## [4,]  0.001215879  0.005868047  0.013602060 0.074296323  0.001624821
+## [5,]  0.025767281 -0.010501081 -0.011829260 0.001624821  0.031309621</code></pre>
+<p>If we re-run the chain, using as starting point the last step of the first run, we can also continue using the kernel object:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">out_harrio_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw"><a href="../reference/MCMC.html">MCMC</a></span>(</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">  <span class="dt">initial   =</span> out_harrio_<span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb24-3" data-line-number="3">  <span class="dt">fun       =</span> lupost, </a>
+<a class="sourceLine" id="cb24-4" data-line-number="4">  <span class="dt">nsteps    =</span> <span class="dv">2000</span>,    <span class="co"># We will only run the chain for 2000 steps now</span></a>
+<a class="sourceLine" id="cb24-5" data-line-number="5">  <span class="dt">kernel    =</span> khaario, <span class="co"># Same as before, same kernel.</span></a>
+<a class="sourceLine" id="cb24-6" data-line-number="6">  <span class="dt">thin      =</span> <span class="dv">1</span>,       </a>
+<a class="sourceLine" id="cb24-7" data-line-number="7">  <span class="dt">nchains   =</span> 1L,      </a>
+<a class="sourceLine" id="cb24-8" data-line-number="8">  <span class="dt">multicore =</span> <span class="ot">FALSE</span>    </a>
+<a class="sourceLine" id="cb24-9" data-line-number="9">  )</a></code></pre></div>
+<p>Let’s see again how does everything looks like:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/pkg/coda/man/traceplot.html">traceplot</a></span>(out_harrio_<span class="dv">2</span>[,<span class="dv">1</span>], <span class="dt">main =</span> <span class="st">"Traceplot of the first parameter"</span>)</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span>(<span class="dt">v =</span> <span class="dv">500</span>, <span class="dt">col =</span> <span class="st">"red"</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty=</span><span class="dv">2</span>)</a></code></pre></div>
+<p><img src="workflow-with-fmcmc_files/figure-html/haario-second-run-plots-1.png" width="600" height="600"></p>
+<p>As shown in the plot, since the warmup period already passed for the kernel object, the adaptation process is happening continuously so we don’t see a big break at step 500 as before. Let’s see now the counts and the covariance matrix and compare it with the previous one:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="co"># Number of iterations (absolute count, the counts equal the number of steps)</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="co"># This will have 1000 (first run) + 2000 (second run) steps</span></a>
+<a class="sourceLine" id="cb26-3" data-line-number="3">khaario<span class="op">$</span>abs_iter</a></code></pre></div>
+<pre><code>## [1] 3000</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="co"># Variance covariance matrix (now is not empty)</span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">(Sigma2 &lt;-<span class="st"> </span>khaario<span class="op">$</span>Sigma)</a></code></pre></div>
+<pre><code>##            [,1]         [,2]        [,3]         [,4]         [,5]
+## [1,] 0.08889329  0.010677087  0.03792128  0.005396280  0.010543827
+## [2,] 0.01067709  0.110626000 -0.01696425 -0.007246985 -0.016688348
+## [3,] 0.03792128 -0.016964251  0.11818972  0.015875027 -0.017081078
+## [4,] 0.00539628 -0.007246985  0.01587503  0.121572142  0.008640497
+## [5,] 0.01054383 -0.016688348 -0.01708108  0.008640497  0.115435585</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="co"># How different these are?</span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">Sigma1 <span class="op">-</span><span class="st"> </span>Sigma2</a></code></pre></div>
+<pre><code>##              [,1]         [,2]         [,3]         [,4]         [,5]
+## [1,] -0.058124262 -0.018636944 -0.037815608 -0.004180402  0.015223454
+## [2,] -0.018636944 -0.029090449 -0.016018973  0.013115032  0.006187267
+## [3,] -0.037815608 -0.016018973 -0.044629102 -0.002272967  0.005251818
+## [4,] -0.004180402  0.013115032 -0.002272967 -0.047275819 -0.007015676
+## [5,]  0.015223454  0.006187267  0.005251818 -0.007015676 -0.084125964</code></pre>
+<p>Things have changed since the last time we used the kernel, as expected. Kernel objects in the <code>fmcmc</code> package can also be used with multiple chains and in parallel. The <code>MCMC</code> function is smart enough to create independent copies of <code>fmcmc_kernel</code> objects when running multiple chains, and keep the original kernel objects up-to-date even when using multiple cores to run <code>MCMC</code>. For more technical details on how <code>fmcmc_kernel</code> objects work see the manual <code><a href="../reference/kernel_new.html">?fmcmc_kernel</a></code> or the vignette “User-defined kernels” included in the package <code><a href="../articles/user-defined-kernels.html">vignette("user-defined-kernels", package = "fmcmc")</a></code>.</p>
 </div>
   </div>
 

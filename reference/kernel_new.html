@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create Personalized Transition Kernels for MCMC — kernel_new • fmcmc</title>
+<title>Transition Kernels for MCMC — kernel_new • fmcmc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,7 +42,7 @@
 
 
 
-<meta property="og:title" content="Create Personalized Transition Kernels for MCMC — kernel_new" />
+<meta property="og:title" content="Transition Kernels for MCMC — kernel_new" />
 <meta property="og:description" content="The function kernel_new is a helper function that allows creating
 fmcmc_kernel objects which are passed to the MCMC() function." />
 <meta property="og:image" content="/logo.png" />
@@ -145,7 +145,7 @@ fmcmc_kernel objects which are passed to the MCMC() function." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create Personalized Transition Kernels for MCMC</h1>
+    <h1>Transition Kernels for MCMC</h1>
     <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/kernel.R'><code>R/kernel.R</code></a></small>
     <div class="hidden name"><code>kernel_new.Rd</code></div>
     </div>
@@ -155,10 +155,7 @@ fmcmc_kernel objects which are passed to the MCMC() function." />
 <code>fmcmc_kernel</code> objects which are passed to the <code><a href='MCMC.html'>MCMC()</a></code> function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>kernel_new</span>(<span class='no'>proposal</span>, <span class='no'>...</span>, <span class='kw'>logratio</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>kernel_env</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/environment.html'>new.env</a></span>(<span class='kw'>hash</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
-
-<span class='co'># S3 method for fmcmc_kernel</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>kernel_new</span>(<span class='no'>proposal</span>, <span class='no'>...</span>, <span class='kw'>logratio</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>kernel_env</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/environment.html'>new.env</a></span>(<span class='kw'>hash</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,10 +174,6 @@ the kernel.</p></td>
       <th>kernel_env</th>
       <td><p>Environment. This will be used as the main container of the
 kernel's components. It is returned as an object of class <code><a href='https://rdrr.io/r/base/c.html'>c("environment", "fmcmc_kernel")</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>x</th>
-      <td><p>An object of class <code>fmcmc_kernel</code>.</p></td>
     </tr>
     </table>
 
@@ -210,7 +203,7 @@ as <code>function(env) {env$f1 - env$f0}</code></p></li>
 </ul>
 
 <p>Both functions, <code>proposal</code> and <code>logratio</code>, receive a single argument, an
-environment, which is passed by the <a href='MCMC.html'>MCMC</a> function during each step using
+environment, which is passed by the <code><a href='MCMC.html'>MCMC()</a></code> function during each step using
 the function <code><a href='https://rdrr.io/r/base/environment.html'>environment()</a></code>.</p>
 <p>The passed environment is actually the environment in which the <code>MCMC</code>
 function is running, in particular, this environment contains the following
@@ -218,7 +211,6 @@ objects:</p>
 <table class='table'>
 <tr><td><strong>Object</strong></td><td></td><td><strong>Description</strong></td></tr>
 <tr><td><code>i</code></td><td></td><td>Integer. The current iteration.</td></tr>
-<tr><td><code>chain_id</code></td><td></td><td>Integer. The current chain (relevent for some kernels).</td></tr>
 <tr><td><code>theta1</code></td><td></td><td>Numeric vector. The last proposed state.</td></tr>
 <tr><td><code>theta0</code></td><td></td><td>Numeric vector. The current state</td></tr>
 <tr><td><code>f</code></td><td></td><td>The log-unnormalized posterior function (a wrapper of <code>fun</code> passed
@@ -256,7 +248,30 @@ of code is how this is actually implemented in the package:</p><pre>for (i in 1L
 }
 </pre>
 
-<p>For more details see the vignette <code><a href='../articles/user-defined-kernels.html'>vignette("user-defined-kernels", "fmcmc")</a></code>.</p>
+<p>For an extensive example on how to create new kernel objects see the vignette
+<code><a href='../articles/user-defined-kernels.html'>vignette("user-defined-kernels", "fmcmc")</a></code>.</p>
+    <h2 class="hasAnchor" id="behavior"><a class="anchor" href="#behavior"></a>Behavior</h2>
+
+    
+
+
+<p>In some cases, calls to the <code>proposal()</code> and <code>logratio()</code> functions in
+<code>fmcmc_kernels</code> can trigger changes or updates of variables stored within them.
+A concrete example is with adaptive kernels.</p>
+<p>Adaptive Metropolis and Robust Adaptive Metropolis implemented in the functions
+<code><a href='kernel_adapt.html'>kernel_adapt()</a></code> and <code><a href='kernel_ram.html'>kernel_ram()</a></code> both update a covariance matrix used
+during the proposal stage, and furthermore, have a <code>warmup</code> stage that sets
+the point at which both will start adapting. Because of this, both kernels
+have internal counters of the absolute step count which allows them activating,
+scaling, etc. the proposals correctly.</p><ol>
+<li><p>When running multiple chains, <code>MCMC</code> will create independent copies of a
+baseline passed <code>fmcmc_kernel</code> object. These are managed together in a
+<code>fmcmc_kernel_list</code> object.</p></li>
+<li><p>Even if the chains are run in parallel, if a predefined kernel object is
+passed it will be updated to reflect the last state of the kernels
+before the <code>MCMC</code> call returns.</p></li>
+</ol>
+
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Brooks, S., Gelman, A., Jones, G. L., &amp; Meng, X. L. (2011). Handbook of
@@ -305,6 +320,7 @@ Markov Chain Monte Carlo. Handbook of Markov Chain Monte Carlo.</p>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#behavior">Behavior</a></li>
       <li><a href="#references">References</a></li>
       <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>

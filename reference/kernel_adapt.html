@@ -158,12 +158,13 @@
   <span class='kw'>bw</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
   <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
   <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
-  <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>50L</span>,
+  <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>500L</span>,
   <span class='kw'>Sigma</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>Sd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-04</span>,
-  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>until</span> <span class='kw'>=</span> <span class='fl'>Inf</span>
 )
 
 <span class='fu'>kernel_am</span>(
@@ -171,12 +172,13 @@
   <span class='kw'>bw</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
   <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
   <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
-  <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>50L</span>,
+  <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>500L</span>,
   <span class='kw'>Sigma</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>Sd</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-04</span>,
-  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>until</span> <span class='kw'>=</span> <span class='fl'>Inf</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -202,7 +204,8 @@ of parameters in the objective function.</p></td>
     <tr>
       <th>freq</th>
       <td><p>Integer scalar. Frequency of updates. How often the
-variance-covariance matrix is updated.</p></td>
+variance-covariance matrix is updated. The implementation is different from that
+described in the original paper (see details).</p></td>
     </tr>
     <tr>
       <th>warmup</th>
@@ -228,14 +231,23 @@ is scaled to \(2.4^2/d\), with \(d\) the number of dimensions.</p></td>
       <td><p>Logical scalar or vector of length <code>k</code>. Indicates which parameters
 will be treated as fixed or not. Single values are recycled.</p></td>
     </tr>
+    <tr>
+      <th>until</th>
+      <td><p>Integer scalar. Last step at which adaptation takes place (see
+details).</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <a href='kernel_new.html'>fmcmc_kernel</a>.</p>
+    <p>An object of class <a href='kernel_new.html'>fmcmc_kernel</a>. <code>fmcmc_kernel</code> objects are intended
+to be used with the <code><a href='MCMC.html'>MCMC()</a></code> function.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>kernel_adapt</code> Implements the adaptive Metropolis (AM) algorithm of Haario
+    <p>While it has been shown that under regular conditions this transition kernel
+generates ergodic chains even when the adaptation does not stop, some
+practitioners may want to stop adaptation at some point.</p>
+<p><code>kernel_adapt</code> Implements the adaptive Metropolis (AM) algorithm of Haario
 et al. (2001). If the value of bw is greater than zero, then the algorithm
 folds back AP, a  previous version which is known to have ergodicity problems.</p>
 <p>The parameter <code>eps</code> has two functions. The first one is to set the initial
@@ -245,7 +257,12 @@ The second usage is in the equation that ensures that the variance-covariance
 is greater than zero, this is, the \(\varepsilon\) parameter in the
 original paper.</p>
 <p>The update of the covariance matrix is done using <code><a href='cov_recursive.html'>cov_recursive()</a></code> function,
-which makes the updates faster.</p>
+which makes the updates faster. The <code>freq</code> parameter, besides of indicating the
+frequency with which the updates are done, it specifies what are the samples
+included in each update, in other words, like a thinning parameter, only every
+<code>freq</code> samples will be used to compute the covariance matrix. Since this
+implementation uses the recursive formula for updating the covariance, there is
+no practical need to set <code>freq != 1</code>.</p>
 <p><code>kernel_am</code> is just an alias for <code>kernel_adapt</code>.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -261,6 +278,13 @@ Bernoulli, 7(2), 223–242.
 <code><a href='kernel_ram.html'>kernel_ram</a>()</code>,
 <code><a href='kernel_unif.html'>kernel_unif</a>()</code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Update every-step and wait 1,000 steps before starting to adapt</span>
+<span class='no'>kern</span> <span class='kw'>&lt;-</span> <span class='fu'>kernel_adapt</span>(<span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>warmup</span> <span class='kw'>=</span> <span class='fl'>1000</span>)
+
+<span class='co'># Two parameters model, the second parameter with a restricted range, i.e.</span>
+<span class='co'># a lower bound of 1</span>
+<span class='no'>kern</span> <span class='kw'>&lt;-</span> <span class='fu'>kernel_adapt</span>(<span class='kw'>lb</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>, <span class='fl'>0</span>))</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -270,6 +294,7 @@ Bernoulli, 7(2), 223–242.
       <li><a href="#details">Details</a></li>
       <li><a href="#references">References</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
