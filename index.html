@@ -12,10 +12,11 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
+<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="A friendly MCMC framework">
 <meta property="og:description" content="Provides a friendly (flexible) Markov Chain Monte Carlo (MCMC)
          framework for implementing Metropolis-Hastings algorithm in a modular way
@@ -27,8 +28,7 @@
          Adaptive Metropolis, Vihola (2012) &lt;doi:10.1007/s11222-011-9269-5&gt;
          Robust Adaptive Metropolis, and Thawornwattana et
          al. (2018) &lt;doi:10.1214/17-BA1084&gt; Mirror transition kernels.">
-<meta property="og:image" content="/logo.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="/logo.svg">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -40,7 +40,7 @@
   gtag('config', 'UA-108627422-3');
 </script>
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -53,7 +53,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fmcmc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2-0-9999</span>
       </span>
     </div>
 
@@ -76,9 +76,6 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/benchmarks.html">Benchmarks</a>
-    </li>
-    <li>
       <a href="articles/user-defined-kernels.html">User-defined kernels</a>
     </li>
     <li>
@@ -92,7 +89,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/USCbiostats/fmcmc">
+  <a href="https://github.com/USCbiostats/fmcmc/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -143,9 +140,9 @@
 <h1 class="hasAnchor">
 <a href="#installing" class="anchor"></a>Installing</h1>
 <p>If you want to get the latest bleeding-edge version from Github, you can use <a href="https://cran.r-project.org/package=devtools">devtools</a>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"USCbiostats/fmcmc"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">install_github</span>(<span class="st">"USCbiostats/fmcmc"</span>)</pre></div>
 <p>The latest (stable) release is also available on CRAN:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"fmcmc"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"fmcmc"</span>)</pre></div>
 </div>
 <div id="citation" class="section level1">
 <h1 class="hasAnchor">
@@ -178,42 +175,42 @@ A BibTeX entry for LaTeX users is
 <h2 class="hasAnchor">
 <a href="#first-run" class="anchor"></a>First run</h2>
 <p>In the following we show how to use the package for estimating parameters in a linear regression model. First, let’s simulate some data to use:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">78845</span>)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">n &lt;-<span class="st"> </span><span class="dv">1000</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">X &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(n)</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="fl">3.0</span> <span class="op">+</span><span class="st"> </span><span class="fl">2.0</span><span class="op">*</span>X <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(n, <span class="dt">sd =</span> <span class="dv">4</span>)</a></code></pre></div>
-<p>As you can see, in this case we have three parameters to estimate, the constant (2.0), the (\beta) coefficient (2.0), and the standard deviation parameter of the error (1.5).</p>
+<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">78845</span>)
+<span class="no">n</span> <span class="kw">&lt;-</span> <span class="fl">1000</span>
+<span class="no">X</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="no">n</span>)
+<span class="no">y</span> <span class="kw">&lt;-</span> <span class="fl">3.0</span> + <span class="fl">2.0</span>*<span class="no">X</span> + <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="no">n</span>, <span class="kw">sd</span> <span class="kw">=</span> <span class="fl">4</span>)</pre></div>
+<p>As you can see, in this case we have three parameters to estimate, the constant (2.0), the <span class="math inline"><em>β</em></span> coefficient (2.0), and the standard deviation parameter of the error (1.5).</p>
 <p>To estimate this model, we can either maximize the log-likelihood function–which is what is usually done–or we could do it using MCMC. In either case, we need to specify the log(unnormalized some times)-likelihood function:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">ll &lt;-<span class="st"> </span><span class="cf">function</span>(p, X., y.) {</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">  </a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">  joint_ll &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span>(y. <span class="op">-</span><span class="st"> </span>(p[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>X.<span class="op">*</span>p[<span class="dv">2</span>]), <span class="dt">sd =</span> p[<span class="dv">3</span>], <span class="dt">log =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">  joint_ll &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(joint_ll)</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">  </a>
-<a class="sourceLine" id="cb5-6" data-line-number="6">  <span class="co"># If is undefined, then we explicitly return infinte (instead of NaN, for</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">  <span class="co"># example)</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8">  <span class="cf">if</span> (<span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/is.finite.html">is.finite</a></span>(joint_ll))</a>
-<a class="sourceLine" id="cb5-9" data-line-number="9">    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span>(<span class="op">-</span><span class="ot">Inf</span>)</a>
-<a class="sourceLine" id="cb5-10" data-line-number="10">  </a>
-<a class="sourceLine" id="cb5-11" data-line-number="11">  joint_ll</a>
-<a class="sourceLine" id="cb5-12" data-line-number="12">}</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="r"><span class="no">ll</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">p</span>, <span class="no">X.</span>, <span class="no">y.</span>) {
+
+  <span class="no">joint_ll</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span>(<span class="no">y.</span> - (<span class="no">p</span>[<span class="fl">1</span>] + <span class="no">X.</span>*<span class="no">p</span>[<span class="fl">2</span>]), <span class="kw">sd</span> <span class="kw">=</span> <span class="no">p</span>[<span class="fl">3</span>], <span class="kw">log</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+  <span class="no">joint_ll</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">joint_ll</span>)
+
+  <span class="co"># If is undefined, then we explicitly return infinte (instead of NaN, for</span>
+  <span class="co"># example)</span>
+  <span class="kw">if</span> (!<span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.finite</a></span>(<span class="no">joint_ll</span>))
+    <span class="fu"><a href="https://rdrr.io/r/base/function.html">return</a></span>(-<span class="fl">Inf</span>)
+
+  <span class="no">joint_ll</span>
+}</pre></div>
 <p>Notice that the function has more than 1 argument, in this case, <code>p</code>, which is the vector of parameters, <code>X.</code> and <code>y.</code>, which hold the data of our model.</p>
 <p>Let’s do a first run of the MCMC algorithm using the function of the same name (first, load the package, of course):</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(fmcmc)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co"># Running the MCMC (we set the seed first)</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">1215</span>)</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">ans &lt;-<span class="st"> </span><span class="kw"><a href="reference/MCMC.html">MCMC</a></span>(</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">  ll,</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">  <span class="dt">initial =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="kw"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span>(y)),</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8">  <span class="dt">nsteps  =</span> <span class="dv">5000</span>,</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9">  <span class="dt">X.      =</span> X,</a>
-<a class="sourceLine" id="cb6-10" data-line-number="10">  <span class="dt">y.      =</span> y</a>
-<a class="sourceLine" id="cb6-11" data-line-number="11">  )</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">fmcmc</span>)
+
+<span class="co"># Running the MCMC (we set the seed first)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">1215</span>)
+<span class="no">ans</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/MCMC.html">MCMC</a></span>(
+  <span class="no">ll</span>,
+  <span class="kw">initial</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span>(<span class="no">y</span>)),
+  <span class="kw">nsteps</span>  <span class="kw">=</span> <span class="fl">5000</span>,
+  <span class="kw">X.</span>      <span class="kw">=</span> <span class="no">X</span>,
+  <span class="kw">y.</span>      <span class="kw">=</span> <span class="no">y</span>
+  )</pre></div>
 <p>As the output object is an object of class <code>mcmc</code> from the <code>coda</code> R package, we can use all the functions from it on our output:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(coda)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(ans)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">coda</span>)
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">ans</span>)</pre></div>
 <p><img src="reference/figures/first-diagnostics-1.png"><!-- --></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(ans)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">ans</span>)</pre></div>
 <div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">## </a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">## Iterations = 1:5000</a>
 <a class="sourceLine" id="cb9-3" data-line-number="3">## Thinning interval = 1 </a>
@@ -235,42 +232,42 @@ A BibTeX entry for LaTeX users is
 <a class="sourceLine" id="cb9-19" data-line-number="19">## par2 1.763 1.892 1.956 2.026 2.171</a>
 <a class="sourceLine" id="cb9-20" data-line-number="20">## par3 3.979 4.064 4.106 4.134 4.186</a></code></pre></div>
 <p>While the summary statistics look very good (we got very close to the original parameters), the trace of the parameters looks vary bad (poor mixing). We can re-run the algorithm changing the scale parameter in the <code>kernel_normal</code> function. In order to do so, we can simply pass <code>ans</code> as the <code>initial</code> argument so that the function starts from the last point of that chain:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">ans &lt;-<span class="st"> </span><span class="kw"><a href="reference/MCMC.html">MCMC</a></span>(</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">  ll,</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">  <span class="dt">initial =</span> ans,</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4">  <span class="dt">nsteps  =</span> <span class="dv">5000</span>,</a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">  <span class="dt">X.      =</span> X,</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">  <span class="dt">y.      =</span> y,</a>
-<a class="sourceLine" id="cb10-7" data-line-number="7">  <span class="dt">kernel  =</span> <span class="kw"><a href="reference/kernel_normal.html">kernel_normal</a></span>(<span class="dt">scale =</span> <span class="fl">.05</span>) <span class="co"># We can set the scale parameter like this</span></a>
-<a class="sourceLine" id="cb10-8" data-line-number="8">  )</a>
-<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(ans)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="r"><span class="no">ans</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/MCMC.html">MCMC</a></span>(
+  <span class="no">ll</span>,
+  <span class="kw">initial</span> <span class="kw">=</span> <span class="no">ans</span>,
+  <span class="kw">nsteps</span>  <span class="kw">=</span> <span class="fl">5000</span>,
+  <span class="kw">X.</span>      <span class="kw">=</span> <span class="no">X</span>,
+  <span class="kw">y.</span>      <span class="kw">=</span> <span class="no">y</span>,
+  <span class="kw">kernel</span>  <span class="kw">=</span> <span class="fu"><a href="reference/kernel_normal.html">kernel_normal</a></span>(<span class="kw">scale</span> <span class="kw">=</span> <span class="fl">.05</span>) <span class="co"># We can set the scale parameter like this</span>
+  )
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">ans</span>)</pre></div>
 <p><img src="reference/figures/summary-and-plot1-1.png"><!-- --></p>
 <p>Much better! Now, what if we use Vihola (2012) Robust Adaptive Metropolis (which is also implemented in the R package <a href="https://cran.r-project.org/package=adaptMCMC">adaptMCMC</a>)</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">ans_RAM &lt;-<span class="st"> </span><span class="kw"><a href="reference/MCMC.html">MCMC</a></span>(</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">  ll,</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">  <span class="dt">initial =</span> ans,</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">  <span class="dt">nsteps  =</span> <span class="dv">5000</span>,</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">  <span class="dt">X.      =</span> X,</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">  <span class="dt">y.      =</span> y,</a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">  <span class="dt">kernel  =</span> <span class="kw"><a href="reference/kernel_ram.html">kernel_ram</a></span>() </a>
-<a class="sourceLine" id="cb11-8" data-line-number="8">  )</a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(ans_RAM)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="r"><span class="no">ans_RAM</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/MCMC.html">MCMC</a></span>(
+  <span class="no">ll</span>,
+  <span class="kw">initial</span> <span class="kw">=</span> <span class="no">ans</span>,
+  <span class="kw">nsteps</span>  <span class="kw">=</span> <span class="fl">5000</span>,
+  <span class="kw">X.</span>      <span class="kw">=</span> <span class="no">X</span>,
+  <span class="kw">y.</span>      <span class="kw">=</span> <span class="no">y</span>,
+  <span class="kw">kernel</span>  <span class="kw">=</span> <span class="fu"><a href="reference/kernel_ram.html">kernel_ram</a></span>()
+  )
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">ans_RAM</span>)</pre></div>
 <p><img src="reference/figures/summary-and-plot-ram-1.png"><!-- --></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/coda/man/rejectionRate.html">rejectionRate</a></span>(ans_RAM)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="r"><span class="fl">1</span> - <span class="fu"><a href="https://rdrr.io/pkg/coda/man/rejectionRate.html">rejectionRate</a></span>(<span class="no">ans_RAM</span>)</pre></div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">##      par1      par2      par3 </a>
 <a class="sourceLine" id="cb13-2" data-line-number="2">## 0.3486697 0.3486697 0.3486697</a></code></pre></div>
 <p>We can also try using Haario et al (2001) Adaptive Metropolis</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">ans_AM &lt;-<span class="st"> </span><span class="kw"><a href="reference/MCMC.html">MCMC</a></span>(</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">  ll,</a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">  <span class="dt">initial =</span> ans,</a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">  <span class="dt">nsteps  =</span> <span class="dv">5000</span>,</a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">  <span class="dt">X.      =</span> X,</a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">  <span class="dt">y.      =</span> y,</a>
-<a class="sourceLine" id="cb14-7" data-line-number="7">  <span class="dt">kernel  =</span> <span class="kw"><a href="reference/kernel_adapt.html">kernel_adapt</a></span>() </a>
-<a class="sourceLine" id="cb14-8" data-line-number="8">  )</a>
-<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(ans_AM)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="r"><span class="no">ans_AM</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/MCMC.html">MCMC</a></span>(
+  <span class="no">ll</span>,
+  <span class="kw">initial</span> <span class="kw">=</span> <span class="no">ans</span>,
+  <span class="kw">nsteps</span>  <span class="kw">=</span> <span class="fl">5000</span>,
+  <span class="kw">X.</span>      <span class="kw">=</span> <span class="no">X</span>,
+  <span class="kw">y.</span>      <span class="kw">=</span> <span class="no">y</span>,
+  <span class="kw">kernel</span>  <span class="kw">=</span> <span class="fu"><a href="reference/kernel_adapt.html">kernel_adapt</a></span>()
+  )
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">ans_AM</span>)</pre></div>
 <p><img src="reference/figures/summary-and-plot-adapt-1.png"><!-- --></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/coda/man/rejectionRate.html">rejectionRate</a></span>(ans_AM)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="r"><span class="fl">1</span> - <span class="fu"><a href="https://rdrr.io/pkg/coda/man/rejectionRate.html">rejectionRate</a></span>(<span class="no">ans_AM</span>)</pre></div>
 <div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">##      par1      par2      par3 </a>
 <a class="sourceLine" id="cb16-2" data-line-number="2">## 0.5057011 0.5057011 0.5057011</a></code></pre></div>
 </div>
@@ -278,17 +275,17 @@ A BibTeX entry for LaTeX users is
 <h2 class="hasAnchor">
 <a href="#automatic-stop" class="anchor"></a>Automatic stop</h2>
 <p>Now, suppose that the algorithm actually takes a lot of time to actually reach stationary state, then it would be nice to actually sample from the posterior distribution once convergence has been reached. In the following example we use multiple chains and the Gelman diagnostic to check for convergence of the chain:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">1215</span>) <span class="co"># Same seed as before</span></a>
-<a class="sourceLine" id="cb17-2" data-line-number="2">ans &lt;-<span class="st"> </span><span class="kw"><a href="reference/MCMC.html">MCMC</a></span>(</a>
-<a class="sourceLine" id="cb17-3" data-line-number="3">  ll,</a>
-<a class="sourceLine" id="cb17-4" data-line-number="4">  <span class="dt">initial =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="kw"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span>(y)),</a>
-<a class="sourceLine" id="cb17-5" data-line-number="5">  <span class="dt">nsteps  =</span> <span class="dv">5000</span>,</a>
-<a class="sourceLine" id="cb17-6" data-line-number="6">  <span class="dt">X.      =</span> X,</a>
-<a class="sourceLine" id="cb17-7" data-line-number="7">  <span class="dt">y.      =</span> y,</a>
-<a class="sourceLine" id="cb17-8" data-line-number="8">  <span class="dt">kernel  =</span> <span class="kw"><a href="reference/kernel_normal.html">kernel_normal</a></span>(<span class="dt">scale =</span> <span class="fl">.05</span>),</a>
-<a class="sourceLine" id="cb17-9" data-line-number="9">  <span class="dt">nchains =</span> <span class="dv">2</span>,                           <span class="co"># Multiple chains</span></a>
-<a class="sourceLine" id="cb17-10" data-line-number="10">  <span class="dt">conv_checker =</span> <span class="kw"><a href="reference/convergence-checker.html">convergence_gelman</a></span>(<span class="dv">50</span>) <span class="co"># Checking for conv. every 200 steps</span></a>
-<a class="sourceLine" id="cb17-11" data-line-number="11">  )</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">1215</span>) <span class="co"># Same seed as before</span>
+<span class="no">ans</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/MCMC.html">MCMC</a></span>(
+  <span class="no">ll</span>,
+  <span class="kw">initial</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span>(<span class="no">y</span>)),
+  <span class="kw">nsteps</span>  <span class="kw">=</span> <span class="fl">5000</span>,
+  <span class="kw">X.</span>      <span class="kw">=</span> <span class="no">X</span>,
+  <span class="kw">y.</span>      <span class="kw">=</span> <span class="no">y</span>,
+  <span class="kw">kernel</span>  <span class="kw">=</span> <span class="fu"><a href="reference/kernel_normal.html">kernel_normal</a></span>(<span class="kw">scale</span> <span class="kw">=</span> <span class="fl">.05</span>),
+  <span class="kw">nchains</span> <span class="kw">=</span> <span class="fl">2</span>,                           <span class="co"># Multiple chains</span>
+  <span class="kw">conv_checker</span> <span class="kw">=</span> <span class="fu"><a href="reference/convergence-checker.html">convergence_gelman</a></span>(<span class="fl">50</span>) <span class="co"># Checking for conv. every 200 steps</span>
+  )</pre></div>
 <div class="sourceCode" id="cb18"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">## Convergence has been reached with 1000 steps (1000 final count of samples).</a></code></pre></div>
 <p>As a difference from the previous case, now we didn’t had to wait until the 5,000 steps were done, but the algorithm stopped for us, allowing us to start generating the desired sample much quicker.</p>
 </div>
@@ -297,27 +294,27 @@ A BibTeX entry for LaTeX users is
 <a href="#kernels-making-sure-that-we-get-positive-values" class="anchor"></a>Kernels: Making sure that we get positive values</h2>
 <p>For this final example, we will use the <code>kernel</code> argument and provide what corresponds to a transition kernel which makes proposals within certain boundaries, in particular, we want the algorithm to propose only positive values for the <code>sd</code> parameter, which we now must be positive.</p>
 <p>More over, since we now from a fact that we will only get positive values, we can go further and modify <code>ll</code> skipping the check for finite values:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">ll &lt;-<span class="st"> </span><span class="cf">function</span>(p, X., y.) {</a>
-<a class="sourceLine" id="cb19-2" data-line-number="2">  </a>
-<a class="sourceLine" id="cb19-3" data-line-number="3">  <span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="kw"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span>(y. <span class="op">-</span><span class="st"> </span>(p[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>X.<span class="op">*</span>p[<span class="dv">2</span>]), <span class="dt">sd =</span> p[<span class="dv">3</span>], <span class="dt">log =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb19-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb19-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="r"><span class="no">ll</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">p</span>, <span class="no">X.</span>, <span class="no">y.</span>) {
+
+  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span>(<span class="no">y.</span> - (<span class="no">p</span>[<span class="fl">1</span>] + <span class="no">X.</span>*<span class="no">p</span>[<span class="fl">2</span>]), <span class="kw">sd</span> <span class="kw">=</span> <span class="no">p</span>[<span class="fl">3</span>], <span class="kw">log</span> <span class="kw">=</span> <span class="fl">TRUE</span>))
+
+}</pre></div>
 <p>Much simpler function! Let’s do the call of the MCMC function specifying the right transition kernel to increase the acceptance rate. In this example, we will set the max of all parameters to be 5.0, and the min to be -5.0 for the constant and 0 for the beta coefficient and the variance parameter, all this using the <code>kernel_normal_reflective</code> (which implements a normal kernel with boundaries) function:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">1215</span>) <span class="co"># Same seed as before</span></a>
-<a class="sourceLine" id="cb20-2" data-line-number="2">ans &lt;-<span class="st"> </span><span class="kw"><a href="reference/MCMC.html">MCMC</a></span>(</a>
-<a class="sourceLine" id="cb20-3" data-line-number="3">  ll,</a>
-<a class="sourceLine" id="cb20-4" data-line-number="4">  <span class="dt">initial =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="kw"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span>(y)),</a>
-<a class="sourceLine" id="cb20-5" data-line-number="5">  <span class="dt">nsteps  =</span> <span class="dv">5000</span>,</a>
-<a class="sourceLine" id="cb20-6" data-line-number="6">  <span class="dt">X.      =</span> X,</a>
-<a class="sourceLine" id="cb20-7" data-line-number="7">  <span class="dt">y.      =</span> y,</a>
-<a class="sourceLine" id="cb20-8" data-line-number="8">  <span class="dt">kernel  =</span> <span class="kw"><a href="reference/kernel_normal.html">kernel_normal_reflective</a></span>(</a>
-<a class="sourceLine" id="cb20-9" data-line-number="9">    <span class="dt">ub    =</span> <span class="fl">5.0</span>,               <span class="co"># All parameters have the same upper bound</span></a>
-<a class="sourceLine" id="cb20-10" data-line-number="10">    <span class="dt">lb    =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="fl">5.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>), <span class="co"># But lower bound is specified per parameter</span></a>
-<a class="sourceLine" id="cb20-11" data-line-number="11">    <span class="dt">scale =</span> <span class="fl">0.05</span>               <span class="co"># This is the same scale as before</span></a>
-<a class="sourceLine" id="cb20-12" data-line-number="12">    ),</a>
-<a class="sourceLine" id="cb20-13" data-line-number="13">  <span class="dt">nchains =</span> <span class="dv">2</span>,                           </a>
-<a class="sourceLine" id="cb20-14" data-line-number="14">  <span class="dt">conv_checker =</span> <span class="kw"><a href="reference/convergence-checker.html">convergence_gelman</a></span>(<span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb20-15" data-line-number="15">  )</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">1215</span>) <span class="co"># Same seed as before</span>
+<span class="no">ans</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/MCMC.html">MCMC</a></span>(
+  <span class="no">ll</span>,
+  <span class="kw">initial</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span>(<span class="no">y</span>)),
+  <span class="kw">nsteps</span>  <span class="kw">=</span> <span class="fl">5000</span>,
+  <span class="kw">X.</span>      <span class="kw">=</span> <span class="no">X</span>,
+  <span class="kw">y.</span>      <span class="kw">=</span> <span class="no">y</span>,
+  <span class="kw">kernel</span>  <span class="kw">=</span> <span class="fu"><a href="reference/kernel_normal.html">kernel_normal_reflective</a></span>(
+    <span class="kw">ub</span>    <span class="kw">=</span> <span class="fl">5.0</span>,               <span class="co"># All parameters have the same upper bound</span>
+    <span class="kw">lb</span>    <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(-<span class="fl">5.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>), <span class="co"># But lower bound is specified per parameter</span>
+    <span class="kw">scale</span> <span class="kw">=</span> <span class="fl">0.05</span>               <span class="co"># This is the same scale as before</span>
+    ),
+  <span class="kw">nchains</span> <span class="kw">=</span> <span class="fl">2</span>,
+  <span class="kw">conv_checker</span> <span class="kw">=</span> <span class="fu"><a href="reference/convergence-checker.html">convergence_gelman</a></span>(<span class="fl">50</span>)
+  )</pre></div>
 <div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">## Convergence has been reached with 550 steps (550 final count of samples).</a></code></pre></div>
 <p>Again, as the proposal kernel has lower and upper bounds, then we are guaranteed that all proposed states are within the support of the parameter space.</p>
 </div>
@@ -347,13 +344,13 @@ A BibTeX entry for LaTeX users is
 
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=fmcmc">https://​cloud.r-project.org/​package=fmcmc</a>
 </li>
-<li>Browse source code at <br><a href="https://github.com/USCbiostats/fmcmc">https://​github.com/​USCbiostats/​fmcmc</a>
+<li>Browse source code at <br><a href="https://github.com/USCbiostats/fmcmc/">https://​github.com/​USCbiostats/​fmcmc/​</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/USCbiostats/fmcmc/issues">https://​github.com/​USCbiostats/​fmcmc/​issues</a>
 </li>
@@ -381,7 +378,7 @@ A BibTeX entry for LaTeX users is
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>George Vega Yon <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-3171-0844" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
+<li>George Vega Yon <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-3171-0844" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>National
          Cancer Institute (NCI) <br><small class="roles"> Funder </small>  <br><small>(Grant Number
          5P01CA196569-02)</small>
@@ -413,7 +410,7 @@ A BibTeX entry for LaTeX users is
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
