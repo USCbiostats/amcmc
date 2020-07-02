@@ -91,7 +91,7 @@ recalculation at every step of the algorithm." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fmcmc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2-0-9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-0</span>
       </span>
     </div>
 
@@ -158,12 +158,12 @@ recalculation at every step of the algorithm.</p>
     <pre class="usage"><span class='fu'>cov_recursive</span>(
   <span class='no'>X_t</span>,
   <span class='no'>Cov_t</span>,
-  <span class='no'>Mean_t</span>,
   <span class='no'>Mean_t_prev</span>,
   <span class='no'>t.</span>,
+  <span class='kw'>Mean_t</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>0</span>,
   <span class='kw'>Sd</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>Ik</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>X_t</span>))
+  <span class='kw'>Ik</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>Cov_t</span>))
 )
 
 <span class='fu'>mean_recursive</span>(<span class='no'>X_t</span>, <span class='no'>Mean_t_prev</span>, <span class='no'>t.</span>)</pre>
@@ -180,12 +180,12 @@ recalculation at every step of the algorithm.</p>
       <td><p>Covariance in t</p></td>
     </tr>
     <tr>
-      <th>Mean_t, Mean_t_prev</th>
-      <td><p>Vectors of averages in time <code>t</code> and <code>t-1</code> respectively.</p></td>
-    </tr>
-    <tr>
       <th>t.</th>
       <td><p>Sample size up to <code>t-1</code>.</p></td>
+    </tr>
+    <tr>
+      <th>Mean_t, Mean_t_prev</th>
+      <td><p>Vectors of averages in time <code>t</code> and <code>t-1</code> respectively.</p></td>
     </tr>
     <tr>
       <th>Sd, eps, Ik</th>
@@ -249,7 +249,7 @@ Bernoulli, 7(2), 223–242.
 
 <span class='co'># Comparing accuracy and speed</span>
 <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='no'>ans1</span> - <span class='no'>ans2</span>)</div><div class='output co'>#&gt; [1] -2.220446e-16  2.220446e-16</div><div class='input'><span class='no'>t0</span>/<span class='no'>t1</span></div><div class='output co'>#&gt;    user  system elapsed 
-#&gt;       6     NaN       7 </div><div class='input'>
+#&gt;       7     NaN       6 </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

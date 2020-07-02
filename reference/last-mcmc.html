@@ -6,15 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Citation and Authors • fmcmc</title>
+<title>Information about the last <code>MCMC</code> call — last-mcmc • fmcmc</title>
 
 <!-- favicons -->
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png" />
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png" />
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -25,8 +25,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
-<link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script>
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
@@ -40,13 +40,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 
 
-<meta property="og:title" content="Citation and Authors" />
+<meta property="og:title" content="Information about the last <code>MCMC</code> call — last-mcmc" />
+<meta property="og:description" content="This environment holds a copy of the last call to MCMC, including the start
+and end time (to compute total elapsed time) of the call. Since the resulting
+object of MCMC is an object of class coda::mcmc, this is a way to capture
+more information in case the user needs it." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -76,7 +80,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-citation-authors">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -88,7 +92,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">fmcmc</a>
+        <a class="navbar-link" href="../index.html">fmcmc</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-0</span>
       </span>
     </div>
@@ -96,13 +100,13 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -112,15 +116,15 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/user-defined-kernels.html">User-defined kernels</a>
+      <a href="../articles/user-defined-kernels.html">User-defined kernels</a>
     </li>
     <li>
-      <a href="articles/workflow-with-fmcmc.html">Workflow with fmcmc</a>
+      <a href="../articles/workflow-with-fmcmc.html">Workflow with fmcmc</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="news/index.html">Changelog</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -141,54 +145,62 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Citation</h1>
-      <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/inst/CITATION'><code>inst/CITATION</code></a></small>
+    <h1>Information about the last <code>MCMC</code> call</h1>
+    <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/last.R'><code>R/last.R</code></a></small>
+    <div class="hidden name"><code>last-mcmc.Rd</code></div>
     </div>
 
-    <p>Vega Yon et al., (2019). fmcmc: A friendly MCMC framework. Journal of Open Source Software, 4(39), 1427, https://doi.org/10.21105/joss.01427</p>
-    <pre>@Article{,
-  title = {fmcmc: A friendly MCMC framework},
-  author = {George {Vega Yon} and Paul Marjoram},
-  journal = {The Journal of Open Source Software},
-  year = {2019},
-  month = {jul},
-  volume = {4},
-  number = {39},
-  doi = {10.21105/joss.01427},
-  url = {https://doi.org/10.21105/joss.01427},
-}</pre>
-
-    <div class="page-header">
-      <h1>Authors</h1>
+    <div class="ref-description">
+    <p>This environment holds a copy of the last call to <a href='MCMC.html'>MCMC</a>, including the start
+and end time (to compute total elapsed time) of the call. Since the resulting
+object of <code>MCMC</code> is an object of class <a href='https://rdrr.io/pkg/coda/man/mcmc.html'>coda::mcmc</a>, this is a way to capture
+more information in case the user needs it.</p>
     </div>
 
-    <ul class="list-unstyled">
-      <li>
-        <p><strong>George Vega Yon</strong>. Author, maintainer. <a href='https://orcid.org/0000-0002-3171-0844' target='orcid.widget' aria-label='ORCID'><span class='fab fa-orcid orcid' aria-hidden='true'></span></a>
-        </p>
-      </li>
-      <li>
-        <p><strong>Paul Marjoram</strong>. Contributor, thesis advisor. <a href='https://orcid.org/0000-0003-0824-7449' target='orcid.widget' aria-label='ORCID'><span class='fab fa-orcid orcid' aria-hidden='true'></span></a>
-        </p>
-      </li>
-      <li>
-        <p><strong>National
-         Cancer Institute (NCI)</strong>. Funder. 
-        <br /><small>Grant Number
-         5P01CA196569-02</small></p>
-      </li>
-      <li>
-        <p><strong>Fabian Scheipl</strong>. Reviewer. <a href='https://orcid.org/0000-0001-8172-3603' target='orcid.widget' aria-label='ORCID'><span class='fab fa-orcid orcid' aria-hidden='true'></span></a>
-        <br /><small>JOSS reviewer</small></p>
-      </li>
-    </ul>
+    <pre class="usage"><span class='no'>LAST_MCMC</span>
+
+<span class='fu'>last_elapsed</span>()
+
+<span class='fu'>last_nsteps</span>()
+
+<span class='fu'>last_nchains</span>()
+
+<span class='fu'>last_kernel</span>()
+
+<span class='fu'>last_conv_checker</span>()
+
+<span class='fu'>last_</span>(<span class='no'>x</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>Character scalar. Name of an argument to retrieve. If <code>x</code> was not
+passed to the last call, the function returns with an error.</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>An object of class <code>fmcmc_last</code> (inherits from <code>environment</code>) of length 0.</p>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>last_*</code> returns the corresponding variable.</p>
+<p>The function <code>last_elapsed</code> returns the elapsed time of the last call
+to <a href='MCMC.html'>MCMC</a>. In particular, the <code>MCMC</code> function records the running time of R
+at the beginning and end of the function using <code><a href='https://rdrr.io/r/base/proc.time.html'>proc.time()</a></code>. So this function
+returns the difference between the two (<code>time_end - time_start</code>).</p>
 
   </div>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
+  </div>
 </div>
-
 
 
       <footer>

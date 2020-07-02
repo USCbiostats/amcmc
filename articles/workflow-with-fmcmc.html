@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fmcmc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2-0-9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-0</span>
       </span>
     </div>
 
@@ -138,7 +138,7 @@
 )</pre></body></html></div>
 <p>Since the resulting object is of class <code>mcmc</code> (from the <code>coda</code> R package), we can use all the functions included in <code>coda</code> for model diagnostics:</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">coda</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">out</span>[,<span class="fl">1</span>:<span class="fl">3</span>])</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">out</span>[,<span class="fl">1</span>:<span class="fl">3</span>])</pre></body></html></div>
 <p><img src="workflow-with-fmcmc_files/figure-html/post-estimation-1.png" width="600" height="600"></p>
 <p>So this chain has very poor mixing, so let’s try again by using a smaller scale for the normal kernel proposal moving it from 1 (the default value) to .2:</p>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="co"># to get reproducible results</span>
@@ -150,7 +150,7 @@
   <span class="kw">kernel</span>  <span class="kw">=</span> <span class="fu"><a href="../reference/kernel_normal.html">kernel_normal</a></span>(<span class="kw">scale</span> <span class="kw">=</span> <span class="fl">.2</span>)
 )</pre></body></html></div>
 <p>The <code>kernel_normal</code>, which is the default kernel in the <code>MCMC</code> function, returns an object of class <code>fmcmc_kernel</code>. In principle it consists on a list of two functions that are used by the <code>MCMC</code> routine: <code>proposal</code>, the proposal kernel function, and <code>logratio</code>, the function that returns the log of the Metropolis-Hastings ratio. We will talk more about <code>fmcmc_kernel</code> objects later. Now, let’s look at the first three variables of our model:</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">out</span>[,<span class="fl">1</span>:<span class="fl">3</span>])</pre></body></html></div>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">out</span>[,<span class="fl">1</span>:<span class="fl">3</span>])</pre></body></html></div>
 <p><img src="workflow-with-fmcmc_files/figure-html/unnamed-chunk-1-1.png" width="600" height="600"></p>
 <p>Better. Now, ideally we should only be using observations from the stationary distribution. Let’s give it another try checking for convergence every 1,000 steps using the <code>convergence_geweke</code>:</p>
 <div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="co"># to get reproducible results</span>
@@ -162,7 +162,7 @@
   <span class="kw">kernel</span>  <span class="kw">=</span> <span class="fu"><a href="../reference/kernel_normal.html">kernel_normal</a></span>(<span class="kw">scale</span> <span class="kw">=</span> <span class="fl">.2</span>),
   <span class="kw">conv_checker</span> <span class="kw">=</span> <span class="fu"><a href="../reference/convergence-checker.html">convergence_geweke</a></span>(<span class="fl">200</span>)
 )</pre></body></html></div>
-<pre><code>## Convergence has been reached with 200 steps (200 final count of samples).</code></pre>
+<pre><code>## Convergence has been reached with 200 steps. avg Geweke's Z: 0.1003. (200 final count of samples).</code></pre>
 <p>A bit better. As announced by <code>MCMC</code>, the chain has reach a stationary state. With this in hand, we can now rerun the algorithm such that we start from the last couple of step of the chain, this time, without convergence monitoring as it is no longer necessary.</p>
 <p>We will increase the number of steps (sample size), use 2 chains using parallel computing, and add some thinning to reduce autocorrelation:</p>
 <div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="co"># Now we change the seed so we get a different stream of</span>
@@ -179,7 +179,7 @@
   <span class="kw">multicore</span> <span class="kw">=</span> <span class="fl">TRUE</span>                       <span class="co"># in parallel.</span>
   )</pre></body></html></div>
 <p>Observed that, instead of specifying what are the 2 starting points for each chain, we passed the <code>out</code> to the initial set of parameters. By default, if <code>initial</code> is of class <code>mcmc</code>, <code>MCMC</code> will take the last <code>nchains</code> points from the chain as starting point for the new sequence. If <code>initial</code> is of class <code>mcmc.list</code>, the number of chains in <code>initial</code> must match the <code>nchains</code> parameter. We now see that the output posterior distribution appears to be stationary</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">out_final</span>[, <span class="fl">1</span>:<span class="fl">3</span>])</pre></body></html></div>
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">out_final</span>[, <span class="fl">1</span>:<span class="fl">3</span>])</pre></body></html></div>
 <p><img src="workflow-with-fmcmc_files/figure-html/final-results-1.png" width="600" height="600"></p>
 <div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">out_final</span>[, <span class="fl">1</span>:<span class="fl">3</span>])</pre></body></html></div>
 <pre><code>## 
@@ -239,12 +239,12 @@
 <pre><code>## [1] 1000</code></pre>
 <div class="sourceCode" id="cb22"><html><body><pre class="r"><span class="co"># Variance covariance matrix (now is not empty)</span>
 (<span class="no">Sigma1</span> <span class="kw">&lt;-</span> <span class="no">khaario</span>$<span class="no">Sigma</span>)</pre></body></html></div>
-<pre><code>##              [,1]         [,2]         [,3]        [,4]         [,5]
-## [1,]  0.030769025 -0.007959858  0.000105674 0.001215879  0.025767281
-## [2,] -0.007959858  0.081535551 -0.032983224 0.005868047 -0.010501081
-## [3,]  0.000105674 -0.032983224  0.073560617 0.013602060 -0.011829260
-## [4,]  0.001215879  0.005868047  0.013602060 0.074296323  0.001624821
-## [5,]  0.025767281 -0.010501081 -0.011829260 0.001624821  0.031309621</code></pre>
+<pre><code>##              [,1]         [,2]         [,3]        [,4]        [,5]
+## [1,]  0.017590357 -0.002854929 -0.008318243 -0.01276681  0.01407210
+## [2,] -0.002854929  0.021763084 -0.006546827 -0.01509424  0.01734343
+## [3,] -0.008318243 -0.006546827  0.029877366  0.01207685 -0.01164028
+## [4,] -0.012766807 -0.015094243  0.012076849  0.04368845 -0.02329962
+## [5,]  0.014072103  0.017343433 -0.011640281 -0.02329962  0.03356178</code></pre>
 <p>If we re-run the chain, using as starting point the last step of the first run, we can also continue using the kernel object:</p>
 <div class="sourceCode" id="cb24"><html><body><pre class="r"><span class="no">out_harrio_2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/MCMC.html">MCMC</a></span>(
   <span class="kw">initial</span>   <span class="kw">=</span> <span class="no">out_harrio_1</span>,
@@ -266,20 +266,20 @@
 <pre><code>## [1] 3000</code></pre>
 <div class="sourceCode" id="cb28"><html><body><pre class="r"><span class="co"># Variance covariance matrix (now is not empty)</span>
 (<span class="no">Sigma2</span> <span class="kw">&lt;-</span> <span class="no">khaario</span>$<span class="no">Sigma</span>)</pre></body></html></div>
-<pre><code>##            [,1]         [,2]        [,3]         [,4]         [,5]
-## [1,] 0.08889329  0.010677087  0.03792128  0.005396280  0.010543827
-## [2,] 0.01067709  0.110626000 -0.01696425 -0.007246985 -0.016688348
-## [3,] 0.03792128 -0.016964251  0.11818972  0.015875027 -0.017081078
-## [4,] 0.00539628 -0.007246985  0.01587503  0.121572142  0.008640497
-## [5,] 0.01054383 -0.016688348 -0.01708108  0.008640497  0.115435585</code></pre>
+<pre><code>##             [,1]          [,2]        [,3]         [,4]          [,5]
+## [1,] 0.056190230  0.0033102943  0.02464659  0.004888311  0.0213087807
+## [2,] 0.003310294  0.1006714669 -0.02177205 -0.023899697 -0.0005756119
+## [3,] 0.024646589 -0.0217720519  0.12823451  0.035031728 -0.0152408612
+## [4,] 0.004888311 -0.0238996970  0.03503173  0.126440422 -0.0177445616
+## [5,] 0.021308781 -0.0005756119 -0.01524086 -0.017744562  0.1123653363</code></pre>
 <div class="sourceCode" id="cb30"><html><body><pre class="r"><span class="co"># How different these are?</span>
 <span class="no">Sigma1</span> - <span class="no">Sigma2</span></pre></body></html></div>
-<pre><code>##              [,1]         [,2]         [,3]         [,4]         [,5]
-## [1,] -0.058124262 -0.018636944 -0.037815608 -0.004180402  0.015223454
-## [2,] -0.018636944 -0.029090449 -0.016018973  0.013115032  0.006187267
-## [3,] -0.037815608 -0.016018973 -0.044629102 -0.002272967  0.005251818
-## [4,] -0.004180402  0.013115032 -0.002272967 -0.047275819 -0.007015676
-## [5,]  0.015223454  0.006187267  0.005251818 -0.007015676 -0.084125964</code></pre>
+<pre><code>##              [,1]         [,2]        [,3]         [,4]         [,5]
+## [1,] -0.038599872 -0.006165223 -0.03296483 -0.017655117 -0.007236678
+## [2,] -0.006165223 -0.078908383  0.01522522  0.008805454  0.017919045
+## [3,] -0.032964832  0.015225225 -0.09835714 -0.022954879  0.003600580
+## [4,] -0.017655117  0.008805454 -0.02295488 -0.082751972 -0.005555054
+## [5,] -0.007236678  0.017919045  0.00360058 -0.005555054 -0.078803556</code></pre>
 <p>Things have changed since the last time we used the kernel, as expected. Kernel objects in the <code>fmcmc</code> package can also be used with multiple chains and in parallel. The <code>MCMC</code> function is smart enough to create independent copies of <code>fmcmc_kernel</code> objects when running multiple chains, and keep the original kernel objects up-to-date even when using multiple cores to run <code>MCMC</code>. For more technical details on how <code>fmcmc_kernel</code> objects work see the manual <code><a href="../reference/kernel_new.html">?fmcmc_kernel</a></code> or the vignette “User-defined kernels” included in the package <code><a href="../articles/user-defined-kernels.html">vignette("user-defined-kernels", package = "fmcmc")</a></code>.</p>
 </div>
   </div>

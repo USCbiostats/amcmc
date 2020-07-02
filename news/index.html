@@ -89,7 +89,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fmcmc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2-0-9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-0</span>
       </span>
     </div>
 
@@ -147,9 +147,20 @@
       <small>Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="fmcmc-0-4-0" class="section level1">
+<h1 class="page-header" data-toc-text="0.4-0">
+<a href="#fmcmc-0-4-0" class="anchor"></a>fmcmc 0.4-0<small> Unreleased </small>
+</h1>
+<ul>
+<li><p><code>kernel_am</code> and <code>kernel_ram</code> no longer fail when at least one parameter is an offset (<code>fixed = TRUE</code> for some parameter).</p></li>
+<li><p>Now <code>kernel_ram</code> tries first to find the cholesky decomp. If it fails, then it uses <code><a href="https://rdrr.io/pkg/Matrix/man/nearPD.html">Matrix::nearPD</a></code> and re-tries. This is following what is done in the <code>adaptMCMC</code> package.</p></li>
+<li><p>Workflow for running MCMC with <code>conv_checker</code> re-designed (less error prone).</p></li>
+<li><p>Environments <code>LAST_MCMC</code> and <code>LAST_CONV_CHECK</code> provide information about the last call to <code>MCMC</code> and the corresponding convergence checker. Users can access these environments via getter and setter functions.</p></li>
+</ul>
+</div>
     <div id="fmcmc-0-3-0" class="section level1">
 <h1 class="page-header" data-toc-text="0.3-0">
-<a href="#fmcmc-0-3-0" class="anchor"></a>fmcmc 0.3-0<small> Unreleased </small>
+<a href="#fmcmc-0-3-0" class="anchor"></a>fmcmc 0.3-0<small> 2020-04-22 </small>
 </h1>
 <ul>
 <li><p>Adding Vihola (2012)’s Robust Adaptive Metropolis, Haario et al. (2001)’s Adaptive Metropolis, and Thawornwattana et al. (2018)’s mirror kernel algorithms.</p></li>

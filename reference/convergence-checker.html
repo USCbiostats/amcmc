@@ -49,7 +49,14 @@
 <meta property="og:title" content="Convergence Monitoring — convergence-checker" />
 <meta property="og:description" content="Built-in set of functions to be used in companion with the argument
 conv_checker in MCMC. These functions are not intended to be used
-in a context other than the MCMC function." />
+in a context other than the MCMC function.
+The object LAST_CONV_CHECK is an environment that holds
+information regarding the convergence checker used. This information can be
+updated every time that the conv_checker function is called by MCMC using
+the functions convergence_data_set and convergence_msg_set. The function
+convergence_data_get is just a wrapper of get().
+The msg member of LAST_CONV_CHECK is resetted before conv_checker is
+called." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -92,7 +99,7 @@ in a context other than the MCMC function." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fmcmc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2-0-9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-0</span>
       </span>
     </div>
 
@@ -155,9 +162,26 @@ in a context other than the MCMC function." />
     <p>Built-in set of functions to be used in companion with the argument
 <code>conv_checker</code> in <a href='MCMC.html'>MCMC</a>. These functions are not intended to be used
 in a context other than the <code>MCMC</code> function.</p>
+<p>The object <code>LAST_CONV_CHECK</code> is an environment that holds
+information regarding the convergence checker used. This information can be
+updated every time that the <code>conv_checker</code> function is called by <code>MCMC</code> using
+the functions <code>convergence_data_set</code> and <code>convergence_msg_set</code>. The function
+<code>convergence_data_get</code> is just a wrapper of <code><a href='https://rdrr.io/r/base/get.html'>get()</a></code>.</p>
+<p>The <code>msg</code> member of <code>LAST_CONV_CHECK</code> is resetted before <code>conv_checker</code> is
+called.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>convergence_gelman</span>(<span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>1000L</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>1.1</span>, <span class='kw'>check_invariant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='no'>LAST_CONV_CHECK</span>
+
+<span class='fu'>convergence_data_set</span>(<span class='no'>x</span>)
+
+<span class='fu'>convergence_data_get</span>(<span class='no'>x</span>)
+
+<span class='fu'>convergence_msg_set</span>(<span class='kw'>msg</span> <span class='kw'>=</span> <span class='fl'>NA_character_</span>)
+
+<span class='fu'>convergence_msg_get</span>()
+
+<span class='fu'>convergence_gelman</span>(<span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>1000L</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>1.1</span>, <span class='kw'>check_invariant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
 
 <span class='fu'>convergence_geweke</span>(
   <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>1000L</span>,
@@ -173,6 +197,15 @@ in a context other than the <code>MCMC</code> function.</p>
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>In the case of <code>convergence_data_set</code>, a named list. For
+<code>convergence_data_get</code>, a character vector.</p></td>
+    </tr>
+    <tr>
+      <th>msg</th>
+      <td><p>Character scalar. Personalized message to print.</p></td>
+    </tr>
     <tr>
       <th>freq</th>
       <td><p>Integer scalar. Frequency of checking.</p></td>
@@ -193,12 +226,16 @@ the Gelman diagnostic using variables with greater than <code>1e-10</code> varia
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>An object of class <code>environment</code> of length 1.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A function passed to <a href='MCMC.html'>MCMC</a> to check automatic convergence.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>In the case of <code>convergence_geweke</code>, <code>threshold</code> sets the p-value
+    <p><code>convergence_gelman</code> is a wrapper of <code><a href='https://rdrr.io/pkg/coda/man/gelman.diag.html'>coda::gelman.diag()</a></code>.</p>
+<p>In the case of <code>convergence_geweke</code>, <code>threshold</code> sets the p-value
 for the null \(H_0: Z = 0\), i.e. equal means between the first and last
 chunks of the chain. See <a href='https://rdrr.io/pkg/coda/man/geweke.diag.html'>coda::geweke.diag</a>. This implies that the higher
 the threshold, the lower the probability of stopping the chain.</p>

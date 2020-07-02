@@ -90,7 +90,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fmcmc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2-0-9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-0</span>
       </span>
     </div>
 
@@ -165,7 +165,8 @@
   <span class='kw'>lb</span> <span class='kw'>=</span> -<span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
   <span class='kw'>ub</span> <span class='kw'>=</span> <span class='no'>.Machine</span>$<span class='no'>double.xmax</span>,
   <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>until</span> <span class='kw'>=</span> <span class='fl'>Inf</span>
+  <span class='kw'>until</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
+  <span class='kw'>constr</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -225,6 +226,13 @@ will be treated as fixed or not. Single values are recycled.</p></td>
       <th>until</th>
       <td><p>Integer scalar. Last step at which adaptation takes place (see
 details).</p></td>
+    </tr>
+    <tr>
+      <th>constr</th>
+      <td><p>Logical lower-diagonal square matrix of size <code>k</code>. <strong>Not</strong> in the
+original paper, but rather a tweak that imposes a constraint on the <code>S_n</code>
+matrix. If different from <code>NULL</code>, the kernel multiplates <code>S_n</code> by this
+constraint so that zero elements are pre-imposed.</p></td>
     </tr>
     </table>
 

@@ -53,7 +53,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fmcmc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2-0-9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-0</span>
       </span>
     </div>
 
@@ -119,7 +119,7 @@
 <ol>
 <li><p><strong>Automatic convergence checker</strong>: The algorithm splits the MCMC runs according to the frequency with which it needs to check convergence. Users can use either one of the included functions (<code>convergence_gelman</code>, <code>convergence_geweke</code>, etc.), or provide their own.</p></li>
 <li><p><strong>Run multiple chains in parallel fashion</strong>: Using either a <code>PSOCK</code> cluster (default), or providing a personalized cluster object like the ones in the <code>parallel</code> R package.</p></li>
-<li><p><strong>User defined transition kernels</strong>: Besides of canonical Gaussian Kernel, users can specify their own or use one of the included in the package, for example: <code>kernel_normal</code>, <code>kernel_normal_reflective</code>, <code>kernel_unif</code>, or <code>kernel_unif_reflective</code>.</p></li>
+<li><p><strong>User defined transition kernels</strong>: Besides of canonical Gaussian Kernel, users can specify their own or use one of the included in the package, for example: <code>kernel_adapt</code>, <code>kernel_ram</code>, <code>kernel_normal_reflective</code>, <code>kernel_unif</code>, <code>kernel_mirror</code>, or <code>kernel_unif_reflective</code>.</p></li>
 </ol>
 <p>All the above without requiring compiled code.</p>
 </div>
@@ -208,7 +208,7 @@ A BibTeX entry for LaTeX users is
   )</pre></div>
 <p>As the output object is an object of class <code>mcmc</code> from the <code>coda</code> R package, we can use all the functions from it on our output:</p>
 <div class="sourceCode" id="cb7"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">coda</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">ans</span>)</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">ans</span>)</pre></div>
 <p><img src="reference/figures/first-diagnostics-1.png"><!-- --></p>
 <div class="sourceCode" id="cb8"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">ans</span>)</pre></div>
 <div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">## </a>
@@ -240,7 +240,7 @@ A BibTeX entry for LaTeX users is
   <span class="kw">y.</span>      <span class="kw">=</span> <span class="no">y</span>,
   <span class="kw">kernel</span>  <span class="kw">=</span> <span class="fu"><a href="reference/kernel_normal.html">kernel_normal</a></span>(<span class="kw">scale</span> <span class="kw">=</span> <span class="fl">.05</span>) <span class="co"># We can set the scale parameter like this</span>
   )
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">ans</span>)</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">ans</span>)</pre></div>
 <p><img src="reference/figures/summary-and-plot1-1.png"><!-- --></p>
 <p>Much better! Now, what if we use Vihola (2012) Robust Adaptive Metropolis (which is also implemented in the R package <a href="https://cran.r-project.org/package=adaptMCMC">adaptMCMC</a>)</p>
 <div class="sourceCode" id="cb11"><pre class="r"><span class="no">ans_RAM</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/MCMC.html">MCMC</a></span>(
@@ -251,7 +251,7 @@ A BibTeX entry for LaTeX users is
   <span class="kw">y.</span>      <span class="kw">=</span> <span class="no">y</span>,
   <span class="kw">kernel</span>  <span class="kw">=</span> <span class="fu"><a href="reference/kernel_ram.html">kernel_ram</a></span>()
   )
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">ans_RAM</span>)</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">ans_RAM</span>)</pre></div>
 <p><img src="reference/figures/summary-and-plot-ram-1.png"><!-- --></p>
 <div class="sourceCode" id="cb12"><pre class="r"><span class="fl">1</span> - <span class="fu"><a href="https://rdrr.io/pkg/coda/man/rejectionRate.html">rejectionRate</a></span>(<span class="no">ans_RAM</span>)</pre></div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">##      par1      par2      par3 </a>
@@ -265,7 +265,7 @@ A BibTeX entry for LaTeX users is
   <span class="kw">y.</span>      <span class="kw">=</span> <span class="no">y</span>,
   <span class="kw">kernel</span>  <span class="kw">=</span> <span class="fu"><a href="reference/kernel_adapt.html">kernel_adapt</a></span>()
   )
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">ans_AM</span>)</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">ans_AM</span>)</pre></div>
 <p><img src="reference/figures/summary-and-plot-adapt-1.png"><!-- --></p>
 <div class="sourceCode" id="cb15"><pre class="r"><span class="fl">1</span> - <span class="fu"><a href="https://rdrr.io/pkg/coda/man/rejectionRate.html">rejectionRate</a></span>(<span class="no">ans_AM</span>)</pre></div>
 <div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">##      par1      par2      par3 </a>
@@ -286,7 +286,9 @@ A BibTeX entry for LaTeX users is
   <span class="kw">nchains</span> <span class="kw">=</span> <span class="fl">2</span>,                           <span class="co"># Multiple chains</span>
   <span class="kw">conv_checker</span> <span class="kw">=</span> <span class="fu"><a href="reference/convergence-checker.html">convergence_gelman</a></span>(<span class="fl">50</span>) <span class="co"># Checking for conv. every 200 steps</span>
   )</pre></div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">## Convergence has been reached with 1000 steps (1000 final count of samples).</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">## No convergence yet (steps count: 50). Trying with the next bulk.</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">## Convergence has been reached with 100 steps (100 final count of samples).</a></code></pre></div>
 <p>As a difference from the previous case, now we didn’t had to wait until the 5,000 steps were done, but the algorithm stopped for us, allowing us to start generating the desired sample much quicker.</p>
 </div>
 <div id="kernels-making-sure-that-we-get-positive-values" class="section level2">
@@ -315,7 +317,9 @@ A BibTeX entry for LaTeX users is
   <span class="kw">nchains</span> <span class="kw">=</span> <span class="fl">2</span>,
   <span class="kw">conv_checker</span> <span class="kw">=</span> <span class="fu"><a href="reference/convergence-checker.html">convergence_gelman</a></span>(<span class="fl">50</span>)
   )</pre></div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">## Convergence has been reached with 550 steps (550 final count of samples).</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">## No convergence yet (steps count: 50). Trying with the next bulk.</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb21-3" data-line-number="3">## Convergence has been reached with 100 steps (100 final count of samples).</a></code></pre></div>
 <p>Again, as the proposal kernel has lower and upper bounds, then we are guaranteed that all proposed states are within the support of the parameter space.</p>
 </div>
 </div>
