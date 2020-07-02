@@ -156,6 +156,8 @@
 <li><p>Now <code>kernel_ram</code> tries first to find the cholesky decomp. If it fails, then it uses <code><a href="https://rdrr.io/pkg/Matrix/man/nearPD.html">Matrix::nearPD</a></code> and re-tries. This is following what is done in the <code>adaptMCMC</code> package.</p></li>
 <li><p>Workflow for running MCMC with <code>conv_checker</code> re-designed (less error prone).</p></li>
 <li><p>Environments <code>LAST_MCMC</code> and <code>LAST_CONV_CHECK</code> provide information about the last call to <code>MCMC</code> and the corresponding convergence checker. Users can access these environments via getter and setter functions.</p></li>
+<li><p><code>MCMC</code> with convergence checker now reports the status of the convergence statistic using the <code>LAST_CONV_CHECK</code> environment and corresponding functions.</p></li>
+<li><p>The functions to compute mean and variance recursively now allow us to do so using windows.</p></li>
 </ul>
 </div>
     <div id="fmcmc-0-3-0" class="section level1">

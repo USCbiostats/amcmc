@@ -47,7 +47,9 @@
 
 
 <meta property="og:title" content="Markov Chain Monte Carlo — MCMC" />
-<meta property="og:description" content="A flexible implementation of the Metropolis-Hastings MCMC algorithm." />
+<meta property="og:description" content="A flexible implementation of the Metropolis-Hastings MCMC algorithm, users
+can utilize arbitrary transition kernels as well as set-up an automatic
+stop criterion using a convergence check test." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -150,61 +152,12 @@
     </div>
 
     <div class="ref-description">
-    <p>A flexible implementation of the Metropolis-Hastings MCMC algorithm.</p>
+    <p>A flexible implementation of the Metropolis-Hastings MCMC algorithm, users
+can utilize arbitrary transition kernels as well as set-up an automatic
+stop criterion using a convergence check test.</p>
     </div>
 
     <pre class="usage"><span class='fu'>MCMC</span>(
-  <span class='no'>initial</span>,
-  <span class='no'>fun</span>,
-  <span class='no'>nsteps</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
-  <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal</a></span>(),
-  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>,
-  <span class='kw'>chain_id</span> <span class='kw'>=</span> <span class='fl'>1L</span>
-)
-
-<span class='co'># S3 method for mcmc</span>
-<span class='fu'>MCMC</span>(
-  <span class='no'>initial</span>,
-  <span class='no'>fun</span>,
-  <span class='no'>nsteps</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
-  <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal</a></span>(),
-  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>,
-  <span class='kw'>chain_id</span> <span class='kw'>=</span> <span class='fl'>1L</span>
-)
-
-<span class='co'># S3 method for mcmc.list</span>
-<span class='fu'>MCMC</span>(
-  <span class='no'>initial</span>,
-  <span class='no'>fun</span>,
-  <span class='no'>nsteps</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
-  <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal</a></span>(),
-  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>,
-  <span class='kw'>chain_id</span> <span class='kw'>=</span> <span class='fl'>1L</span>
-)
-
-<span class='co'># S3 method for default</span>
-<span class='fu'>MCMC</span>(
   <span class='no'>initial</span>,
   <span class='no'>fun</span>,
   <span class='no'>nsteps</span>,
@@ -234,6 +187,22 @@
   <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>,
   <span class='kw'>chain_id</span> <span class='kw'>=</span> <span class='fl'>1L</span>
+)
+
+<span class='fu'>MCMC_with_conv_checker</span>(
+  <span class='no'>initial</span>,
+  <span class='no'>fun</span>,
+  <span class='no'>nsteps</span>,
+  <span class='no'>...</span>,
+  <span class='no'>nchains</span>,
+  <span class='no'>burnin</span>,
+  <span class='no'>thin</span>,
+  <span class='no'>kernel</span>,
+  <span class='no'>multicore</span>,
+  <span class='no'>conv_checker</span>,
+  <span class='no'>cl</span>,
+  <span class='no'>progress</span>,
+  <span class='no'>chain_id</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -304,12 +273,13 @@ chains the process is taking place. This could be relevant for some kernels
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function implements MCMC using the Metropolis-Hastings ratio with
+    <p>This function implements Markov Chain Monte Carlo (MCMC) using the
+Metropolis-Hastings ratio with
 flexible transition kernels. Users can specify either one of the available
 transition kernels or define one of their own (see <a href='kernel_new.html'>kernels</a>). Furthermore,
-it allows easy parallel implementation running multiple chains in parallel. In
-addition, we incorporate a variety of convergence diagnostics, alternatively
-the user can specify their own (see <a href='convergence-checker.html'>convergence-checker</a>).</p>
+it allows easy parallel implementation running multiple chains in parallel.
+The function also allows using convergence diagnostics tests to set-up a
+criterion for automatically stopping the algorithm  (see <a href='convergence-checker.html'>convergence-checker</a>).</p>
 <p>We now give details of the various options included in the function.</p>
 <p>The functions <code>MCMC_without_conv_checker</code> and <code>MCMC_with_conv_checker</code>
 should not be directly called by the user. These are for internal use only.</p>
