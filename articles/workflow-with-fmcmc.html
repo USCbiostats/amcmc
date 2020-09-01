@@ -239,12 +239,12 @@
 <pre><code>## [1] 1000</code></pre>
 <div class="sourceCode" id="cb22"><html><body><pre class="r"><span class="co"># Variance covariance matrix (now is not empty)</span>
 (<span class="no">Sigma1</span> <span class="kw">&lt;-</span> <span class="no">khaario</span>$<span class="no">Sigma</span>)</pre></body></html></div>
-<pre><code>##              [,1]         [,2]         [,3]        [,4]        [,5]
-## [1,]  0.017590357 -0.002854929 -0.008318243 -0.01276681  0.01407210
-## [2,] -0.002854929  0.021763084 -0.006546827 -0.01509424  0.01734343
-## [3,] -0.008318243 -0.006546827  0.029877366  0.01207685 -0.01164028
-## [4,] -0.012766807 -0.015094243  0.012076849  0.04368845 -0.02329962
-## [5,]  0.014072103  0.017343433 -0.011640281 -0.02329962  0.03356178</code></pre>
+<pre><code>##              [,1]          [,2]          [,3]         [,4]         [,5]
+## [1,]  0.033774744  0.0076221966 -0.0083490812 -0.025185617  0.001408027
+## [2,]  0.007622197  0.0129679136  0.0008660887  0.001145910 -0.005880737
+## [3,] -0.008349081  0.0008660887  0.0174033898 -0.000488425 -0.007675074
+## [4,] -0.025185617  0.0011459105 -0.0004884250  0.042766740 -0.009184168
+## [5,]  0.001408027 -0.0058807372 -0.0076750743 -0.009184168  0.016146050</code></pre>
 <p>If we re-run the chain, using as starting point the last step of the first run, we can also continue using the kernel object:</p>
 <div class="sourceCode" id="cb24"><html><body><pre class="r"><span class="no">out_harrio_2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/MCMC.html">MCMC</a></span>(
   <span class="kw">initial</span>   <span class="kw">=</span> <span class="no">out_harrio_1</span>,
@@ -266,20 +266,20 @@
 <pre><code>## [1] 3000</code></pre>
 <div class="sourceCode" id="cb28"><html><body><pre class="r"><span class="co"># Variance covariance matrix (now is not empty)</span>
 (<span class="no">Sigma2</span> <span class="kw">&lt;-</span> <span class="no">khaario</span>$<span class="no">Sigma</span>)</pre></body></html></div>
-<pre><code>##             [,1]          [,2]        [,3]         [,4]          [,5]
-## [1,] 0.056190230  0.0033102943  0.02464659  0.004888311  0.0213087807
-## [2,] 0.003310294  0.1006714669 -0.02177205 -0.023899697 -0.0005756119
-## [3,] 0.024646589 -0.0217720519  0.12823451  0.035031728 -0.0152408612
-## [4,] 0.004888311 -0.0238996970  0.03503173  0.126440422 -0.0177445616
-## [5,] 0.021308781 -0.0005756119 -0.01524086 -0.017744562  0.1123653363</code></pre>
+<pre><code>##               [,1]         [,2]        [,3]        [,4]          [,5]
+## [1,]  0.0690705091  0.007490249  0.02654970  0.01094398 -0.0002809114
+## [2,]  0.0074902492  0.092591314 -0.01732799 -0.01581651 -0.0221300200
+## [3,]  0.0265496974 -0.017327986  0.09879849  0.03348071 -0.0179583296
+## [4,]  0.0109439837 -0.015816512  0.03348071  0.11169897 -0.0168710509
+## [5,] -0.0002809114 -0.022130020 -0.01795833 -0.01687105  0.1092648970</code></pre>
 <div class="sourceCode" id="cb30"><html><body><pre class="r"><span class="co"># How different these are?</span>
 <span class="no">Sigma1</span> - <span class="no">Sigma2</span></pre></body></html></div>
-<pre><code>##              [,1]         [,2]        [,3]         [,4]         [,5]
-## [1,] -0.038599872 -0.006165223 -0.03296483 -0.017655117 -0.007236678
-## [2,] -0.006165223 -0.078908383  0.01522522  0.008805454  0.017919045
-## [3,] -0.032964832  0.015225225 -0.09835714 -0.022954879  0.003600580
-## [4,] -0.017655117  0.008805454 -0.02295488 -0.082751972 -0.005555054
-## [5,] -0.007236678  0.017919045  0.00360058 -0.005555054 -0.078803556</code></pre>
+<pre><code>##               [,1]          [,2]        [,3]         [,4]         [,5]
+## [1,] -0.0352957646  0.0001319474 -0.03489878 -0.036129601  0.001688938
+## [2,]  0.0001319474 -0.0796234007  0.01819407  0.016962423  0.016249283
+## [3,] -0.0348987786  0.0181940747 -0.08139510 -0.033969137  0.010283255
+## [4,] -0.0361296009  0.0169624226 -0.03396914 -0.068932233  0.007686882
+## [5,]  0.0016889380  0.0162492829  0.01028326  0.007686882 -0.093118846</code></pre>
 <p>Things have changed since the last time we used the kernel, as expected. Kernel objects in the <code>fmcmc</code> package can also be used with multiple chains and in parallel. The <code>MCMC</code> function is smart enough to create independent copies of <code>fmcmc_kernel</code> objects when running multiple chains, and keep the original kernel objects up-to-date even when using multiple cores to run <code>MCMC</code>. For more technical details on how <code>fmcmc_kernel</code> objects work see the manual <code><a href="../reference/kernel_new.html">?fmcmc_kernel</a></code> or the vignette “User-defined kernels” included in the package <code><a href="../articles/user-defined-kernels.html">vignette("user-defined-kernels", package = "fmcmc")</a></code>.</p>
 </div>
   </div>
