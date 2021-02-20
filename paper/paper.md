@@ -2,7 +2,7 @@
 title: 'fmcmc: A friendly MCMC framework'
 authors:
 - affiliation: 1
-  name: George G Vega Yon
+  name: George G {Vega Yon}
   orcid: 0000-0002-3171-0844
 - affiliation: 1
   name: Paul Marjoram
