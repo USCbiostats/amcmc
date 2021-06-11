@@ -92,7 +92,7 @@ stop criterion using a convergence check test." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fmcmc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-1</span>
       </span>
     </div>
 
@@ -100,7 +100,7 @@ stop criterion using a convergence check test." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -129,7 +129,7 @@ stop criterion using a convergence check test." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/USCbiostats/fmcmc/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -157,53 +157,53 @@ can utilize arbitrary transition kernels as well as set-up an automatic
 stop criterion using a convergence check test.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>MCMC</span>(
-  <span class='no'>initial</span>,
-  <span class='no'>fun</span>,
-  <span class='no'>nsteps</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
-  <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal</a></span>(),
-  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>,
-  <span class='kw'>chain_id</span> <span class='kw'>=</span> <span class='fl'>1L</span>
-)
+    <pre class="usage"><span class='fu'>MCMC</span><span class='op'>(</span>
+  <span class='va'>initial</span>,
+  <span class='va'>fun</span>,
+  <span class='va'>nsteps</span>,
+  <span class='va'>...</span>,
+  nchains <span class='op'>=</span> <span class='fl'>1L</span>,
+  burnin <span class='op'>=</span> <span class='fl'>0L</span>,
+  thin <span class='op'>=</span> <span class='fl'>1L</span>,
+  kernel <span class='op'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal</a></span><span class='op'>(</span><span class='op'>)</span>,
+  multicore <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  conv_checker <span class='op'>=</span> <span class='cn'>NULL</span>,
+  cl <span class='op'>=</span> <span class='cn'>NULL</span>,
+  progress <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='va'>multicore</span>,
+  chain_id <span class='op'>=</span> <span class='fl'>1L</span>
+<span class='op'>)</span>
 
-<span class='fu'>MCMC_without_conv_checker</span>(
-  <span class='no'>initial</span>,
-  <span class='no'>fun</span>,
-  <span class='no'>nsteps</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>burnin</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
-  <span class='kw'>thin</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal</a></span>(),
-  <span class='kw'>multicore</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>conv_checker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>() <span class='kw'>&amp;&amp;</span> !<span class='no'>multicore</span>,
-  <span class='kw'>chain_id</span> <span class='kw'>=</span> <span class='fl'>1L</span>
-)
+<span class='fu'>MCMC_without_conv_checker</span><span class='op'>(</span>
+  <span class='va'>initial</span>,
+  <span class='va'>fun</span>,
+  <span class='va'>nsteps</span>,
+  <span class='va'>...</span>,
+  nchains <span class='op'>=</span> <span class='fl'>1L</span>,
+  burnin <span class='op'>=</span> <span class='fl'>0L</span>,
+  thin <span class='op'>=</span> <span class='fl'>1L</span>,
+  kernel <span class='op'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal</a></span><span class='op'>(</span><span class='op'>)</span>,
+  multicore <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  conv_checker <span class='op'>=</span> <span class='cn'>NULL</span>,
+  cl <span class='op'>=</span> <span class='cn'>NULL</span>,
+  progress <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='va'>multicore</span>,
+  chain_id <span class='op'>=</span> <span class='fl'>1L</span>
+<span class='op'>)</span>
 
-<span class='fu'>MCMC_with_conv_checker</span>(
-  <span class='no'>initial</span>,
-  <span class='no'>fun</span>,
-  <span class='no'>nsteps</span>,
-  <span class='no'>...</span>,
-  <span class='no'>nchains</span>,
-  <span class='no'>burnin</span>,
-  <span class='no'>thin</span>,
-  <span class='no'>kernel</span>,
-  <span class='no'>multicore</span>,
-  <span class='no'>conv_checker</span>,
-  <span class='no'>cl</span>,
-  <span class='no'>progress</span>,
-  <span class='no'>chain_id</span>
-)</pre>
+<span class='fu'>MCMC_with_conv_checker</span><span class='op'>(</span>
+  <span class='va'>initial</span>,
+  <span class='va'>fun</span>,
+  <span class='va'>nsteps</span>,
+  <span class='va'>...</span>,
+  <span class='va'>nchains</span>,
+  <span class='va'>burnin</span>,
+  <span class='va'>thin</span>,
+  <span class='va'>kernel</span>,
+  <span class='va'>multicore</span>,
+  <span class='va'>conv_checker</span>,
+  <span class='va'>cl</span>,
+  <span class='va'>progress</span>,
+  <span class='va'>chain_id</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -308,14 +308,14 @@ using <code><a href='https://rdrr.io/r/parallel/makeCluster.html'>makePSOCKclust
 clusters and attempt to execute using multiple cores. Internally, the function does
 the following:</p>
 <pre>
-  # Creating the cluster
-  ncores &amp;lt;- parallel::detectCores()
-  ncores &amp;lt;- ifelse(nchains &amp;lt; ncores, nchains, ncores)
-  cl     &amp;lt;- parallel::makePSOCKcluster(ncores)
+  <span class='co'># Creating the cluster</span>
+  <span class='va'>ncores</span> <span class='op'>&lt;-</span> <span class='fu'>parallel</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/parallel/detectCores.html'>detectCores</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='va'>ncores</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>nchains</span> <span class='op'>&lt;</span> <span class='va'>ncores</span>, <span class='va'>nchains</span>, <span class='va'>ncores</span><span class='op'>)</span>
+  <span class='va'>cl</span>     <span class='op'>&lt;-</span> <span class='fu'>parallel</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/parallel/makeCluster.html'>makePSOCKcluster</a></span><span class='op'>(</span><span class='va'>ncores</span><span class='op'>)</span>
   
-  # Loading the package and setting the seed using clusterRNGStream
-  invisible(parallel::clusterEvalQ(cl, library(fmcmc)))
-  parallel::clusterSetRNGStream(cl, .Random.seed)
+  <span class='co'># Loading the package and setting the seed using clusterRNGStream</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/invisible.html'>invisible</a></span><span class='op'>(</span><span class='fu'>parallel</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/parallel/clusterApply.html'>clusterEvalQ</a></span><span class='op'>(</span><span class='va'>cl</span>, <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/USCbiostats/fmcmc'>fmcmc</a></span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'>parallel</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/parallel/RngStream.html'>clusterSetRNGStream</a></span><span class='op'>(</span><span class='va'>cl</span>, <span class='va'>.Random.seed</span><span class='op'>)</span>
 </pre>
 
 <p>When running in parallel, objects that are
@@ -352,105 +352,102 @@ Markov Chain Monte Carlo. Handbook of Markov Chain Monte Carlo.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Univariate distributed data with multiple parameters ----------------------</span>
 <span class='co'># Parameters</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>1231</span>)
-<span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fl'>1e3</span>
-<span class='no'>pars</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>mean</span> <span class='kw'>=</span> <span class='fl'>2.6</span>, <span class='kw'>sd</span> <span class='kw'>=</span> <span class='fl'>3</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1231</span><span class='op'>)</span>
+<span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fl'>1e3</span>
+<span class='va'>pars</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>mean <span class='op'>=</span> <span class='fl'>2.6</span>, sd <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
 
 <span class='co'># Generating data and writing the log likelihood function</span>
-<span class='no'>D</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>n</span>, <span class='no'>pars</span>[<span class='fl'>1</span>], <span class='no'>pars</span>[<span class='fl'>2</span>])
-<span class='no'>fun</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>) {
-  <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span>(<span class='no'>D</span>, <span class='no'>x</span>[<span class='fl'>1</span>], <span class='no'>x</span>[<span class='fl'>2</span>]))
-  <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span>(<span class='no'>x</span>)
-}
+<span class='va'>D</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n</span>, <span class='va'>pars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, <span class='va'>pars</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span>
+<span class='va'>fun</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='va'>D</span>, <span class='va'>x</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, <span class='va'>x</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='op'>}</span>
 
 <span class='co'># Calling MCMC, but first, loading the coda R package for</span>
 <span class='co'># diagnostics</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>coda</span>)
-<span class='no'>ans</span> <span class='kw'>&lt;-</span> <span class='fu'>MCMC</span>(
-  <span class='no'>fun</span>, <span class='kw'>initial</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>mu</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>sigma</span><span class='kw'>=</span><span class='fl'>1</span>), <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>2e3</span>,
-  <span class='kw'>kernel</span> <span class='kw'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal_reflective</a></span>(<span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>.1</span>, <span class='kw'>ub</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>lb</span> <span class='kw'>=</span> <span class='fl'>0</span>)
-  )
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>coda</span><span class='op'>)</span>
+<span class='va'>ans</span> <span class='op'>&lt;-</span> <span class='fu'>MCMC</span><span class='op'>(</span>
+  <span class='va'>fun</span>, initial <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>mu<span class='op'>=</span><span class='fl'>1</span>, sigma<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>, nsteps <span class='op'>=</span> <span class='fl'>2e3</span>,
+  kernel <span class='op'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal_reflective</a></span><span class='op'>(</span>scale <span class='op'>=</span> <span class='fl'>.1</span>, ub <span class='op'>=</span> <span class='fl'>10</span>, lb <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
+  <span class='op'>)</span>
 
 <span class='co'># Ploting the output</span>
-<span class='no'>oldpar</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(<span class='kw'>no.readonly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(<span class='kw'>mfrow</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>))
-<span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>ans</span>),
-        <span class='kw'>main</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='st'>"Posterior distribution of"</span>~<span class='no'>mu</span>~<span class='no'>and</span>~<span class='no'>sigma</span>),
-        <span class='kw'>names</span> <span class='kw'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='no'>mu</span>, <span class='no'>sigma</span>), <span class='kw'>horizontal</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-        <span class='kw'>col</span>  <span class='kw'>=</span> <span class='no'>blues9</span>[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4</span>,<span class='fl'>9</span>)],
-        <span class='kw'>sub</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/bquote.html'>bquote</a></span>(<span class='no'>mu</span> <span class='kw'>==</span> <span class='fu'>.</span>(<span class='no'>pars</span>[<span class='fl'>1</span>])~<span class='st'>", and"</span>~<span class='no'>sigma</span> <span class='kw'>==</span> <span class='fu'>.</span>(<span class='no'>pars</span>[<span class='fl'>2</span>]))
-)
-<span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>pars</span>, <span class='kw'>col</span>  <span class='kw'>=</span> <span class='no'>blues9</span>[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4</span>,<span class='fl'>9</span>)], <span class='kw'>lwd</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='va'>oldpar</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>no.readonly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mfrow <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>ans</span><span class='op'>)</span>, 
+        main <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='st'>"Posterior distribution of"</span><span class='op'>~</span><span class='va'>mu</span><span class='op'>~</span><span class='va'>and</span><span class='op'>~</span><span class='va'>sigma</span><span class='op'>)</span>,
+        names <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='va'>mu</span>, <span class='va'>sigma</span><span class='op'>)</span>, horizontal <span class='op'>=</span> <span class='cn'>TRUE</span>,
+        col  <span class='op'>=</span> <span class='va'>blues9</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>,<span class='fl'>9</span><span class='op'>)</span><span class='op'>]</span>,
+        sub <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/bquote.html'>bquote</a></span><span class='op'>(</span><span class='va'>mu</span> <span class='op'>==</span> <span class='fu'>.</span><span class='op'>(</span><span class='va'>pars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span><span class='op'>~</span><span class='st'>", and"</span><span class='op'>~</span><span class='va'>sigma</span> <span class='op'>==</span> <span class='fu'>.</span><span class='op'>(</span><span class='va'>pars</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>v <span class='op'>=</span> <span class='va'>pars</span>, col  <span class='op'>=</span> <span class='va'>blues9</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>,<span class='fl'>9</span><span class='op'>)</span><span class='op'>]</span>, lwd <span class='op'>=</span> <span class='fl'>2</span>, lty <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>ans</span>), <span class='fl'>1</span>, <span class='no'>fun</span>), <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"l"</span>,
-     <span class='kw'>main</span> <span class='kw'>=</span> <span class='st'>"LogLikelihood"</span>,
-     <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='fu'>L</span>(<span class='st'>"{"</span>~<span class='no'>mu</span>,<span class='no'>sigma</span>~<span class='st'>"}"</span>~<span class='st'>"|"</span>~<span class='no'>D</span>))
-)</div><div class='img'><img src='MCMC-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(<span class='no'>oldpar</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>ans</span><span class='op'>)</span>, <span class='fl'>1</span>, <span class='va'>fun</span><span class='op'>)</span>, type <span class='op'>=</span> <span class='st'>"l"</span>,
+     main <span class='op'>=</span> <span class='st'>"LogLikelihood"</span>,
+     ylab <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='fu'>L</span><span class='op'>(</span><span class='st'>"{"</span><span class='op'>~</span><span class='va'>mu</span>,<span class='va'>sigma</span><span class='op'>~</span><span class='st'>"}"</span><span class='op'>~</span><span class='st'>"|"</span><span class='op'>~</span><span class='va'>D</span><span class='op'>)</span><span class='op'>)</span> 
+<span class='op'>)</span>
+</div><div class='img'><img src='MCMC-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span><span class='va'>oldpar</span><span class='op'>)</span>
 
 
 <span class='co'># In this example we estimate the parameter for a dataset with ----------------</span>
 <span class='co'># With 5,000 draws from a MVN() with parameters M and S.</span>
 <span class='co'># \donttest{</span>
 <span class='co'># Loading the required packages</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mvtnorm</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>coda</span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>mvtnorm</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in library(mvtnorm): there is no package called ‘mvtnorm’</span></div><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>coda</span><span class='op'>)</span>
 
 <span class='co'># Parameters and data simulation</span>
-<span class='no'>S</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.8</span>, <span class='fl'>.2</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.2</span>, <span class='fl'>1</span>))
-<span class='no'>M</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>)
+<span class='va'>S</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.8</span>, <span class='fl'>.2</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.2</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>M</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
-<span class='no'>D</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html'>rmvnorm</a></span>(<span class='fl'>5e3</span>, <span class='kw'>mean</span> <span class='kw'>=</span> <span class='no'>M</span>, <span class='kw'>sigma</span> <span class='kw'>=</span> <span class='no'>S</span>)
-
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
+<span class='va'>D</span> <span class='op'>&lt;-</span> <span class='fu'>rmvnorm</span><span class='op'>(</span><span class='fl'>5e3</span>, mean <span class='op'>=</span> <span class='va'>M</span>, sigma <span class='op'>=</span> <span class='va'>S</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in rmvnorm(5000, mean = M, sigma = S): could not find function "rmvnorm"</span></div><div class='input'>
 <span class='co'># Function to pass to MCMC</span>
-<span class='no'>fun</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>pars</span>) {
+<span class='va'>fun</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>pars</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='co'># Putting the parameters in a sensible way</span>
-  <span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='no'>pars</span>[<span class='fl'>1</span>:<span class='fl'>2</span>]
-  <span class='no'>s</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>pars</span>[<span class='fl'>3</span>], <span class='no'>pars</span>[<span class='fl'>4</span>]), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>pars</span>[<span class='fl'>4</span>], <span class='no'>pars</span>[<span class='fl'>5</span>]) )
-
+  <span class='va'>m</span> <span class='op'>&lt;-</span> <span class='va'>pars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span>
+  <span class='va'>s</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>pars</span><span class='op'>[</span><span class='fl'>3</span><span class='op'>]</span>, <span class='va'>pars</span><span class='op'>[</span><span class='fl'>4</span><span class='op'>]</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>pars</span><span class='op'>[</span><span class='fl'>4</span><span class='op'>]</span>, <span class='va'>pars</span><span class='op'>[</span><span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>)</span>
+  
   <span class='co'># Computing the unnormalized log likelihood</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html'>dmvnorm</a></span>(<span class='no'>D</span>, <span class='no'>m</span>, <span class='no'>s</span>)))
-}
+  <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='fu'>dmvnorm</span><span class='op'>(</span><span class='va'>D</span>, <span class='va'>m</span>, <span class='va'>s</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
 
 <span class='co'># Calling MCMC</span>
-<span class='no'>ans</span> <span class='kw'>&lt;-</span> <span class='fu'>MCMC</span>(
-  <span class='kw'>initial</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>mu0</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>mu1</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>s0</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>s01</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>s2</span><span class='kw'>=</span><span class='fl'>5</span>),
-  <span class='no'>fun</span>,
-  <span class='kw'>kernel</span>  <span class='kw'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal_reflective</a></span>(
-    <span class='kw'>lb</span>    <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>10</span>, -<span class='fl'>10</span>, <span class='fl'>.01</span>, -<span class='fl'>5</span>, <span class='fl'>.01</span>),
-    <span class='kw'>ub</span>    <span class='kw'>=</span> <span class='fl'>5</span>,
-    <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.01</span>
-  ),
-  <span class='kw'>nsteps</span>  <span class='kw'>=</span> <span class='fl'>1e4</span>,
-  <span class='kw'>thin</span>    <span class='kw'>=</span> <span class='fl'>20</span>,
-  <span class='kw'>burnin</span>  <span class='kw'>=</span> <span class='fl'>5e3</span>
-)
-
+<span class='va'>ans</span> <span class='op'>&lt;-</span> <span class='fu'>MCMC</span><span class='op'>(</span>
+  initial <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>mu0<span class='op'>=</span><span class='fl'>5</span>, mu1<span class='op'>=</span><span class='fl'>5</span>, s0<span class='op'>=</span><span class='fl'>5</span>, s01<span class='op'>=</span><span class='fl'>0</span>, s2<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>, 
+  <span class='va'>fun</span>,
+  kernel  <span class='op'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal_reflective</a></span><span class='op'>(</span>
+    lb    <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>10</span>, <span class='op'>-</span><span class='fl'>10</span>, <span class='fl'>.01</span>, <span class='op'>-</span><span class='fl'>5</span>, <span class='fl'>.01</span><span class='op'>)</span>,
+    ub    <span class='op'>=</span> <span class='fl'>5</span>,
+    scale <span class='op'>=</span> <span class='fl'>0.01</span>
+  <span class='op'>)</span>,
+  nsteps  <span class='op'>=</span> <span class='fl'>1e4</span>,
+  thin    <span class='op'>=</span> <span class='fl'>20</span>,
+  burnin  <span class='op'>=</span> <span class='fl'>5e3</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in dmvnorm(D, m, s): could not find function "dmvnorm"</span></div><div class='input'>
 <span class='co'># Checking out the outcomes</span>
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>ans</span>)</div><div class='img'><img src='MCMC-2.png' alt='' width='700' height='433' /></div><div class='img'><img src='MCMC-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>ans</span>)</div><div class='output co'>#&gt; 
-#&gt; Iterations = 5020:10000
-#&gt; Thinning interval = 20 
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>ans</span><span class='op'>)</span>
+</div><div class='img'><img src='MCMC-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>ans</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 
+#&gt; Iterations = 1:2000
+#&gt; Thinning interval = 1 
 #&gt; Number of chains = 1 
-#&gt; Sample size per chain = 250 
+#&gt; Sample size per chain = 2000 
 #&gt; 
 #&gt; 1. Empirical mean and standard deviation for each variable,
 #&gt;    plus standard error of the mean:
 #&gt; 
-#&gt;         Mean      SD  Naive SE Time-series SE
-#&gt; mu0 0.008737 0.01213 0.0007670      0.0007513
-#&gt; mu1 0.987976 0.01426 0.0009017      0.0011533
-#&gt; s0  0.796773 0.01758 0.0011120      0.0014277
-#&gt; s01 0.186875 0.01387 0.0008772      0.0011180
-#&gt; s2  0.995108 0.02097 0.0013263      0.0017226
+#&gt;        Mean     SD Naive SE Time-series SE
+#&gt; mu    2.481 0.2206 0.004934        0.04068
+#&gt; sigma 2.931 0.1908 0.004267        0.03238
 #&gt; 
 #&gt; 2. Quantiles for each variable:
 #&gt; 
-#&gt;         2.5%        25%      50%     75%   97.5%
-#&gt; mu0 -0.01263 -0.0001578 0.008583 0.01641 0.03349
-#&gt; mu1  0.96236  0.9782262 0.987504 0.99741 1.01570
-#&gt; s0   0.76199  0.7858717 0.794944 0.80839 0.83253
-#&gt; s01  0.15779  0.1768917 0.186439 0.19570 0.21376
-#&gt; s2   0.95275  0.9812928 0.995647 1.00786 1.03104
+#&gt;        2.5%   25%   50%   75% 97.5%
+#&gt; mu    1.636 2.454 2.514 2.574 2.676
+#&gt; sigma 2.657 2.908 2.953 3.000 3.095
 #&gt; </div><div class='input'>
 <span class='co'># Multiple chains -----------------------------------------------------------</span>
 
@@ -458,56 +455,52 @@ Markov Chain Monte Carlo. Handbook of Markov Chain Monte Carlo.</p>
 <span class='co'># pass -D- explicitly (unless using Fork Clusters)</span>
 <span class='co'># just like specifying that we are calling a function from the</span>
 <span class='co'># -mvtnorm- package.</span>
-
-<span class='no'>fun</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>pars</span>, <span class='no'>D</span>) {
+  
+<span class='va'>fun</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>pars</span>, <span class='va'>D</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='co'># Putting the parameters in a sensible way</span>
-  <span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='no'>pars</span>[<span class='fl'>1</span>:<span class='fl'>2</span>]
-  <span class='no'>s</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>pars</span>[<span class='fl'>3</span>], <span class='no'>pars</span>[<span class='fl'>4</span>]), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>pars</span>[<span class='fl'>4</span>], <span class='no'>pars</span>[<span class='fl'>5</span>]) )
-
+  <span class='va'>m</span> <span class='op'>&lt;-</span> <span class='va'>pars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span>
+  <span class='va'>s</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>pars</span><span class='op'>[</span><span class='fl'>3</span><span class='op'>]</span>, <span class='va'>pars</span><span class='op'>[</span><span class='fl'>4</span><span class='op'>]</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>pars</span><span class='op'>[</span><span class='fl'>4</span><span class='op'>]</span>, <span class='va'>pars</span><span class='op'>[</span><span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>)</span>
+  
   <span class='co'># Computing the unnormalized log likelihood</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='kw pkg'>mvtnorm</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html'>dmvnorm</a></span>(<span class='no'>D</span>, <span class='no'>m</span>, <span class='no'>s</span>)))
-}
+  <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='fu'>mvtnorm</span><span class='fu'>::</span><span class='fu'>dmvnorm</span><span class='op'>(</span><span class='va'>D</span>, <span class='va'>m</span>, <span class='va'>s</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
 
 <span class='co'># Two chains</span>
-<span class='no'>ans</span> <span class='kw'>&lt;-</span> <span class='fu'>MCMC</span>(
-  <span class='kw'>initial</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>mu0</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>mu1</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>s0</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>s01</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>s2</span><span class='kw'>=</span><span class='fl'>5</span>),
-  <span class='no'>fun</span>,
-  <span class='kw'>nchains</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='kw'>kernel</span>  <span class='kw'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal_reflective</a></span>(
-    <span class='kw'>lb</span>    <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>10</span>, -<span class='fl'>10</span>, <span class='fl'>.01</span>, -<span class='fl'>5</span>, <span class='fl'>.01</span>),
-    <span class='kw'>ub</span>    <span class='kw'>=</span> <span class='fl'>5</span>,
-    <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.01</span>
-  ),
-  <span class='kw'>nsteps</span>  <span class='kw'>=</span> <span class='fl'>1e4</span>,
-  <span class='kw'>thin</span>    <span class='kw'>=</span> <span class='fl'>20</span>,
-  <span class='kw'>burnin</span>  <span class='kw'>=</span> <span class='fl'>5e3</span>,
-  <span class='kw'>D</span>       <span class='kw'>=</span> <span class='no'>D</span>
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: While using multiple chains, a single initial point has been passed via `initial`: c(5, 5, 5, 0, 5). The values will be recycled. Ideally you would want to start each chain from different locations.</span></div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>ans</span>)</div><div class='output co'>#&gt; 
-#&gt; Iterations = 5020:10000
-#&gt; Thinning interval = 20 
-#&gt; Number of chains = 2 
-#&gt; Sample size per chain = 250 
+<span class='va'>ans</span> <span class='op'>&lt;-</span> <span class='fu'>MCMC</span><span class='op'>(</span>
+  initial <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>mu0<span class='op'>=</span><span class='fl'>5</span>, mu1<span class='op'>=</span><span class='fl'>5</span>, s0<span class='op'>=</span><span class='fl'>5</span>, s01<span class='op'>=</span><span class='fl'>0</span>, s2<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>, 
+  <span class='va'>fun</span>,
+  nchains <span class='op'>=</span> <span class='fl'>2</span>,
+  kernel  <span class='op'>=</span> <span class='fu'><a href='kernel_normal.html'>kernel_normal_reflective</a></span><span class='op'>(</span>
+    lb    <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>10</span>, <span class='op'>-</span><span class='fl'>10</span>, <span class='fl'>.01</span>, <span class='op'>-</span><span class='fl'>5</span>, <span class='fl'>.01</span><span class='op'>)</span>,
+    ub    <span class='op'>=</span> <span class='fl'>5</span>,
+    scale <span class='op'>=</span> <span class='fl'>0.01</span>
+  <span class='op'>)</span>,
+  nsteps  <span class='op'>=</span> <span class='fl'>1e4</span>,
+  thin    <span class='op'>=</span> <span class='fl'>20</span>,
+  burnin  <span class='op'>=</span> <span class='fl'>5e3</span>,
+  D       <span class='op'>=</span> <span class='va'>D</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: While using multiple chains, a single initial point has been passed via `initial`: c(5, 5, 5, 0, 5). The values will be recycled. Ideally you would want to start each chain from different locations.</span></div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(x): there is no package called ‘mvtnorm’</span></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>ans</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 
+#&gt; Iterations = 1:2000
+#&gt; Thinning interval = 1 
+#&gt; Number of chains = 1 
+#&gt; Sample size per chain = 2000 
 #&gt; 
 #&gt; 1. Empirical mean and standard deviation for each variable,
 #&gt;    plus standard error of the mean:
 #&gt; 
-#&gt;         Mean      SD  Naive SE Time-series SE
-#&gt; mu0 0.008355 0.01255 0.0005613      0.0006234
-#&gt; mu1 0.986247 0.01409 0.0006303      0.0007920
-#&gt; s0  0.798205 0.01607 0.0007188      0.0008586
-#&gt; s01 0.186311 0.01297 0.0005798      0.0006972
-#&gt; s2  0.993651 0.01904 0.0008516      0.0011712
+#&gt;        Mean     SD Naive SE Time-series SE
+#&gt; mu    2.481 0.2206 0.004934        0.04068
+#&gt; sigma 2.931 0.1908 0.004267        0.03238
 #&gt; 
 #&gt; 2. Quantiles for each variable:
 #&gt; 
-#&gt;         2.5%        25%      50%     75%   97.5%
-#&gt; mu0 -0.01498 -0.0004055 0.008546 0.01686 0.03341
-#&gt; mu1  0.95931  0.9769933 0.985743 0.99658 1.01309
-#&gt; s0   0.76850  0.7871833 0.797177 0.80860 0.83010
-#&gt; s01  0.16187  0.1777071 0.186060 0.19472 0.21221
-#&gt; s2   0.95513  0.9819994 0.994325 1.00702 1.02738
-#&gt; </div><div class='input'># }
+#&gt;        2.5%   25%   50%   75% 97.5%
+#&gt; mu    1.636 2.454 2.514 2.574 2.676
+#&gt; sigma 2.657 2.908 2.953 3.000 3.095
+#&gt; </div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>
@@ -526,7 +519,7 @@ Markov Chain Monte Carlo. Handbook of Markov Chain Monte Carlo.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

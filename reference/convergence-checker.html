@@ -99,7 +99,7 @@ called." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fmcmc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-1</span>
       </span>
     </div>
 
@@ -107,7 +107,7 @@ called." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -136,7 +136,7 @@ called." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/USCbiostats/fmcmc/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -171,28 +171,28 @@ the functions <code>convergence_data_set</code> and <code>convergence_msg_set</c
 called.</p>
     </div>
 
-    <pre class="usage"><span class='no'>LAST_CONV_CHECK</span>
+    <pre class="usage"><span class='va'>LAST_CONV_CHECK</span>
 
-<span class='fu'>convergence_data_set</span>(<span class='no'>x</span>)
+<span class='fu'>convergence_data_set</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='fu'>convergence_data_get</span>(<span class='no'>x</span>)
+<span class='fu'>convergence_data_get</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='fu'>convergence_msg_set</span>(<span class='kw'>msg</span> <span class='kw'>=</span> <span class='fl'>NA_character_</span>)
+<span class='fu'>convergence_msg_set</span><span class='op'>(</span>msg <span class='op'>=</span> <span class='cn'>NA_character_</span><span class='op'>)</span>
 
-<span class='fu'>convergence_msg_get</span>()
+<span class='fu'>convergence_msg_get</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>convergence_gelman</span>(<span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>1000L</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>1.1</span>, <span class='kw'>check_invariant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+<span class='fu'>convergence_gelman</span><span class='op'>(</span>freq <span class='op'>=</span> <span class='fl'>1000L</span>, threshold <span class='op'>=</span> <span class='fl'>1.1</span>, check_invariant <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>convergence_geweke</span>(
-  <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>1000L</span>,
-  <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>0.025</span>,
-  <span class='kw'>check_invariant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>...</span>
-)
+<span class='fu'>convergence_geweke</span><span class='op'>(</span>
+  freq <span class='op'>=</span> <span class='fl'>1000L</span>,
+  threshold <span class='op'>=</span> <span class='fl'>0.025</span>,
+  check_invariant <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
 
-<span class='fu'>convergence_heildel</span>(<span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>1000L</span>, <span class='no'>...</span>, <span class='kw'>check_invariant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>convergence_heildel</span><span class='op'>(</span>freq <span class='op'>=</span> <span class='fl'>1000L</span>, <span class='va'>...</span>, check_invariant <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'>convergence_auto</span>(<span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>1000L</span>)</pre>
+<span class='fu'>convergence_auto</span><span class='op'>(</span>freq <span class='op'>=</span> <span class='fl'>1000L</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -265,7 +265,7 @@ test--or not--in which case it will use the Geweke test.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

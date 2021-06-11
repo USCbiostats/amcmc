@@ -91,7 +91,7 @@ fmcmc_kernel objects which are passed to the MCMC() function." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fmcmc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-1</span>
       </span>
     </div>
 
@@ -99,7 +99,7 @@ fmcmc_kernel objects which are passed to the MCMC() function." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -128,7 +128,7 @@ fmcmc_kernel objects which are passed to the MCMC() function." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/USCbiostats/fmcmc/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -155,7 +155,7 @@ fmcmc_kernel objects which are passed to the MCMC() function." />
 <code>fmcmc_kernel</code> objects which are passed to the <code><a href='MCMC.html'>MCMC()</a></code> function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>kernel_new</span>(<span class='no'>proposal</span>, <span class='no'>...</span>, <span class='kw'>logratio</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>kernel_env</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/environment.html'>new.env</a></span>(<span class='kw'>hash</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))</pre>
+    <pre class="usage"><span class='fu'>kernel_new</span><span class='op'>(</span><span class='va'>proposal</span>, <span class='va'>...</span>, logratio <span class='op'>=</span> <span class='cn'>NULL</span>, kernel_env <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/environment.html'>new.env</a></span><span class='op'>(</span>hash <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -223,29 +223,29 @@ to <a href='MCMC.html'>MCMC</a>).</td></tr>
 
 
 <p>These are the core component of the <code>MCMC</code> function. The following block
-of code is how this is actually implemented in the package:</p><pre>for (i in 1L:nsteps) {
-  # Step 1. Propose
-  theta1[] &amp;lt;- kernel$proposal(environment())
-  f1       &amp;lt;- f(theta1)
+of code is how this is actually implemented in the package:</p><pre><span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1L</span><span class='op'>:</span><span class='va'>nsteps</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='co'># Step 1. Propose</span>
+  <span class='va'>theta1</span><span class='op'>[</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='va'>kernel</span><span class='op'>$</span><span class='fu'>proposal</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/environment.html'>environment</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='va'>f1</span>       <span class='op'>&lt;-</span> <span class='fu'>f</span><span class='op'>(</span><span class='va'>theta1</span><span class='op'>)</span>
   
-  # Checking f(theta1) (it must be a number, can be Inf)
-  if (is.nan(f1) | is.na(f1) | is.null(f1)) 
-    stop(
-      "fun(par) is undefined (", f1, ")",
-      "Check either -fun- or the -lb- and -ub- parameters.",
-      call. = FALSE
-    )
+  <span class='co'># Checking f(theta1) (it must be a number, can be Inf)</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/is.finite.html'>is.nan</a></span><span class='op'>(</span><span class='va'>f1</span><span class='op'>)</span> <span class='op'>|</span> <span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>f1</span><span class='op'>)</span> <span class='op'>|</span> <span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='va'>f1</span><span class='op'>)</span><span class='op'>)</span> 
+    <span class='kw'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span><span class='op'>(</span>
+      <span class='st'>"fun(par) is undefined ("</span>, <span class='va'>f1</span>, <span class='st'>")"</span>,
+      <span class='st'>"Check either -fun- or the -lb- and -ub- parameters."</span>,
+      call. <span class='op'>=</span> <span class='cn'>FALSE</span>
+    <span class='op'>)</span>
   
-  # Step 2. Hastings ratio
-  if (R[i] &amp;lt; kernel$logratio(environment())) {
-    theta0 &amp;lt;- theta1
-    f0     &amp;lt;- f1
-  }
+  <span class='co'># Step 2. Hastings ratio</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='va'>R</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span> <span class='op'>&lt;</span> <span class='va'>kernel</span><span class='op'>$</span><span class='fu'>logratio</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/environment.html'>environment</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>theta0</span> <span class='op'>&lt;-</span> <span class='va'>theta1</span>
+    <span class='va'>f0</span>     <span class='op'>&lt;-</span> <span class='va'>f1</span>
+  <span class='op'>}</span>
   
-  # Step 3. Saving the state
-  ans[i,] &amp;lt;- theta0
+  <span class='co'># Step 3. Saving the state</span>
+  <span class='va'>ans</span><span class='op'>[</span><span class='va'>i</span>,<span class='op'>]</span> <span class='op'>&lt;-</span> <span class='va'>theta0</span>
   
-}
+<span class='op'>}</span>
 </pre>
 
 <p>For an extensive example on how to create new kernel objects see the vignette
@@ -289,30 +289,33 @@ Markov Chain Monte Carlo. Handbook of Markov Chain Monte Carlo.</p>
     <pre class="examples"><div class='input'>
 <span class='co'># Example creating a multivariate normal kernel using the mvtnorm R package</span>
 <span class='co'># for a bivariate normal distribution</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mvtnorm</span>)
-
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>mvtnorm</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in library(mvtnorm): there is no package called ‘mvtnorm’</span></div><div class='input'>
 <span class='co'># Define your Sigma</span>
-<span class='no'>sigma</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>.2</span>, <span class='fl'>.2</span>, <span class='fl'>1</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='va'>sigma</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>.2</span>, <span class='fl'>.2</span>, <span class='fl'>1</span><span class='op'>)</span>, ncol <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 
 <span class='co'># How does it looks like?</span>
-<span class='no'>sigma</span></div><div class='output co'>#&gt;      [,1] [,2]
+<span class='va'>sigma</span>
+</div><div class='output co'>#&gt;      [,1] [,2]
 #&gt; [1,]  1.0  0.2
 #&gt; [2,]  0.2  1.0</div><div class='input'><span class='co'>#      [,1] [,2]</span>
 <span class='co'># [1,]  1.0  0.2</span>
 <span class='co'># [2,]  0.2  1.0</span>
 
 <span class='co'># Create the kernel</span>
-<span class='no'>kernel_mvn</span> <span class='kw'>&lt;-</span> <span class='fu'>kernel_new</span>(
-  <span class='kw'>proposal</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>env</span>) {
-  <span class='no'>env</span>$<span class='no'>theta0</span> + <span class='fu'><a href='https://rdrr.io/r/base/vector.html'>as.vector</a></span>(<span class='kw pkg'>mvtnorm</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html'>rmvnorm</a></span>(<span class='fl'>1</span>, <span class='kw'>mean</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>sigma</span> <span class='kw'>=</span> <span class='no'>sigma.</span>))
-  },
-  <span class='kw'>sigma.</span> <span class='kw'>=</span> <span class='no'>sigma</span>
-)
+<span class='va'>kernel_mvn</span> <span class='op'>&lt;-</span> <span class='fu'>kernel_new</span><span class='op'>(</span>
+  proposal <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>env</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>env</span><span class='op'>$</span><span class='va'>theta0</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/vector.html'>as.vector</a></span><span class='op'>(</span><span class='fu'>mvtnorm</span><span class='fu'>::</span><span class='fu'>rmvnorm</span><span class='op'>(</span><span class='fl'>1</span>, mean <span class='op'>=</span> <span class='fl'>0</span>, sigma <span class='op'>=</span> <span class='va'>sigma.</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>}</span>,
+  sigma. <span class='op'>=</span> <span class='va'>sigma</span>
+<span class='op'>)</span>
 
 <span class='co'># As you can see, in the previous call we passed sigma as it will be used by</span>
 <span class='co'># the proposal function</span>
 <span class='co'># The logaratio function was not necesary to be passed since this kernel is</span>
-<span class='co'># symmetric.</span></div></pre>
+<span class='co'># symmetric.</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -329,7 +332,7 @@ Markov Chain Monte Carlo. Handbook of Markov Chain Monte Carlo.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

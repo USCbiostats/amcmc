@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fmcmc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-1</span>
       </span>
     </div>
 
@@ -52,7 +52,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -81,7 +81,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/USCbiostats/fmcmc/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -95,13 +95,13 @@
 
       
 
-      </header><div class="row">
+      </header><script src="user-defined-kernels_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>User-defined kernels</h1>
                         <h4 class="author">George G. Vega Yon</h4>
             
-            <h4 class="date">2020-09-01</h4>
+            <h4 class="date">2021-06-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/USCbiostats/fmcmc/blob/master/vignettes/user-defined-kernels.Rmd"><code>vignettes/user-defined-kernels.Rmd</code></a></small>
       <div class="hidden name"><code>user-defined-kernels.Rmd</code></div>
@@ -121,55 +121,64 @@
 <p>For this example, imagine that we are interested on learning what is the size of a population given that we already now the prevalence of a particular phenomena, for example, a disease. Furthermore, assume that 20% of the population acquire this disease, and we have a random sample from this population <span class="math inline">\(y \sim \mbox{Binomial}(0.2, N)\)</span>. We don’t know <span class="math inline">\(N\)</span>.</p>
 <p>Such scenario, while perhaps a bit uncommon, needs a special treatment in a Bayesian/MCMC framework. The parameter to estimate is not continuous so we would like to draw samples from a discrete distribution. Using the “normal” (pun intended) transition kernel may still be able to estimate something, but does not provide us with the correct posterior distribution. In this case, a transition kernel that makes discrete proposals would be desired.</p>
 <p>Let’s simulate some data, say, 300 observations from this Binomial random variable with parameters <span class="math inline">\(p = .2\)</span> and <span class="math inline">\(N = 500\)</span>:</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">fmcmc</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">1</span>) <span class="co"># Always set the seed!!!!</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/USCbiostats/fmcmc">fmcmc</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="co"># Always set the seed!!!!</span>
 
 <span class="co"># Population parameters</span>
-<span class="no">p</span> <span class="kw">&lt;-</span> <span class="fl">.2</span>
-<span class="no">N</span> <span class="kw">&lt;-</span> <span class="fl">500</span>
+<span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">.2</span>
+<span class="va">N</span> <span class="op">&lt;-</span> <span class="fl">500</span>
 
-<span class="no">y</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span>(<span class="fl">300</span>, <span class="kw">size</span> <span class="kw">=</span> <span class="no">N</span>, <span class="kw">prob</span> <span class="kw">=</span> <span class="no">p</span>)</pre></body></html></div>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="fl">300</span>, size <span class="op">=</span> <span class="va">N</span>, prob <span class="op">=</span> <span class="va">p</span><span class="op">)</span></code></pre></div>
 <p>Our goal is to be able to estimate the parameter <span class="math inline">\(N\)</span>. As in any MCMC function, we need to define the log-likelihood function:</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">ll</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">n.</span>, <span class="no">p.</span>) {
-  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span>(<span class="no">y</span>, <span class="no">n.</span>, <span class="kw">prob</span> <span class="kw">=</span> <span class="no">p.</span>, <span class="kw">log</span> <span class="kw">=</span> <span class="fl">TRUE</span>))
-}</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ll</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n.</span>, <span class="va">p.</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">n.</span>, prob <span class="op">=</span> <span class="va">p.</span>, log <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
 <p>Now comes the kernel object. In order to create an <code>fmcmc_kernel</code>, we can use the helper function <code>kernel_new</code> as follows:</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">kernel_unif_int</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/kernel_new.html">kernel_new</a></span>(
-    <span class="kw">proposal</span> <span class="kw">=</span> <span class="kw">function</span>(<span class="no">env</span>) <span class="no">env</span>$<span class="no">theta0</span> + <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(-<span class="fl">3</span>:<span class="fl">3</span>, <span class="fl">1</span>),
-    <span class="kw">logratio</span> <span class="kw">=</span> <span class="kw">function</span>(<span class="no">env</span>) <span class="no">env</span>$<span class="no">f1</span> - <span class="no">env</span>$<span class="no">f0</span> <span class="co"># We could have skipped this</span>
-    )</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">kernel_unif_int</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kernel_new.html">kernel_new</a></span><span class="op">(</span>
+    proposal <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">env</span><span class="op">)</span> <span class="va">env</span><span class="op">$</span><span class="va">theta0</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span>,
+    logratio <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">env</span><span class="op">)</span> <span class="va">env</span><span class="op">$</span><span class="va">f1</span> <span class="op">-</span> <span class="va">env</span><span class="op">$</span><span class="va">f0</span> <span class="co"># We could have skipped this</span>
+    <span class="op">)</span></code></pre></div>
 <p>Here, the kernel is in the form of <span class="math inline">\(\theta_1 = \theta_0 + R, R\sim \mbox{U}\{-3, ..., 3\}\)</span>, this is, proposals are done by adding a number <span class="math inline">\(R\)</span> drawn from a discrete uniform distribution with values between -3 and 3. While in this example we could have skipped the <code>logratio</code> function (as this transition kernel is symmetric), but we defined it so that the user can see an example of it.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Let’s take a look at the object:</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">kernel_unif_int</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">kernel_unif_int</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; An environment of class fmcmc_kernel:</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; logratio : function (env)  </span>
-<span class="co">#&gt; proposal : function (env)</span></pre></body></html></div>
+<span class="co">#&gt; proposal : function (env)</span></code></pre></div>
 <p>The object itself is actually an R environment. If we added more parameters to <code>kernel_new</code>, we would have seen those as well. Now that we have our transition kernel, let’s give it a first try and see what can we get with this new <code>kernel_unif_int</code> object we just created with the MCMC function.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">ans</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/MCMC.html">MCMC</a></span>(
-  <span class="no">ll</span>,                        <span class="co"># The log-likleihood function</span>
-  <span class="kw">initial</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span>(<span class="no">y</span>),          <span class="co"># A fair initial guess</span>
-  <span class="kw">kernel</span>  <span class="kw">=</span> <span class="no">kernel_unif_int</span>, <span class="co"># Our new kernel function</span>
-  <span class="kw">nsteps</span>  <span class="kw">=</span> <span class="fl">1000</span>,            <span class="co"># 1,000 MCMC draws</span>
-  <span class="kw">thin</span>    <span class="kw">=</span> <span class="fl">10</span>,              <span class="co"># We will sample every 10</span>
-  <span class="kw">p.</span>      <span class="kw">=</span> <span class="no">p</span>                <span class="co"># Passing extra parameters to be used by `ll`.</span>
-  )</pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ans</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MCMC.html">MCMC</a></span><span class="op">(</span>
+  <span class="va">ll</span>,                        <span class="co"># The log-likleihood function</span>
+  initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,          <span class="co"># A fair initial guess</span>
+  kernel  <span class="op">=</span> <span class="va">kernel_unif_int</span>, <span class="co"># Our new kernel function</span>
+  nsteps  <span class="op">=</span> <span class="fl">1000</span>,            <span class="co"># 1,000 MCMC draws</span>
+  thin    <span class="op">=</span> <span class="fl">10</span>,              <span class="co"># We will sample every 10</span>
+  p.      <span class="op">=</span> <span class="va">p</span>                <span class="co"># Passing extra parameters to be used by `ll`.</span>
+  <span class="op">)</span></code></pre></div>
 <p>Notice that for the initial guess we are using the max of <code>y</code>, which is a reasonable starting point (the <span class="math inline">\(N\)</span> parameter MUST be at least the max of <code>y</code>). Since the returning object is an object of class <code>mcmc</code> from the <code>coda</code> R package, we can use any method available for it. Let’s start by plotting the chain:</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">ans</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">ans</span><span class="op">)</span></code></pre></div>
 <p><img src="user-defined-kernels_files/figure-html/plot1-1.png" width="80%"></p>
 <p>As you can see, the trace pf the parameter started to go up right away and then stayed around 500, the actual population parameter <span class="math inline">\(N\)</span>. As the first part of the chain is useless (we are essentially moving away from the starting point), it is wise (if not necessary) to start the MCMC chain from the last point of <code>ans</code>. We can easily do so by just passing <code>ans</code> as an starting point, since <code>MCMC</code> will automatically take the last value of the chain as starting point of this new one. This time, let’s increase the sample size as well:</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">ans</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/MCMC.html">MCMC</a></span>(
-  <span class="no">ll</span>,
-  <span class="kw">initial</span> <span class="kw">=</span> <span class="no">ans</span>,             <span class="co"># MCMC will use tail(ans, 0) automatically</span>
-  <span class="kw">kernel</span>  <span class="kw">=</span> <span class="no">kernel_unif_int</span>, <span class="co"># same as before</span>
-  <span class="kw">nsteps</span>  <span class="kw">=</span> <span class="fl">10000</span>,           <span class="co"># More steps this time</span>
-  <span class="kw">thin</span>    <span class="kw">=</span> <span class="fl">10</span>,              <span class="co"># same as before</span>
-  <span class="kw">p.</span>      <span class="kw">=</span> <span class="no">p</span>                <span class="co"># same as before</span>
-)</pre></body></html></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ans</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MCMC.html">MCMC</a></span><span class="op">(</span>
+  <span class="va">ll</span>,
+  initial <span class="op">=</span> <span class="va">ans</span>,             <span class="co"># MCMC will use tail(ans, 0) automatically</span>
+  kernel  <span class="op">=</span> <span class="va">kernel_unif_int</span>, <span class="co"># same as before</span>
+  nsteps  <span class="op">=</span> <span class="fl">10000</span>,           <span class="co"># More steps this time</span>
+  thin    <span class="op">=</span> <span class="fl">10</span>,              <span class="co"># same as before</span>
+  p.      <span class="op">=</span> <span class="va">p</span>                <span class="co"># same as before</span>
+<span class="op">)</span></code></pre></div>
 <p>Let’s take a look at the posterior distribution:</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">ans</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">ans</span><span class="op">)</span></code></pre></div>
 <p><img src="user-defined-kernels_files/figure-html/plot2-1.png" width="80%"></p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">ans</span>)
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ans</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Iterations = 10:10000</span>
 <span class="co">#&gt; Thinning interval = 10 </span>
@@ -180,22 +189,22 @@
 <span class="co">#&gt;    plus standard error of the mean:</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;           Mean             SD       Naive SE Time-series SE </span>
-<span class="co">#&gt;      504.32400        2.62219        0.08292        0.09073 </span>
+<span class="co">#&gt;      504.30500        2.67902        0.08472        0.09960 </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; 2. Quantiles for each variable:</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;  2.5%   25%   50%   75% 97.5% </span>
-<span class="co">#&gt;   499   503   504   506   509</span>
-<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="no">ans</span>)
+<span class="co">#&gt;   499   503   504   506   510</span>
+<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">ans</span><span class="op">)</span>
 <span class="co">#&gt; ans</span>
-<span class="co">#&gt; 495 496 497 498 499 500 501 502 503 504 505 506 507 508 509 510 511 512 513 </span>
-<span class="co">#&gt;   1   2   4   8  13  41  71 105 127 147 148 135  91  58  31   9   2   5   2</span></pre></body></html></div>
+<span class="co">#&gt; 497 498 499 500 501 502 503 504 505 506 507 508 509 510 511 512 513 </span>
+<span class="co">#&gt;   3   9  25  44  69  89 144 150 143 127  82  57  28  17   8   4   1</span></code></pre></div>
 <p>A very nice mixing (at least visually) and a posterior distribution from which we can safely sample parameters.</p>
 </div>
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>For more details on what the <code>env</code> object contains, see the manual page of <code>kernel_new</code>.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>For more details on what the <code>env</code> object contains, see the manual page of <code>kernel_new</code>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>
@@ -216,7 +225,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
