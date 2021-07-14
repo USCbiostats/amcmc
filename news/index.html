@@ -152,7 +152,10 @@
 <a href="#fmcmc-04-1" class="anchor"></a>fmcmc 0.4-1<small> Unreleased </small>
 </h1>
 <ul>
-<li>The function <code>fun</code> passed to <code>MCMC</code> is now called two times less. It shouldn’t significantly affect any previous results.</li>
+<li><p>The function <code>fun</code> passed to <code>MCMC</code> is now called two times less. It shouldn’t significantly affect any previous results.</p></li>
+<li><p><code>convergence_gelman</code> now stores the Gelman and Rubin’s statistics in the correct order, i.e., the most recent at the end of the array in <code><a href="../reference/convergence-checker.html">convergence_data_get("val")</a></code>.</p></li>
+<li><p>Users can now pass <code>seed</code> to <code>MCMC</code>. If <code>is.null(seed) != TRUE</code>, then <code>seed</code> is passed to <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code>.</p></li>
+<li><p>The function <code><a href="../reference/convergence-checker.html">convergence_auto()</a></code> now behaves as expected. Before it was not checking convergence.</p></li>
 </ul>
 </div>
     <div id="fmcmc-04-0" class="section level1">
@@ -163,7 +166,7 @@
 <li><p><code>kernel_am</code> and <code>kernel_ram</code> no longer fail when at least one parameter is an offset (<code>fixed = TRUE</code> for some parameter).</p></li>
 <li><p>Now <code>kernel_ram</code> tries first to find the cholesky decomp. If it fails, then it uses <code><a href="https://rdrr.io/pkg/Matrix/man/nearPD.html">Matrix::nearPD</a></code> and re-tries. This is following what is done in the <code>adaptMCMC</code> package.</p></li>
 <li><p>Workflow for running MCMC with <code>conv_checker</code> re-designed (less error prone).</p></li>
-<li><p>Environments <code>LAST_MCMC</code> and <code>LAST_CONV_CHECK</code> provide information about the last call to <code>MCMC</code> and the corresponding convergence checker. Users can access these environments via getter and setter functions.</p></li>
+<li><p>Environments <code>LAST_RUN</code> and <code>LAST_CONV_CHECK</code> provide information about the last call to <code>MCMC</code> and the corresponding convergence checker. Users can access these environments via getter and setter functions.</p></li>
 <li><p><code>MCMC</code> with convergence checker now reports the status of the convergence statistic using the <code>LAST_CONV_CHECK</code> environment and corresponding functions.</p></li>
 <li><p>The functions to compute mean and variance recursively now allow us to do so using windows.</p></li>
 </ul>

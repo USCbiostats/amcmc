@@ -147,7 +147,7 @@ stop criterion using a convergence check test." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Markov Chain Monte Carlo</h1>
-    <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/mcmc.r'><code>R/mcmc.r</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/mcmc.R'><code>R/mcmc.R</code></a></small>
     <div class="hidden name"><code>MCMC.Rd</code></div>
     </div>
 
@@ -162,6 +162,7 @@ stop criterion using a convergence check test.</p>
   <span class='va'>fun</span>,
   <span class='va'>nsteps</span>,
   <span class='va'>...</span>,
+  seed <span class='op'>=</span> <span class='cn'>NULL</span>,
   nchains <span class='op'>=</span> <span class='fl'>1L</span>,
   burnin <span class='op'>=</span> <span class='fl'>0L</span>,
   thin <span class='op'>=</span> <span class='fl'>1L</span>,
@@ -225,6 +226,10 @@ initial values of the parameters for each chain (See details).</p></td>
     <tr>
       <th>...</th>
       <td><p>Further arguments passed to <code>fun</code>.</p></td>
+    </tr>
+    <tr>
+      <th>seed</th>
+      <td><p>If not null, passed to <a href='https://rdrr.io/r/base/Random.html'>set.seed</a>.</p></td>
     </tr>
     <tr>
       <th>nchains</th>

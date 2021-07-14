@@ -228,7 +228,7 @@ the Gelman diagnostic using variables with greater than <code>1e-10</code> varia
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>An object of class <code>environment</code> of length 1.</p>
+    <p>An object of class <code>fmcmc_run_conv_check</code> (inherits from <code>environment</code>) of length 1.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A function passed to <a href='MCMC.html'>MCMC</a> to check automatic convergence.</p>
@@ -248,7 +248,77 @@ for <code>convergence_gelman</code> and <code>convergence_geweke</code>. This fu
 convergence checker that will be either of the other two depending on whether
 <code>nchains</code> in <code>MCMC</code> is greater than one--in which case it will use the Gelman
 test--or not--in which case it will use the Geweke test.</p>
+    <h2 class="hasAnchor" id="building-a-convergence-checker"><a class="anchor" href="#building-a-convergence-checker"></a>Building a convergence checker</h2>
 
+    
+
+<p>Convergence checkers are simply a function that receives as argument a matrix
+(or list of them) with sampled values, and returns a logical scalar with the
+value <code>TRUE</code> if the chain converged. An example of a personalized convergence
+checker is provided below. The frequency with which the check is performed is
+retrieved from the attribute <code>"freq"</code> from the convergence checker function,
+i.e., <code><a href='https://rdrr.io/r/base/attr.html'>attr(..., "freq")</a></code>. If missing, convergence will be checked halfway
+the number of steps in the chain, i.e., <code><a href='https://rdrr.io/r/base/Round.html'>floor(nsteps/2)</a></code>.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Example 1: Presonalized conv checker --------------------------------------</span>
+<span class='co'># Dummy rule, if acceptance rate is near between .2 and .3.</span>
+<span class='va'>convergence_example</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>arate</span> <span class='op'>&lt;-</span> <span class='fl'>1</span> <span class='op'>-</span> <span class='fu'>coda</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/coda/man/rejectionRate.html'>rejectionRate</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='va'>arate</span> <span class='op'>-</span> <span class='fl'>.25</span><span class='op'>)</span> <span class='op'>&lt;</span> <span class='fl'>.05</span>
+  <span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'># Tell fmcmc::MCMC what is the frequency</span>
+<span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>convergence_example</span>, <span class='st'>"freq"</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fl'>2e3</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>223</span><span class='op'>)</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>1000</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='va'>x</span> <span class='op'>*</span> <span class='fl'>2</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>1000</span><span class='op'>)</span>
+<span class='va'>logpost</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='va'>y</span>, mean <span class='op'>=</span> <span class='va'>x</span> <span class='op'>*</span> <span class='va'>p</span>, log <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='va'>ans</span> <span class='op'>&lt;-</span> <span class='fu'><a href='MCMC.html'>MCMC</a></span><span class='op'>(</span>
+  initial <span class='op'>=</span> <span class='fl'>0</span>, fun <span class='op'>=</span> <span class='va'>logpost</span>, nsteps <span class='op'>=</span> <span class='fl'>5e4</span>,
+  kernel<span class='op'>=</span> <span class='fu'><a href='kernel_ram.html'>kernel_ram</a></span><span class='op'>(</span><span class='op'>)</span>,
+  conv_checker <span class='op'>=</span> <span class='va'>convergence_example</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>No convergence yet (steps count: 2000). Trying with the next bulk.</span></div><div class='output co'>#&gt; <span class='message'>No convergence yet (steps count: 4000). Trying with the next bulk.</span></div><div class='output co'>#&gt; <span class='message'>No convergence yet (steps count: 6000). Trying with the next bulk.</span></div><div class='output co'>#&gt; <span class='message'>No convergence yet (steps count: 8000). Trying with the next bulk.</span></div><div class='output co'>#&gt; <span class='message'>No convergence yet (steps count: 10000). Trying with the next bulk.</span></div><div class='output co'>#&gt; <span class='message'>Convergence has been reached with 12000 steps. (12000 final count of samples).</span></div><div class='input'>
+<span class='co'># Example 2: Adding information ---------------------------------------------</span>
+<span class='co'># Here we do two things: Save a value and set a message for the user</span>
+<span class='va'>convergence_example_with_info</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span><span class='op'>(</span><span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>arate</span> <span class='op'>&lt;-</span> <span class='fl'>1</span> <span class='op'>-</span> <span class='fu'>coda</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/coda/man/rejectionRate.html'>rejectionRate</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+  
+  <span class='co'># Saving a value</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/exists.html'>exists</a></span><span class='op'>(</span><span class='st'>"arates"</span>, envir <span class='op'>=</span> <span class='va'>LAST_CONV_CHECK</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='fu'>convergence_data_set</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>arates <span class='op'>=</span> <span class='va'>arate</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>}</span> <span class='kw'>else</span> <span class='op'>{</span>
+    <span class='fu'>convergence_data_set</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+      arates <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span><span class='fu'>convergence_data_get</span><span class='op'>(</span><span class='st'>"arates"</span><span class='op'>)</span>, <span class='va'>arate</span><span class='op'>)</span>
+    <span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>}</span>
+  
+  <span class='co'># Setting up the message</span>
+  <span class='fu'>convergence_msg_set</span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/sprintf.html'>sprintf</a></span><span class='op'>(</span><span class='st'>"Current Avg. Accept. Rate: %.2f"</span>, <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>arate</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>)</span>
+  
+  <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='va'>arate</span> <span class='op'>-</span> <span class='fl'>.25</span><span class='op'>)</span> <span class='op'>&lt;</span> <span class='fl'>.05</span>
+  <span class='op'>)</span>
+<span class='op'>}</span>, freq <span class='op'>=</span> <span class='fl'>2000</span><span class='op'>)</span>
+
+
+<span class='va'>ans</span> <span class='op'>&lt;-</span> <span class='fu'><a href='MCMC.html'>MCMC</a></span><span class='op'>(</span>
+  initial <span class='op'>=</span> <span class='fl'>0</span>, fun <span class='op'>=</span> <span class='va'>logpost</span>, nsteps <span class='op'>=</span> <span class='fl'>5e4</span>,
+  kernel<span class='op'>=</span> <span class='fu'><a href='kernel_ram.html'>kernel_ram</a></span><span class='op'>(</span><span class='op'>)</span>,
+  conv_checker <span class='op'>=</span> <span class='va'>convergence_example_with_info</span>,
+  seed <span class='op'>=</span> <span class='fl'>112</span>,
+  progress <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>No convergence yet (steps count: 2000). Current Avg. Accept. Rate: 0.56 Trying with the next bulk.</span></div><div class='output co'>#&gt; <span class='message'>No convergence yet (steps count: 4000). Current Avg. Accept. Rate: 0.40 Trying with the next bulk.</span></div><div class='output co'>#&gt; <span class='message'>No convergence yet (steps count: 6000). Current Avg. Accept. Rate: 0.34 Trying with the next bulk.</span></div><div class='output co'>#&gt; <span class='message'>No convergence yet (steps count: 8000). Current Avg. Accept. Rate: 0.31 Trying with the next bulk.</span></div><div class='output co'>#&gt; <span class='message'>Convergence has been reached with 10000 steps. Current Avg. Accept. Rate: 0.30 (10000 final count of samples).</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

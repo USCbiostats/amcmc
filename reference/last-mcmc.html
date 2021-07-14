@@ -159,7 +159,7 @@ object of <code>MCMC</code> is an object of class <a href='https://rdrr.io/pkg/c
 more information in case the user needs it.</p>
     </div>
 
-    <pre class="usage"><span class='va'>LAST_MCMC</span>
+    <pre class="usage"><span class='va'>LAST_RUN</span>
 
 <span class='fu'>last_elapsed</span><span class='op'>(</span><span class='op'>)</span>
 
@@ -171,7 +171,9 @@ more information in case the user needs it.</p>
 
 <span class='fu'>last_conv_checker</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>last_</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+<span class='fu'>last_</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='fu'>get_logpost</span><span class='op'>(</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -185,7 +187,7 @@ passed to the last call, the function returns with an error.</p></td>
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>An object of class <code>fmcmc_last</code> (inherits from <code>environment</code>) of length 0.</p>
+    <p>An object of class <code>fmcmc_run</code> (inherits from <code>environment</code>) of length 0.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>last_*</code> returns the corresponding variable.</p>
@@ -193,6 +195,10 @@ passed to the last call, the function returns with an error.</p></td>
 to <a href='MCMC.html'>MCMC</a>. In particular, the <code>MCMC</code> function records the running time of R
 at the beginning and end of the function using <code><a href='https://rdrr.io/r/base/proc.time.html'>proc.time()</a></code>. So this function
 returns the difference between the two (<code>time_end - time_start</code>).</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The function <code>get_logpost</code> returns the <code>logposterior</code> value at each
+iteration. The values correspond to a named numeric vector.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
