@@ -53,7 +53,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fmcmc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5-0</span>
       </span>
     </div>
 
@@ -149,26 +149,25 @@
 <div id="citation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#citation" class="anchor"></a>Citation</h1>
-<pre><code>
-To cite fmcmc in publications use:
-
-  Vega Yon et al., (2019). fmcmc: A friendly MCMC framework. Journal of
-  Open Source Software, 4(39), 1427,
-  https://doi.org/10.21105/joss.01427
-
-A BibTeX entry for LaTeX users is
-
-  @Article{,
-    title = {fmcmc: A friendly MCMC framework},
-    author = {George {Vega Yon} and Paul Marjoram},
-    journal = {The Journal of Open Source Software},
-    year = {2019},
-    month = {jul},
-    volume = {4},
-    number = {39},
-    doi = {10.21105/joss.01427},
-    url = {https://doi.org/10.21105/joss.01427},
-  }</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>To cite fmcmc <span class="cf">in</span> publications use<span class="sc">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  Vega Yon et al., (<span class="dv">2019</span>). fmcmc<span class="sc">:</span> A friendly MCMC framework. Journal of</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  Open Source Software, <span class="dv">4</span>(<span class="dv">39</span>), <span class="dv">1427</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  https<span class="sc">:</span><span class="er">//</span>doi.org<span class="sc">/</span><span class="fl">10.21105</span><span class="sc">/</span>joss<span class="fl">.01427</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>A BibTeX entry <span class="cf">for</span> LaTeX users is</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="sc">@</span>Article{,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    title <span class="ot">=</span> {fmcmc<span class="sc">:</span> A friendly MCMC framework},</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    author <span class="ot">=</span> {George {Vega Yon} and Paul Marjoram},</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    journal <span class="ot">=</span> {The Journal of Open Source Software},</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    year <span class="ot">=</span> {<span class="dv">2019</span>},</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    month <span class="ot">=</span> {jul},</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    volume <span class="ot">=</span> {<span class="dv">4</span>},</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    number <span class="ot">=</span> {<span class="dv">39</span>},</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    doi <span class="ot">=</span> {<span class="fl">10.21105</span><span class="sc">/</span>joss<span class="fl">.01427</span>},</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>doi.org<span class="sc">/</span><span class="fl">10.21105</span><span class="sc">/</span>joss<span class="fl">.01427</span>},</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
 </div>
 <div id="example-linear-regression-model" class="section level1">
 <h1 class="hasAnchor">
@@ -182,7 +181,7 @@ A BibTeX entry for LaTeX users is
 <span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span>
 <span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">3.0</span> <span class="op">+</span> <span class="fl">2.0</span><span class="op">*</span><span class="va">X</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, sd <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></code></pre></div>
-<p>As you can see, in this case we have three parameters to estimate, the constant (2.0), the <span class="math inline"><em>β</em></span> coefficient (2.0), and the standard deviation parameter of the error (1.5).</p>
+<p>As you can see, in this case we have three parameters to estimate, the constant (2.0), the <em>β</em> coefficient (2.0), and the standard deviation parameter of the error (1.5).</p>
 <p>To estimate this model, we can either maximize the log-likelihood function–which is what is usually done–or we could do it using MCMC. In either case, we need to specify the log(unnormalized some times)-likelihood function:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ll</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">p</span>, <span class="va">X.</span>, <span class="va">y.</span><span class="op">)</span> <span class="op">{</span>
@@ -227,17 +226,17 @@ A BibTeX entry for LaTeX users is
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 1. Empirical mean and standard deviation for each variable,</span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    plus standard error of the mean:</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="do">##       Mean     SD Naive SE Time-series SE</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="do">## par1 3.126 0.1893 0.002677        0.03128</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="do">## par2 1.943 0.1234 0.001746        0.04176</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="do">## par3 4.093 0.0930 0.001315        0.01168</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="do">##       Mean      SD Naive SE Time-series SE</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="do">## par1 3.113 0.17593 0.002488       0.024341</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="do">## par2 1.975 0.10647 0.001506       0.022105</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="do">## par3 4.093 0.07843 0.001109       0.005951</span></span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 2. Quantiles for each variable:</span></span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="do">##       2.5%   25%   50%   75% 97.5%</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="do">## par1 2.951 3.013 3.112 3.172 3.511</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="do">## par2 1.763 1.892 1.956 2.026 2.171</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="do">## par3 3.979 4.064 4.106 4.134 4.186</span></span></code></pre></div>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="do">## par1 2.975 3.029 3.068 3.255 3.354</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="do">## par2 1.749 1.907 1.980 2.020 2.145</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="do">## par3 3.978 4.070 4.101 4.102 4.226</span></span></code></pre></div>
 <p>While the summary statistics look very good (we got very close to the original parameters), the trace of the parameters looks vary bad (poor mixing). We can re-run the algorithm changing the scale parameter in the <code>kernel_normal</code> function. In order to do so, we can simply pass <code>ans</code> as the <code>initial</code> argument so that the function starts from the last point of that chain:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ans</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/MCMC.html">MCMC</a></span><span class="op">(</span>
@@ -265,7 +264,7 @@ A BibTeX entry for LaTeX users is
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/pkg/coda/man/rejectionRate.html">rejectionRate</a></span><span class="op">(</span><span class="va">ans_RAM</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">##      par1      par2      par3 </span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 0.3486697 0.3486697 0.3486697</span></span></code></pre></div>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 0.3522705 0.3522705 0.3522705</span></span></code></pre></div>
 <p>We can also try using Haario et al (2001) Adaptive Metropolis</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ans_AM</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/MCMC.html">MCMC</a></span><span class="op">(</span>
@@ -281,13 +280,18 @@ A BibTeX entry for LaTeX users is
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/pkg/coda/man/rejectionRate.html">rejectionRate</a></span><span class="op">(</span><span class="va">ans_AM</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">##      par1      par2      par3 </span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 0.5593119 0.5593119 0.5593119</span></span></code></pre></div>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 0.5457091 0.5457091 0.5457091</span></span></code></pre></div>
+<p>Finally, if needed, we can also access information about the last run using <code>MCMC_INFO</code>. For example, if we wanted to look at the trace of the logposterior function, we could use the <code><a href="reference/fmcmc-info.html">get_logpost()</a></code> function:</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="reference/fmcmc-info.html">get_logpost</a></span><span class="op">(</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"l"</span><span class="op">)</span></code></pre></div>
+<p><img src="reference/figures/get_-1.png"><!-- --></p>
+<p>If the previous run featured multiple chains, then <code><a href="reference/fmcmc-info.html">get_logpost()</a></code> would return a list instead of length <code><a href="reference/fmcmc-info.html">get_nchains()</a></code>.</p>
 </div>
 <div id="automatic-stop" class="section level2">
 <h2 class="hasAnchor">
 <a href="#automatic-stop" class="anchor"></a>Automatic stop</h2>
 <p>Now, suppose that the algorithm actually takes a lot of time to actually reach stationary state, then it would be nice to actually sample from the posterior distribution once convergence has been reached. In the following example we use multiple chains and the Gelman-Rubin diagnostic to check for convergence of the chain:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1215</span><span class="op">)</span> <span class="co"># Same seed as before</span>
 <span class="va">ans</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/MCMC.html">MCMC</a></span><span class="op">(</span>
   <span class="va">ll</span>,
@@ -299,9 +303,31 @@ A BibTeX entry for LaTeX users is
   nchains <span class="op">=</span> <span class="fl">2</span>,                           <span class="co"># Multiple chains</span>
   conv_checker <span class="op">=</span> <span class="fu"><a href="reference/convergence-checker.html">convergence_gelman</a></span><span class="op">(</span><span class="fl">200</span><span class="op">)</span> <span class="co"># Checking for conv. every 200 steps</span>
   <span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 200). Gelman-Rubin's R: 4.5253. Trying with the next bulk.</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Convergence has been reached with 400 steps. Gelman-Rubin's R: 1.0897. (400 final count of samples).</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 200). Gelman-Rubin's R: 4.5843. Trying with the next bulk.</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 400). Gelman-Rubin's R: 1.1877. Trying with the next bulk.</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 600). Gelman-Rubin's R: 1.4297. Trying with the next bulk.</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 800). Gelman-Rubin's R: 1.1582. Trying with the next bulk.</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 1000). Gelman-Rubin's R: 1.3414. Trying with the next bulk.</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 1200). Gelman-Rubin's R: 1.2727. Trying with the next bulk.</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 1400). Gelman-Rubin's R: 1.4456. Trying with the next bulk.</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 1600). Gelman-Rubin's R: 1.3792. Trying with the next bulk.</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 1800). Gelman-Rubin's R: 1.2069. Trying with the next bulk.</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 2000). Gelman-Rubin's R: 1.1789. Trying with the next bulk.</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 2200). Gelman-Rubin's R: 1.1208. Trying with the next bulk.</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 2400). Gelman-Rubin's R: 1.1196. Trying with the next bulk.</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="do">## Convergence has been reached with 2600 steps. Gelman-Rubin's R: 1.0792. (2600 final count of samples).</span></span></code></pre></div>
 <p>As a difference from the previous case, now we didn’t had to wait until the 5,000 steps were done, but the algorithm stopped for us, allowing us to start generating the desired sample much quicker.</p>
 </div>
 <div id="kernels-making-sure-that-we-get-positive-values" class="section level2">
@@ -309,14 +335,14 @@ A BibTeX entry for LaTeX users is
 <a href="#kernels-making-sure-that-we-get-positive-values" class="anchor"></a>Kernels: Making sure that we get positive values</h2>
 <p>For this final example, we will use the <code>kernel</code> argument and provide what corresponds to a transition kernel which makes proposals within certain boundaries, in particular, we want the algorithm to propose only positive values for the <code>sd</code> parameter, which we now must be positive.</p>
 <p>More over, since we now from a fact that we will only get positive values, we can go further and modify <code>ll</code> skipping the check for finite values:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ll</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">p</span>, <span class="va">X.</span>, <span class="va">y.</span><span class="op">)</span> <span class="op">{</span>
   
   <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">y.</span> <span class="op">-</span> <span class="op">(</span><span class="va">p</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="va">X.</span><span class="op">*</span><span class="va">p</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>, sd <span class="op">=</span> <span class="va">p</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>, log <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 
 <span class="op">}</span></code></pre></div>
 <p>Much simpler function! Let’s do the call of the MCMC function specifying the right transition kernel to increase the acceptance rate. In this example, we will set the max of all parameters to be 5.0, and the min to be -5.0 for the constant and 0 for the beta coefficient and the variance parameter, all this using the <code>kernel_normal_reflective</code> (which implements a normal kernel with boundaries) function:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1215</span><span class="op">)</span> <span class="co"># Same seed as before</span>
 <span class="va">ans</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/MCMC.html">MCMC</a></span><span class="op">(</span>
   <span class="va">ll</span>,
@@ -332,9 +358,31 @@ A BibTeX entry for LaTeX users is
   nchains <span class="op">=</span> <span class="fl">2</span>,                           
   conv_checker <span class="op">=</span> <span class="fu"><a href="reference/convergence-checker.html">convergence_gelman</a></span><span class="op">(</span><span class="fl">200</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 200). Gelman-Rubin's R: 3.0834. Trying with the next bulk.</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Convergence has been reached with 400 steps. Gelman-Rubin's R: 1.0583. (400 final count of samples).</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 200). Gelman-Rubin's R: 3.7891. Trying with the next bulk.</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 400). Gelman-Rubin's R: 1.1257. Trying with the next bulk.</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 600). Gelman-Rubin's R: 1.4696. Trying with the next bulk.</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 800). Gelman-Rubin's R: 1.1313. Trying with the next bulk.</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 1000). Gelman-Rubin's R: 1.4384. Trying with the next bulk.</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 1200). Gelman-Rubin's R: 1.3696. Trying with the next bulk.</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 1400). Gelman-Rubin's R: 1.5243. Trying with the next bulk.</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 1600). Gelman-Rubin's R: 1.3720. Trying with the next bulk.</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 1800). Gelman-Rubin's R: 1.1722. Trying with the next bulk.</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 2000). Gelman-Rubin's R: 1.1492. Trying with the next bulk.</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 2200). Gelman-Rubin's R: 1.1004. Trying with the next bulk.</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="do">## No convergence yet (steps count: 2400). Gelman-Rubin's R: 1.1161. Trying with the next bulk.</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="do">## Convergence has been reached with 2600 steps. Gelman-Rubin's R: 1.0815. (2600 final count of samples).</span></span></code></pre></div>
 <p>Again, as the proposal kernel has lower and upper bounds, then we are guaranteed that all proposed states are within the support of the parameter space.</p>
 </div>
 </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • fmcmc</title>
+<title>Deprecated methods in fmcmc — LAST_MCMC • fmcmc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Deprecated methods in fmcmc — LAST_MCMC" />
+<meta property="og:description" content="These functions will no longer be included starting version 0.6-0. Instead,
+use the function sin fmcmc-info." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -76,7 +78,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -141,138 +143,52 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Deprecated methods in fmcmc</h1>
+    <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/last.R'><code>R/last.R</code></a></small>
+    <div class="hidden name"><code>fmcmc-deprecated.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>These functions will no longer be included starting version 0.6-0. Instead,
+use the function sin <a href='fmcmc-info.html'>fmcmc-info</a>.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='va'>LAST_MCMC</span>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="MCMC.html">MCMC()</a></code> <code><a href="MCMC.html">MCMC_without_conv_checker()</a></code> <code><a href="MCMC.html">MCMC_with_conv_checker()</a></code> </p>
-        </td>
-        <td><p>Markov Chain Monte Carlo</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="append_chains.html">append_chains()</a></code> </p>
-        </td>
-        <td><p>Append MCMC chains (objects of class <a href='https://rdrr.io/pkg/coda/man/mcmc.html'>coda::mcmc</a>)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="check_initial.html">check_initial()</a></code> </p>
-        </td>
-        <td><p>Checks the initial values of the MCMC</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="convergence-checker.html">LAST_CONV_CHECK</a></code> <code><a href="convergence-checker.html">convergence_data_set()</a></code> <code><a href="convergence-checker.html">convergence_data_get()</a></code> <code><a href="convergence-checker.html">convergence_msg_set()</a></code> <code><a href="convergence-checker.html">convergence_msg_get()</a></code> <code><a href="convergence-checker.html">convergence_gelman()</a></code> <code><a href="convergence-checker.html">convergence_geweke()</a></code> <code><a href="convergence-checker.html">convergence_heildel()</a></code> <code><a href="convergence-checker.html">convergence_auto()</a></code> </p>
-        </td>
-        <td><p>Convergence Monitoring</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="cov_recursive.html">cov_recursive()</a></code> <code><a href="cov_recursive.html">mean_recursive()</a></code> </p>
-        </td>
-        <td><p>Recursive algorithms for computing variance and mean</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fmcmc-deprecated.html">LAST_MCMC</a></code> <code><a href="fmcmc-deprecated.html">last_elapsed()</a></code> <code><a href="fmcmc-deprecated.html">last_nsteps()</a></code> <code><a href="fmcmc-deprecated.html">last_nchains()</a></code> <code><a href="fmcmc-deprecated.html">last_kernel()</a></code> <code><a href="fmcmc-deprecated.html">last_conv_checker()</a></code> <code><a href="fmcmc-deprecated.html">last_()</a></code> </p>
-        </td>
-        <td><p>Deprecated methods in fmcmc</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fmcmc-info.html">MCMC_INFO</a></code> <code><a href="fmcmc-info.html">get_()</a></code> <code><a href="fmcmc-info.html">get_logpost()</a></code> <code><a href="fmcmc-info.html">get_elapsed()</a></code> <code><a href="fmcmc-info.html">get_nsteps()</a></code> <code><a href="fmcmc-info.html">get_nchains()</a></code> <code><a href="fmcmc-info.html">get_kernel()</a></code> <code><a href="fmcmc-info.html">get_conv_checker()</a></code> <code><a href="fmcmc-info.html">get_seed()</a></code> <code><a href="fmcmc-info.html">get_burnin()</a></code> <code><a href="fmcmc-info.html">get_thin()</a></code> </p>
-        </td>
-        <td><p>Information about the last <code>MCMC</code> call</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fmcmc.html">fmcmc</a></code> </p>
-        </td>
-        <td><p>A friendly MCMC framework</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="kernel_adapt.html">kernel_adapt()</a></code> <code><a href="kernel_adapt.html">kernel_am()</a></code> </p>
-        </td>
-        <td><p>Adaptive Metropolis (AM) Transition Kernel</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="kernel_mirror.html">kernel_nmirror()</a></code> <code><a href="kernel_mirror.html">kernel_umirror()</a></code> </p>
-        </td>
-        <td><p>Mirror Transition Kernels</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="kernel_new.html">kernel_new()</a></code> </p>
-        </td>
-        <td><p>Transition Kernels for MCMC</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="kernel_normal.html">kernel_normal()</a></code> <code><a href="kernel_normal.html">kernel_normal_reflective()</a></code> </p>
-        </td>
-        <td><p>Gaussian Transition Kernel</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="kernel_ram.html">kernel_ram()</a></code> </p>
-        </td>
-        <td><p>Robust Adaptive Metropolis (RAM) Transition Kernel</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="kernel_unif.html">kernel_unif()</a></code> <code><a href="kernel_unif.html">kernel_unif_reflective()</a></code> </p>
-        </td>
-        <td><p>Uniform Transition Kernel</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="new_progress_bar.html">new_progress_bar()</a></code> </p>
-        </td>
-        <td><p>Progress bar</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plan_update_sequence.html">plan_update_sequence()</a></code> </p>
-        </td>
-        <td><p>Parameters' update sequence</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="reflect_on_boundaries.html">reflect_on_boundaries()</a></code> </p>
-        </td>
-        <td><p>Reflective Boundaries</p></td>
-      </tr>
-    </tbody>
+<span class='fu'>last_elapsed</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='fu'>last_nsteps</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='fu'>last_nchains</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='fu'>last_kernel</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='fu'>last_conv_checker</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='fu'>last_</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>Name of the object to retrieve.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>An object of class <code>fmcmc_last_mcmc</code> (inherits from <code>fmcmc_info</code>, <code>environment</code>) of length 7.</p>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The function <code>last_elapsed</code> returns the elapsed time of the last call
+to <a href='MCMC.html'>MCMC</a>. In particular, the <code>MCMC</code> function records the running time of R
+at the beginning and end of the function using <code><a href='https://rdrr.io/r/base/proc.time.html'>proc.time()</a></code>. So this function
+returns the difference between the two (<code>time_end - time_start</code>).</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

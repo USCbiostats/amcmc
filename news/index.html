@@ -89,7 +89,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fmcmc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5-0</span>
       </span>
     </div>
 
@@ -147,15 +147,18 @@
       <small>Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="fmcmc-04-1" class="section level1">
-<h1 class="page-header" data-toc-text="0.4-1">
-<a href="#fmcmc-04-1" class="anchor"></a>fmcmc 0.4-1<small> Unreleased </small>
+    <div id="fmcmc-05-0" class="section level1">
+<h1 class="page-header" data-toc-text="0.5-0">
+<a href="#fmcmc-05-0" class="anchor"></a>fmcmc 0.5-0<small> Unreleased </small>
 </h1>
 <ul>
 <li><p>The function <code>fun</code> passed to <code>MCMC</code> is now called two times less. It shouldn’t significantly affect any previous results.</p></li>
 <li><p><code>convergence_gelman</code> now stores the Gelman and Rubin’s statistics in the correct order, i.e., the most recent at the end of the array in <code><a href="../reference/convergence-checker.html">convergence_data_get("val")</a></code>.</p></li>
 <li><p>Users can now pass <code>seed</code> to <code>MCMC</code>. If <code>is.null(seed) != TRUE</code>, then <code>seed</code> is passed to <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code>.</p></li>
 <li><p>The function <code><a href="../reference/convergence-checker.html">convergence_auto()</a></code> now behaves as expected. Before it was not checking convergence.</p></li>
+<li><p>The set of functions <code>last_*</code> and <code>LAST_MCMC</code> will be deprecated in favor of <code>get_*</code> and <code>MCMC_INFO</code>.</p></li>
+<li><p>The new function <code><a href="../reference/fmcmc-info.html">get_logpost()</a></code> returns the computed values of the objective function from the last <code>MCMC</code> run.</p></li>
+<li><p>The function <code><a href="../reference/append_chains.html">append_chains()</a></code> was randomly dropping one sample of the final set.</p></li>
 </ul>
 </div>
     <div id="fmcmc-04-0" class="section level1">

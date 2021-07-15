@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Information about the last MCMC call — last-mcmc • fmcmc</title>
+<title>Information about the last MCMC call — fmcmc-info • fmcmc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Information about the last MCMC call — last-mcmc" />
+<meta property="og:title" content="Information about the last MCMC call — fmcmc-info" />
 <meta property="og:description" content="This environment holds a copy of the last call to MCMC, including the start
 and end time (to compute total elapsed time) of the call. Since the resulting
 object of MCMC is an object of class coda::mcmc, this is a way to capture
@@ -93,7 +93,7 @@ more information in case the user needs it." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fmcmc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5-0</span>
       </span>
     </div>
 
@@ -149,7 +149,7 @@ more information in case the user needs it." />
     <div class="page-header">
     <h1>Information about the last <code>MCMC</code> call</h1>
     <small class="dont-index">Source: <a href='https://github.com/USCbiostats/fmcmc/blob/master/R/last.R'><code>R/last.R</code></a></small>
-    <div class="hidden name"><code>last-mcmc.Rd</code></div>
+    <div class="hidden name"><code>fmcmc-info.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -159,21 +159,27 @@ object of <code>MCMC</code> is an object of class <a href='https://rdrr.io/pkg/c
 more information in case the user needs it.</p>
     </div>
 
-    <pre class="usage"><span class='va'>LAST_RUN</span>
+    <pre class="usage"><span class='va'>MCMC_INFO</span>
 
-<span class='fu'>last_elapsed</span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'>get_</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='fu'>last_nsteps</span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'>get_logpost</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>last_nchains</span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'>get_elapsed</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>last_kernel</span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'>get_nsteps</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>last_conv_checker</span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'>get_nchains</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>last_</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='fu'>get_kernel</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>get_logpost</span><span class='op'>(</span><span class='op'>)</span></pre>
+<span class='fu'>get_conv_checker</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='fu'>get_seed</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='fu'>get_burnin</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='fu'>get_thin</span><span class='op'>(</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -187,19 +193,29 @@ passed to the last call, the function returns with an error.</p></td>
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>An object of class <code>fmcmc_run</code> (inherits from <code>environment</code>) of length 0.</p>
+    <p>An object of class <code>fmcmc_last_mcmc</code> (inherits from <code>fmcmc_info</code>, <code>environment</code>) of length 7.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>last_*</code> returns the corresponding variable.</p>
-<p>The function <code>last_elapsed</code> returns the elapsed time of the last call
-to <a href='MCMC.html'>MCMC</a>. In particular, the <code>MCMC</code> function records the running time of R
-at the beginning and end of the function using <code><a href='https://rdrr.io/r/base/proc.time.html'>proc.time()</a></code>. So this function
-returns the difference between the two (<code>time_end - time_start</code>).</p>
+    <p><code>get_*</code> returns the corresponding variable passed to the last call
+of <a href='MCMC.html'>MCMC</a>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The function <code>get_logpost</code> returns the <code>logposterior</code> value at each
-iteration. The values correspond to a named numeric vector.</p>
+iteration. The values correspond to a named numeric vector. If <code>nchains &gt; 1</code>
+then it will return a list of length <code>nchains</code> with the corresponding logpost
+values for each chain.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>23133</span><span class='op'>)</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>200</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='va'>x</span><span class='op'>*</span><span class='fl'>2</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>200</span><span class='op'>)</span>
+<span class='va'>f</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='va'>y</span> <span class='op'>-</span> <span class='va'>x</span><span class='op'>*</span><span class='va'>p</span>, log <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='va'>ans</span> <span class='op'>&lt;-</span> <span class='fu'><a href='MCMC.html'>MCMC</a></span><span class='op'>(</span>fun <span class='op'>=</span> <span class='va'>f</span>, initial <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span><span class='op'>)</span>, nsteps<span class='op'>=</span><span class='fl'>2000</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'>get_logpost</span><span class='op'>(</span><span class='op'>)</span>, type <span class='op'>=</span> <span class='st'>"l"</span><span class='op'>)</span> <span class='co'># Plotting the logpost from the last run</span>
+</div><div class='img'><img src='fmcmc-info-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
